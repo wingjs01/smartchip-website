@@ -1,0 +1,37 @@
+# ===== 加到網站根目錄 .htaccess（Apache / Plesk）=====
+# 上線前先在測試環境或備份後套用。
+# 現有 /Shopee 路徑和 ihoin.com 的轉址行為，請先確認是否也要一起改。
+
+RewriteEngine On
+
+# 1) http → https，並統一成 www（取代 checkurl.js 的 JS 轉址）
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^smartchip\.com\.tw$ [NC]
+RewriteRule ^(.*)$ https://www.smartchip.com.tw/$1 [R=301,L]
+
+# 2) 首頁：/ 和 /index.html → /indexsmartchip.html（取代 index.html 的 JS 轉址）
+RewriteRule ^$ /indexsmartchip.html [R=301,L]
+RewriteRule ^index\.html$ /indexsmartchip.html [R=301,L]
+
+# 3) 日文版入口
+RewriteRule ^jp/?$ /jp/indexsmartchip.html [R=301,L]
+RewriteRule ^jp/index\.html$ /jp/indexsmartchip.html [R=301,L]
+
+# 4) r*.html 舊轉址頁（英文和日文）
+RewriteRule ^(jp/)?ridm[134]\.html$ /$1idm.html [R=301,L]
+RewriteRule ^(jp/)?raboutApp[12]\.html$ /$1aboutApp.html [R=301,L]
+RewriteRule ^(jp/)?ricdesign2\.html$ /$1icdesign.html [R=301,L]
+RewriteRule ^(jp/)?ranimal1\.html$ /$1animal.html [R=301,L]
+RewriteRule ^(jp/)?rrfid-elock1\.html$ /$1rfid-elock.html [R=301,L]
+RewriteRule ^(jp/)?rhlf_nfc-rfid\.html$ /$1hlf_nfc-rfid.html [R=301,L]
+
+# 5) 已失效的 2.4G 頁面 → 現有對應頁
+RewriteRule ^2\.4G_r01\.html$ /active_r01.html [R=301,L]
+RewriteRule ^2\.4G_at01\.html$ /active_at01.html [R=301,L]
+RewriteRule ^2\.4G_24gTag\.html$ /active_Tag.html [R=301,L]
+RewriteRule ^2\.4G_24gServiceBell\.html$ /active_ServiceBell.html [R=301,L]
+
+# 6) llms.txt 用 UTF-8 純文字回應
+<Files "llms.txt">
+  ForceType "text/plain; charset=utf-8"
+</Files>

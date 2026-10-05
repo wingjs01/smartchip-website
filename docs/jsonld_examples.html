@@ -1,0 +1,76 @@
+<!-- ============================================================
+  英文站 JSON-LD 範例：貼進每頁 <head> 內
+  日文版（/jp/）已自動內建，可直接參考 deliverables/jp/*.html
+  英文正式公司名請先內部確定；這裡暫用 "Smartchip Microelectronic Corp."
+============================================================ -->
+
+<!-- 1) 首頁 indexsmartchip.html：Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Smartchip Microelectronic Corp.",
+  "alternateName": ["SMC", "SMARTCHIP", "瑞新電子股份有限公司"],
+  "url": "https://www.smartchip.com.tw/",
+  "logo": "https://www.smartchip.com.tw/img/smc_Logo2.png",
+  "foundingDate": "1995",
+  "description": "Taiwanese RFID and NFC manufacturer since 1995: in-house RFID IC design, 125 kHz / 134.2 kHz / 13.56 MHz / UHF / 2.4 GHz active RFID modules, readers and tags, BLE modules, and ODM services.",
+  "email": "service@smartchip.com.tw",
+  "telephone": "+886-2-8221-8800",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "16F., No. 11, Qiaohe Rd., Zhonghe Dist.",
+    "addressLocality": "New Taipei City",
+    "postalCode": "235",
+    "addressCountry": "TW"
+  },
+  "sameAs": [
+    "https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg",
+    "https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+  ]
+}
+</script>
+
+<!-- 2) 產品頁（例：HF_Module_5237.html）：Product，規格放 additionalProperty -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "SMC5237 13.56 MHz ISO14443A/ISO15693 Reader Module",
+  "sku": "SMC5237",
+  "mpn": "SMC5237",
+  "brand": {"@type": "Brand", "name": "SMC"},
+  "manufacturer": {"@type": "Organization", "name": "Smartchip Microelectronic Corp."},
+  "image": "https://www.smartchip.com.tw/img/HF_Module/SMC5237-V2.png",
+  "description": "13.56 MHz single-antenna contactless reader module supporting ISO14443A and ISO15693, with UART and USB interfaces and built-in anti-collision.",
+  "url": "https://www.smartchip.com.tw/HF_Module_5237.html",
+  "additionalProperty": [
+    {"@type": "PropertyValue", "name": "Operating frequency", "value": "13.56 MHz"},
+    {"@type": "PropertyValue", "name": "Protocols", "value": "ISO14443A, ISO15693"},
+    {"@type": "PropertyValue", "name": "Interface", "value": "UART, USB"},
+    {"@type": "PropertyValue", "name": "Operating voltage", "value": "3.3–5.5 V DC"},
+    {"@type": "PropertyValue", "name": "Read range", "value": "3–20 mm (standard card)"}
+  ]
+}
+</script>
+<!-- 其他產品頁：image 換成該頁的產品圖 -->
+
+<!-- 3) knowledge.html：FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is RFID?",
+      "acceptedAnswer": {"@type": "Answer", "text": "RFID identifies objects wirelessly using radio waves. A system consists of a reader and tags; tags are either active (battery-powered) or passive (powered by the reader's field)."}
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between NFC and RFID?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NFC is a subset of high-frequency (13.56 MHz) RFID designed for short-range, secure data exchange. Unlike typical RFID, an NFC device can act as both a reader and a tag, enabling peer-to-peer communication."}
+    }
+  ]
+}
+</script>

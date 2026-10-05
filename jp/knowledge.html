@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+ <script src="/js/checkurl.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  
+  <meta name="author" content="瑞新電子股份有限公司">
+  <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
+  <title>SMC 技術情報 | SMC 瑞新電子</title>
+    <meta name="description" content="RFIDは、電波を利用して非接触で対象の情報を取得し、識別を行う技術です。システムはリーダーとタグで構成されます。タグにはアクティブ型（電池内蔵）とパッシブ型（リーダーからの電波エネルギーで動作）があり、パッシブ型は十分なエネルギーを受…">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="瑞新電子 SMC">
+    <meta property="og:title" content="SMC 技術情報 | SMC 瑞新電子">
+    <meta property="og:description" content="RFIDは、電波を利用して非接触で対象の情報を取得し、識別を行う技術です。システムはリーダーとタグで構成されます。タグにはアクティブ型（電池内蔵）とパッシブ型（リーダーからの電波エネルギーで動作）があり、パッシブ型は十分なエネルギーを受…">
+    <meta property="og:url" content="https://www.smartchip.com.tw/jp/knowledge.html">
+    <link rel="canonical" href="https://www.smartchip.com.tw/jp/knowledge.html">
+    <link rel="alternate" hreflang="en" href="https://www.smartchip.com.tw/knowledge.html">
+    <link rel="alternate" hreflang="zh-Hant" href="https://www.smartchip.com.tw/tw/knowledge.html">
+    <link rel="alternate" hreflang="zh-Hans" href="https://www.smartchip.com.tw/cn/knowledge.html">
+    <link rel="alternate" hreflang="ja" href="https://www.smartchip.com.tw/jp/knowledge.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.smartchip.com.tw/knowledge.html">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://www.smartchip.com.tw/jp/indexsmartchip.html"}, {"@type": "ListItem", "position": 2, "name": "SMC 技術情報", "item": "https://www.smartchip.com.tw/jp/knowledge.html"}]}</script>
+  <link rel="stylesheet" href="/css/main/reset.min.css?rev=@@hash">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Jura:300|Oswald:400|Saira+Semi+Condensed:200" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="/css/main/allMain.min.css?rev=@@hash">
+  <link rel="stylesheet" href="/css/main/footer.min.css?rev=@@hash">
+  <link rel="stylesheet" href="/css/main/knowledge.min.css?rev=@@hash">
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84670428-11', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body> 
+<script>
+/***
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=1274132352708285";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+	
+	*/
+</script>
+
+<style>
+<!--
+    .fbBox {
+        background: url('/img/fbicon.png') no-repeat scroll left center transparent !important;
+        display: block;
+        float: right;
+        height: 170px;
+        padding: 0 5px 0 46px;
+        width: 296px;
+        z-index: 99999;
+        position: fixed;
+        right: -250px;
+        top: 150px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .fbBox:hover {
+        right: 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .fbBox {
+            top: 300px;
+        }
+    }
+	-->
+</style>
+<!--
+<div id="fb-root"></div>
+-->
+<!-- fackbook -->
+<!--
+<div class="fbBox hidden-xs">
+    <div class="fb-page" data-href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+        data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/">Facebook</a>
+        </blockquote>
+    </div>
+</div>
+-->
+  <!-- 
+============================================================================
+header 開始
+============================================================================
+-->
+  <!-- 
+============================================================================
+選單 開始
+============================================================================ 
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">メニューを開く</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html">
+                <img id="forOtherPage" src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 SMC RFID NFC">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">会社概要
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="about.html">会社紹介</a>
+                        </li>
+                        <li>
+                            <a href="icdesign.html">ハードウェア</a>
+                        </li>
+                        <li>
+                            <a href="software.html">ソフトウェア</a>
+                        </li>
+                        <li>
+                           <a href="idm.html">ODM</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="news.html">ニュース</a>
+                </li>
+                <li>
+                    <a href="knowledge.html">技術情報</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">製品情報
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="products.html">製品一覧</a>
+                        </li>
+                        <li>
+                            <a href="video.html">動画</a>
+                        </li>
+                        <li>
+                            <a href="aboutApp.html">アプリソリューション</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="solution.html">ソリューション</a>
+
+                </li>
+                <!-- <li>
+                    <a href="contact.html">Contact Us</a>
+                </li> -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu showLan">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 
+============================================================================
+選單 結束
+============================================================================
+ -->
+<!--
+============================================================================
+當高度觸碰.navbar時轉為fixed
+============================================================================
+ -->
+  <!-- 
+============================================================================
+header 結束
+============================================================================
+ -->
+  <!-- <div class="menu">
+        <nav id="menu">
+            <div class="menuOfTitle">
+                <span>
+                    RFID 系列</span>
+            </div>
+            <a href="">
+                <p>什麼是 RFID ？</p>
+            </a>
+            <a href="">
+                <p>RFID 與 NFC：有什麼區別？</p>
+            </a>
+        </nav>
+
+        <main id="panel">
+            <div>
+                <a class="toggle-button" href="#!" title="更多知識文件">
+                    <span></span>
+                </a>
+            </div>
+        </main>
+    </div> -->
+  <div class="test">
+    <div class="backgroundImgOfTitle">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>SMC 技術情報</h1>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="news">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="article">
+              <h2>RFIDとは？</h2>
+              <!-- <i class="fa fa-calendar fa-2x" aria-hidden="true">
+                        <span>2017/12/05</span>
+                    </i>
+                    <i class="fa fa-user fa-2x" aria-hidden="true">
+                        <span>Jason</span>
+                    </i> -->
+              <p>RFIDは、電波を利用して非接触で対象の情報を取得し、識別を行う技術です。システムはリーダーとタグで構成されます。タグにはアクティブ型（電池内蔵）とパッシブ型（リーダーからの電波エネルギーで動作）があり、パッシブ型は十分なエネルギーを受け取ると内部回路が演算と信号送信を行います。RFIDは周波数ごとに通信距離、透過性、セキュリティなどの長所と短所があり、用途に合ったシステムを選ぶことで、最大の効率と最小のコストを実現できます。</p>
+              <div class="articleOfImg">
+                <img src="/img/others/rfid01.jpg" alt="">
+                <img src="/img/others/rfid02.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="news">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="article">
+              <h3>NFCとRFIDの違いは？</h3>
+              <h3>要点：</h3>
+              <p>RFIDは電波を使って物体を個別に識別する技術で、NFCはRFIDファミリーの中の特化した一分野です。具体的には、NFCは高周波（HF）RFIDの一種で、どちらも13.56 MHzで動作します。NFCは安全なデータ交換を目的に設計されており、1台のNFC機器がリーダーとタグの両方の役割を果たせるため、機器同士で直接通信（P2P通信）できるのが特長です。</p>
+              <h3>詳しい解説：</h3>
+              <p>RFIDとは、電波を使って物体を個別に識別する方式です。RFIDシステムは最低限、タグ、リーダー、アンテナで構成されます。リーダーはアンテナを通じてタグに問い合わせ信号を送り、タグは固有の情報を返します。RFIDタグにはアクティブ型とパッシブ型があります。</p>
+              <p>アクティブ型RFIDタグは電池を内蔵しているため、自ら電波を発信でき、最大100 m程度の読取距離を実現できます。この長い読取距離から、資産の位置管理や物流の効率化が重要な業界で広く活用されています。</p>
+              <p>パッシブ型RFIDタグは電池を持たず、リーダーから送られる電磁エネルギーで動作します。タグを動かすのに十分な電波が必要なため、読取距離はほぼ接触する距離から最大25 m程度です。</p>
+              <p>パッシブ型RFIDタグが主に使用する周波数帯は3つあります：</p>
+
+              <p>主な周波数帯は、低周波（LF）125～134 kHz、高周波（HF）13.56 MHz、超高周波（UHF）860～960 MHzです。NFC機器はHF RFIDのリーダーやタグと同じ13.56 MHzで動作し、NFCの規格はISO/IEC 14443、FeliCa、ISO/IEC 18092などのRFID規格をベースにしています。これらは近接型カードに関する規格です。</p>
+
+              <p>NFCはHF RFIDをベースにした技術で、通信距離が短いという特性をあえて活かしています。</p>
+              <p>NFC機器同士は通常数センチ以内まで近づける必要があるため、スマートフォンなど消費者向け機器間の安全な通信手段として広く採用されています。
+              </p>
+              <p>NFCが一般的なRFIDと大きく異なる点は、機器同士の双方向（P2P）通信が可能なことです。1台のNFC機器がリーダーにもタグにもなれるため、非接触決済で広く利用され、スマートフォンへのNFC搭載が進む大きな理由となりました。また、2台のスマートフォンを軽く触れ合わせるだけで連絡先や写真を共有することもでき、NFCタグを埋め込んだスマートポスターによる情報配信にも活用されています。</p>
+              <p>NFC機器はパッシブ型NFCタグを読み取れるほか、一部の機器はISO 15693準拠のHF RFIDタグも読み取れます。タグには「特定のアプリを起動する」といった命令を書き込むこともでき、広告、ポスター、看板などで消費者に情報を届ける手段として利用が広がっています。</p>
+              <p>つまり、NFCはHF RFIDの規格を土台にしながら、短い通信距離という制約を独自の強みへと変えた技術だといえます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="news">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#one" aria-controls="one" role="tab" data-toggle="tab"></a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#two" aria-controls="two" role="tab" data-toggle="tab">詳答</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="one" role="tabpanel">
+                                </div>
+                                <div class="tab-pane" id="two" role="tabpanel">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+  </div>
+  <!-- 
+============================================================================
+footer 開始
+============================================================================
+    -->
+  <div class="footerStyle">
+    <footer class="container">
+        <div class="row">
+            <div class=" text-center footerText">
+                <div class="col-md-2 col-xs-12">
+                    <a href="tel:+886282218800">
+                        <img src="/img/others/phoneIcon.png" alt="">
+                    </a>
+                    <p>
+                        +886-2-8221-8800
+                    </p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="https://www.google.ch/maps/place/235%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E6%9D%BF%E5%8D%97%E8%B7%AF671%E8%99%9F/@25.0080119,121.4814703,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a82933ab8c75:0x372cb8324f7a2117!8m2!3d25.0080119!4d121.483659"
+                        target="_blank">
+                        <img src="/img/others/addressIcon.png" alt="">
+                    </a>
+                    <p>〒235 台湾 新北市中和区橋和路11号16階</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="mailto:service@smartchip.com.tw">
+                        <img src="/img/others/emailIcon.png" alt="">
+                    </a>
+                    <p>service@smartchip.com.tw</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <div class="otherBtn">
+                    <a href="https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg" target="_blank">
+                        <img src="/img/others/youtubeIcon.png" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" target="_blank">
+                        <img src="/img/others/facebookIcon.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 copyRightText">
+                <p>Copyright © 1995 - 2026 SMARTCHIP（瑞新電子）</p>
+            </div>
+        </div>
+    </footer>
+</div>
+  <!-- 
+============================================================================
+Footer 結束
+============================================================================
+    -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script> -->
+  <script src="https://unpkg.com/tippy.js@2.0.2/dist/tippy.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.0/readmore.min.js"></script>
+  <script src="js/main/main.min.js?rev=@@hash"></script>
+  <script>
+    $(".article").readmore({
+      speed: 1000,
+      collapsedHeight: 110,
+      moreLink: '<a href="#">More</a>',
+      lessLink: '<a href="#">Close</a>'
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+# SMC (Smartchip / 瑞新電子股份有限公司)
+
+> SMC is a Taiwanese RFID and NFC company founded in 1995 as an IC design house. It designs its own RFID chips (e.g. the SMC522 series) and builds RFID/NFC reader modules, readers, tags, Bluetooth (BLE) modules and 2.4 GHz active RFID systems, and offers ODM, firmware, app and web development. Headquarters and R&D: New Taipei City, Taiwan. Sales and factory: Shenzhen. Sales: Hong Kong. Joint venture: India.
+
+- Website languages: English (/), Traditional Chinese (/tw/), Simplified Chinese (/cn/), Japanese (/jp/)
+- Contact: service@smartchip.com.tw, +886-2-8221-8800
+- Address: 16F., No. 11, Qiaohe Rd., Zhonghe Dist., New Taipei City 235, Taiwan
+- Customization: most modules can be customized (frequency, interface, protocol, command set, antenna)
+
+## Company
+
+- [About SMC](https://www.smartchip.com.tw/about.html): history (1995 IC design house, 2002 RFID chips, 2010 total RFID solutions), business areas, locations
+- [Hardware / IC design](https://www.smartchip.com.tw/icdesign.html)
+- [Software development](https://www.smartchip.com.tw/software.html)
+- [ODM services](https://www.smartchip.com.tw/idm.html)
+- [News and awards](https://www.smartchip.com.tw/news.html)
+- [RFID vs NFC knowledge base](https://www.smartchip.com.tw/knowledge.html)
+
+## Product catalog
+
+- [All products](https://www.smartchip.com.tw/products.html)
+
+### 13.56 MHz (HF / NFC) reader modules
+- [SMC5237](https://www.smartchip.com.tw/HF_Module_5237.html): ISO14443A + ISO15693, single antenna, UART/USB
+- [SMC5238](https://www.smartchip.com.tw/HF_Module_5238.html): ISO14443A/B + ISO15693, UART/USB/RS232, FCC/CE/NCC
+- [SMC5240H](https://www.smartchip.com.tw/HF_Module_5240H.html): desktop NFC reader for ST25DV tags, USB
+- [SMC5241](https://www.smartchip.com.tw/HF_Module_5241.html): NFC module supporting Apple Wallet VAS and Google Smart Tap passes
+- [SMC53105](https://www.smartchip.com.tw/HF_Module_53105.html): UID-only reader module
+- [SMC632CS](https://www.smartchip.com.tw/SMC632CS.html), [SMC632ES](https://www.smartchip.com.tw/SMC632ES.html), [SMC632AS/AUS](https://www.smartchip.com.tw/SMC632_AS_US.html): ISO14443A + ISO15693 modules
+- [SMC642CYS/CZS](https://www.smartchip.com.tw/SMC642CYS_CES.html): dual-antenna module, UART/I2C/SPI
+- [SMC522F](https://www.smartchip.com.tw/HF_R_522f.html), [SMC522FS](https://www.smartchip.com.tw/HF_R_522fs.html), [SMC522S](https://www.smartchip.com.tw/HF_R_522s.html), [SMC522AUS-2](https://www.smartchip.com.tw/HF_R_522u.html): MIFARE reader modules on SMC522 chip
+- [SMC5220S-N](https://www.smartchip.com.tw/HF_R_5220s_n.html): ISO14443A NFC + BLE 4.0 one-chip module
+
+### 125 kHz / 134.2 kHz (LF) modules and readers
+- Modules: [SMC51483](https://www.smartchip.com.tw/LF_Module_51483.html), [SMC51486](https://www.smartchip.com.tw/LF_Module_51486.html), [SMC51487](https://www.smartchip.com.tw/LF_Module_51487.html), [SMC51488](https://www.smartchip.com.tw/LF_Module_51488.html), [SMC51492](https://www.smartchip.com.tw/LF_Module_51492.html), [SMC52101 (134.2 kHz, ISO11784/5)](https://www.smartchip.com.tw/LF_Module_52101.html)
+- [SMC5220S-R](https://www.smartchip.com.tw/LF_R_5220s_r.html): 125 kHz RFID + BLE 4.0 module
+- Long-range readers: [SMC-R125](https://www.smartchip.com.tw/LF_R_r125.html), [SMC-R125_130 (up to 130 cm)](https://www.smartchip.com.tw/LF_R_r125-130.html), [SMC-R134](https://www.smartchip.com.tw/LF_R_r134.html), [SMC-SY485](https://www.smartchip.com.tw/LF_R_sy485.html)
+- Handheld readers: [SMC-H125](https://www.smartchip.com.tw/LF_R_h125.html), [SMC-H134](https://www.smartchip.com.tw/LF_R_h134.html), [SMC-HJ1000](https://www.smartchip.com.tw/LF_R_hj1000.html)
+
+### Dual-band (HF + LF) and Bluetooth readers
+- [SMC-P135S](https://www.smartchip.com.tw/HF_R_P135.html), [SMC-P135125S](https://www.smartchip.com.tw/HLF_R_P135125S.html), [SMC-P135134S](https://www.smartchip.com.tw/HLF_R_P135134S.html): BLE readers with offline storage of 1,000 IDs
+- [SMC6320US](https://www.smartchip.com.tw/SMC6320US.html): BLE 4.2 NFC reader/writer
+- [SMC5227](https://www.smartchip.com.tw/smc5227v4.html): HF + LF reader for PC
+
+### Bluetooth modules
+- [SMC52BM42](https://www.smartchip.com.tw/SMC52300_42.html), [SMC52BM50](https://www.smartchip.com.tw/SMC52300_50.html), [SMC55232](https://www.smartchip.com.tw/SMC55232.html)
+
+### 2.4 GHz active RFID
+- [SMC-FR24 fixed reader](https://www.smartchip.com.tw/active_rfid_solution_reader.html), [SMC-HR24 handheld reader](https://www.smartchip.com.tw/active_rfid_solution_reader_handle.html), [S-TAG active tag](https://www.smartchip.com.tw/active_rfid_solution_tag.html)
+- [SMC-AT01 tag](https://www.smartchip.com.tw/active_at01.html), [SMC-AR24 transceiver](https://www.smartchip.com.tw/active_r01.html), [Real-time positioning solution](https://www.smartchip.com.tw/personnelLocation.html)
+
+### UHF
+- [FM8128E020 four-channel UHF reader](https://www.smartchip.com.tw/FM8128E020.html), UHF tags ([01](https://www.smartchip.com.tw/ugftag01.html)–[13](https://www.smartchip.com.tw/ugftag13.html))
+
+### Tags
+- LF: [ear tags](https://www.smartchip.com.tw/LF_Tag_e13434.html), [glass biochips (ISO11784/5)](https://www.smartchip.com.tw/LF_Tag_g13421.html), [laundry tags](https://www.smartchip.com.tw/LF_Tag_LL1252203.html), [underground marker tags](https://www.smartchip.com.tw/LF_Tag_126b.html), [key fobs](https://www.smartchip.com.tw/LF_Tag_esk125.html)
+- HF: [MIFARE Classic 1K cards](https://www.smartchip.com.tw/HF_Tag_MIFARE-Classic-1k.html), [PCB tags](https://www.smartchip.com.tw/HF_Tag_PCB.html)
+
+### Encoder / decoder ICs
+- [SMC5326S-3](https://www.smartchip.com.tw/IC_5326s-3.html), [SMC5326P-3](https://www.smartchip.com.tw/IC_5326p-3.html), [SMC65327M-3CP](https://www.smartchip.com.tw/IC_65327m-3cp.html), [SMC995326-44DBS](https://www.smartchip.com.tw/IC_995326-44dbs.html), [SMC51541](https://www.smartchip.com.tw/IC_51541.html), [QW18S](https://www.smartchip.com.tw/IC_qw18s.html)
+
+## Solutions
+
+- [Livestock management (RFID ear tags)](https://www.smartchip.com.tw/animal.html)
+- [Pet identification (biochips + readers)](https://www.smartchip.com.tw/pet.html)
+- [Motorcycle anti-theft RFID key](https://www.smartchip.com.tw/rfid-elock.html)
+- [NFC anti-counterfeit labels (SMC5094, dual-ID + AES)](https://www.smartchip.com.tw/solution_smc5094.html)
+- [Underground pipe marking](https://www.smartchip.com.tw/undermark.html)
+- [Bluetooth beacon control](https://www.smartchip.com.tw/solution_beacon.html)
+
+## Japanese version (日本語)
+
+- [日本語トップ](https://www.smartchip.com.tw/jp/indexsmartchip.html)
+- [製品一覧](https://www.smartchip.com.tw/jp/products.html)
+- [会社概要](https://www.smartchip.com.tw/jp/about.html)
