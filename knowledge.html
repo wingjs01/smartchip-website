@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <script src="js/checkurl.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:description" content="RFID 領域為瑞新電子股份有限公司主力產品,公司能力從RFID IC研發設計,RFID模組銷售,RFID 遠距離接收器可應用在如人員門禁,人員定位(Location system),停車場進出管理,而RFID 2.4Ghz模組可應用停車場自動化管理應用,IOT 物聯網解決方案--NFC module, RFID應用有需求的朋友歡迎來電洽詢或線上詢問聯絡"
+  />
+  <meta name="description" content="RFID 領域為瑞新電子股份有限公司主力產品,公司能力從RFID IC研發設計,RFID模組銷售,RFID 遠距離接收器可應用在如人員門禁,人員定位(Location system),停車場進出管理,而RFID 2.4Ghz模組可應用停車場自動化管理應用,IOT 物聯網解決方案--NFC module, RFID應用有需求的朋友歡迎來電洽詢或線上詢問聯絡"
+  />
+  <meta name="author" content="瑞新電子股份有限公司">
+  <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
+  <title>Scientific and technological knowledge - SMC</title>
+  <link rel="stylesheet" href="css/main/reset.min.css?rev=@@hash">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Jura:300|Oswald:400|Saira+Semi+Condensed:200" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="css/main/allMain.min.css?rev=@@hash">
+  <link rel="stylesheet" href="css/main/footer.min.css?rev=@@hash">
+  <link rel="stylesheet" href="css/main/knowledge.min.css?rev=@@hash">
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-84670428-11', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body> 
+<script>
+/***
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=1274132352708285";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+	
+	*/
+</script>
+
+<style>
+<!--
+    .fbBox {
+        background: url('/img/fbicon.png') no-repeat scroll left center transparent !important;
+        display: block;
+        float: right;
+        height: 170px;
+        padding: 0 5px 0 46px;
+        width: 296px;
+        z-index: 99999;
+        position: fixed;
+        right: -250px;
+        top: 150px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .fbBox:hover {
+        right: 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .fbBox {
+            top: 300px;
+        }
+    }
+	-->
+</style>
+<!--
+<div id="fb-root"></div>
+-->
+<!-- fackbook -->
+<!--
+<div class="fbBox hidden-xs">
+    <div class="fb-page" data-href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+        data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/">Facebook</a>
+        </blockquote>
+    </div>
+</div>
+-->
+  <!-- 
+============================================================================
+header 開始
+============================================================================
+-->
+  <!-- 
+============================================================================
+選單 開始
+============================================================================ 
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html">
+                <img id="forOtherPage" src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 SMC RFID NFC">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="about.html">Profile</a>
+                        </li>
+                        <li>
+                            <a href="icdesign.html">Hardware</a>
+                        </li>
+                        <li>
+                            <a href="software.html">Software</a>
+                        </li>
+                        <li>
+                           <a href="idm.html">ODM</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="news.html">NEWS</a>
+                </li>
+                <li>
+                    <a href="knowledge.html">Knowledge</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="products.html">Product Overview</a>
+                        </li>
+                        <li>
+                            <a href="video.html">Video</a>
+                        </li>
+                        <li>
+                            <a href="aboutApp.html">App Solutions</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="solution.html">Solutions</a>
+
+                </li>
+                <!-- <li>
+                    <a href="contact.html">Contact Us</a>
+                </li> -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu showLan">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 
+============================================================================
+選單 結束
+============================================================================
+ -->
+<!--
+============================================================================
+當高度觸碰.navbar時轉為fixed
+============================================================================
+ -->
+  <!-- 
+============================================================================
+header 結束
+============================================================================
+ -->
+  <!-- <div class="menu">
+        <nav id="menu">
+            <div class="menuOfTitle">
+                <span>
+                    RFID 系列</span>
+            </div>
+            <a href="">
+                <p>什麼是 RFID ？</p>
+            </a>
+            <a href="">
+                <p>RFID 與 NFC：有什麼區別？</p>
+            </a>
+        </nav>
+
+        <main id="panel">
+            <div>
+                <a class="toggle-button" href="#!" title="更多知識文件">
+                    <span></span>
+                </a>
+            </div>
+        </main>
+    </div> -->
+  <div class="test">
+    <div class="backgroundImgOfTitle">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>SMC Electronic Product Knowledge Documents</h1>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="news">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="article">
+              <h2>What is RFID?</h2>
+              <!-- <i class="fa fa-calendar fa-2x" aria-hidden="true">
+                        <span>2017/12/05</span>
+                    </i>
+                    <i class="fa fa-user fa-2x" aria-hidden="true">
+                        <span>Jason</span>
+                    </i> -->
+              <p>RFID obtains target information wirelessly through radio frequency to achieve identification, in which the
+                system structure requires a Reader and a Tag. Tags are divided into active and passive, active tags have
+                their own power supply, and passive tags receive the reader's energy. When the energy is accumulated enough,
+                the circuit on the card will do the calculation and signal transmission, RFID systems with different frequencies
+                have their advantages and disadvantages, different distance, penetration, security, etc. In accordance with
+                the different application context with the appropriate system, you can get the maximum efficiency and economic
+                costs.</p>
+              <div class="articleOfImg">
+                <img src="/img/others/rfid01.jpg" alt="">
+                <img src="/img/others/rfid02.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="news">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="article">
+              <h3>What is the difference between NFC and RFID, or even different?</h3>
+              <h3>Short Answer:</h3>
+              <p>RFID is the process by which items are uniquely identified using radio waves, and NFC is a specialized subset
+                within the family of RFID technology. Specifically, NFC is a branch of High-Frequency (HF) RFID, and both
+                operate at the 13.56 MHz frequency. NFC is designed to be a secure form of data exchange, and an NFC device
+                is capable of being both an NFC reader and an NFC tag. This unique feature allows NFC devices to communicate
+                peer-to-peer.</p>
+              <h3>Long Answer:</h3>
+              <p>By definition, RFID is the method of uniquely identifying items using radio waves. At a minimum, an RFID system
+                comprises a tag, a reader, and an antenna. The reader sends an interrogating signal to the tag via the antenna,
+                and the tag responds with its unique information. RFID tags are either Active or Passive.</p>
+              <p>Active RFID tags contain their own power source giving them the ability to broadcast with a read range of up
+                to 100 meters. Their long read range makes active RFID tags ideal for many industries where asset location
+                and other improvements in logistics are important.</p>
+              <p>Passive RFID tags do not have their own power source. Instead, they are powered by the electromagnetic energy
+                transmitted from the RFID reader. Because the radio waves must be strong enough to power the tags, passive
+                RFID tags have a read range from near contact and up to 25 meters.</p>
+              <p>Passive RFID tags primarily operate at three frequency ranges:</p>
+
+              <p>Low Frequency (LF) 125 -134 kHz, High Frequency (HF)13.56 MHz, Ultra High Frequency (UHF) 856 MHz to 960 MHz,
+                Near-field communication devices operate at the same frequency (13.56 MHz) as HF RFID readers and tags. The
+                standards and protocols of the NFC format is based on RFID standards outlined in ISO/IEC 14443, FeliCa, and
+                the basis for parts of ISO/IEC 18092. These standards deal with the use of RFID in proximity cards.</p>
+
+              <p>As a finely honed version of HF RFID, near-field communication devices have taken advantage of the short read
+                range limitations of its radio frequency.</p>
+              <p>Because NFC devices must be in close proximity to each other, usually no more than a few centimeters, it has
+                become a popular choice for secure communication between consumer devices such as smartphones.
+              </p>
+              <p>Peer-to-peer communication is a feature that sets NFC apart from typical RFID devices. An NFC device is able
+                to act both as a reader and as a tag. This unique ability has made NFC a popular choice for contactless payment,
+                a key driver in the decision by influential players in the mobile industry to include NFC in newer smartphones.
+                Also, NFC smartphones pass along information from one smartphone to the other by tapping the two devices
+                together, which turns sharing data such as contact info or photographs into a simple task. Recently, you
+                may have seen advertising campaigns that used smart posters to pass information along to the consumers.</p>
+              <p>Also, NFC devices can read passive NFC tags, and some NFC devices are able to read passive HF RFID tags that
+                are compliant with ISO 15693. The data on these tags can contain commands for the device such as opening
+                a specific mobile application. You may start seeing HF RFID tags and NFC tags more frequently in advertisements,
+                posters, and signs as it’s an efficient method to pass along information to consumers.</p>
+              <p>At the end of the day, NFC builds upon the standards of HF RFID and turns the limitations of its operating
+                frequency into a unique feature of near-field communication.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="news">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#one" aria-controls="one" role="tab" data-toggle="tab"></a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#two" aria-controls="two" role="tab" data-toggle="tab">詳答</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="one" role="tabpanel">
+                                </div>
+                                <div class="tab-pane" id="two" role="tabpanel">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+  </div>
+  <!-- 
+============================================================================
+footer 開始
+============================================================================
+    -->
+  <div class="footerStyle">
+    <footer class="container">
+        <div class="row">
+            <div class=" text-center footerText">
+                <div class="col-md-2 col-xs-12">
+                    <a href="tel:02-82218800">
+                        <img src="/img/others/phoneIcon.png" alt="">
+                    </a>
+                    <p>
+                        02-82218800
+                    </p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="https://www.google.ch/maps/place/235%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E6%9D%BF%E5%8D%97%E8%B7%AF671%E8%99%9F/@25.0080119,121.4814703,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a82933ab8c75:0x372cb8324f7a2117!8m2!3d25.0080119!4d121.483659"
+                        target="_blank">
+                        <img src="/img/others/addressIcon.png" alt="">
+                    </a>
+                    <p>16F., No. 11, Qiaohe Rd., Zhonghe Dist., New Taipei City 235, Taiwan R.O.C.</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="mailto:service@smartchip.com.tw">
+                        <img src="/img/others/emailIcon.png" alt="">
+                    </a>
+                    <p>service@smartchip.com.tw</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <div class="otherBtn">
+                    <a href="https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg" target="_blank">
+                        <img src="/img/others/youtubeIcon.png" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" target="_blank">
+                        <img src="/img/others/facebookIcon.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 copyRightText">
+                <p>Copyright © 2015 - 2017 SMARTCHIP</p>
+            </div>
+        </div>
+    </footer>
+</div>
+  <!-- 
+============================================================================
+Footer 結束
+============================================================================
+    -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script> -->
+  <script src="https://unpkg.com/tippy.js@2.0.2/dist/tippy.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.0/readmore.min.js"></script>
+  <script src="js/main/main.min.js?rev=@@hash"></script>
+  <script>
+    $(".article").readmore({
+      speed: 1000,
+      collapsedHeight: 110,
+      moreLink: '<a href="#">More</a>',
+      lessLink: '<a href="#">Close</a>'
+    });
+  </script>
+</body>
+
+</html>

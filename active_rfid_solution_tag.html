@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <script src="js/checkurl.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:description"
+        content="RFID 領域為瑞新電子股份有限公司主力產品,公司能力從RFID IC研發設計,RFID模組銷售,RFID 遠距離讀頭可應用在如人員門禁,停車場進出管理,而RFID 2.4Ghz模組可應用停車場自動化管理應用,IOT 物聯網解決方案--NFC module, RFID應用有需求的朋友歡迎來電洽詢或線上詢問聯絡" />
+    <meta name="description"
+        content="RFID 領域為瑞新電子股份有限公司主力產品,公司能力從RFID IC研發設計,RFID模組銷售,RFID 遠距離讀頭可應用在如人員門禁,停車場進出管理,而RFID 2.4Ghz模組可應用停車場自動化管理應用,IOT 物聯網解決方案--NFC module, RFID應用有需求的朋友歡迎來電洽詢或線上詢問聯絡" />
+    <meta name="author" content="瑞新電子股份有限公司">
+    <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>主動式標籤 - 瑞新電子</title>
+    <link rel="stylesheet" href="css/main/reset.min.css?rev=@@hash">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300|Oswald:400|Saira+Semi+Condensed:200" rel="stylesheet">
+    <link rel="stylesheet" href="css/main/allMain.min.css?rev=@@hash">
+    <link rel="stylesheet" href="css/main/footer.min.css?rev=@@hash">
+    <link rel="stylesheet" href="css/main/products-list.min.css?rev=@@hash">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-84670428-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <style>
+        /* 只為有 indent-list 類別的列表添加縮排效果 */
+        ul.indent-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        /* 第一層列表項 */
+        ul.indent-list>li {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ul 內的 p 標籤（視為第二層） */
+        ul.indent-list>p {
+            margin-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 嵌套的 ul（第二層） */
+        ul.indent-list ul {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* 第二層列表項 */
+        ul.indent-list ul>li {
+            margin-left: 20px;
+            margin-bottom: 6px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* 滑鼠懸停效果 - 第一層 */
+        ul.indent-list>li:hover {
+            margin-left: 25px;
+            color: #0066cc;
+            cursor: pointer;
+        }
+
+        /* 滑鼠懸停效果 - 第二層 */
+        ul.indent-list ul>li:hover {
+            margin-left: 45px;
+            color: #0066cc;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html">
+                    <img id="forOtherPage" src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 SMC RFID NFC">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="about.html">Profile</a>
+                            </li>
+                            <li>
+                                <a href="icdesign.html">Hardware</a>
+                            </li>
+                            <li>
+                                <a href="software.html">Software</a>
+                            </li>
+                            <li>
+                                <a href="idm.html">ODM</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="news.html">NEWS</a>
+                    </li>
+                    <li>
+                        <a href="knowledge.html">Knowledge</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="products.html">Product Overview</a>
+                            </li>
+                            <li>
+                                <a href="video.html">Video</a>
+                            </li>
+                            <li>
+                                <a href="aboutApp.html">App Solutions</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="solution.html">Solutions</a>
+
+                    </li>
+                    <!-- <li>
+                    <a href="contact.html">Contact Us</a>
+                </li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu showLan">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 
+============================================================================
+選單 結束
+============================================================================
+ -->
+    <!--
+============================================================================
+當高度觸碰.navbar時轉為fixed
+============================================================================
+ -->
+    <!-- 
+============================================================================
+header 結束
+============================================================================
+-->
+    <article class="container">
+        <div class="row">
+            <section class="col-md-12 col-xs-12">
+                <img src="/img/24G/2.4g_pcb.png" alt="2.4Ghz無線產品tags">
+                <!-- <div class="changeImg">
+                    <a href="../images/24G/smc-r01v1.png"><img src="../images/24G/smc-r01v1.png" alt=""></a>
+                    <a href="../images/24G/smc-r01.png"><img src="../images/24G/smc-r01.png" alt=""></a>
+                    <a href="../images/24G/tag_01.png"><img src="../images/24G/tag_01.png" alt=""></a>
+                </div> -->
+            </section>
+            <div class="col-md-12 col-xs-12">
+                <h1>Product Overview</h1>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <p> SMC’s self-developed 2.4GHz active tag adopts a proprietary 2.4GHz wireless protocol and supports
+                    bidirectional communication, enabling functions such as data transmission,
+                    LED indication, and audible alerts. With an ultra-low-power design and highly optimized RF control
+                    mechanism, the tag delivers stable reading performance with a battery life of up to three years.
+                    With up to 3 years of battery life, S-TAG is ideal for asset management, warehouse logistics,
+                    personnel tracking, equipment monitoring, and any application requiring long-range detection.
+                </p>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <h1>Key Features</h1>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <ul class="indent-list">
+                    <li> • 2.4GHz active wireless communication for extended read range (up to 0–30m in open space).
+                    </li>
+                    <li> • Ultra-low power consumption, with an average standby current of only 15uA (CR2450 battery
+                        lasts up to 3 years).</li>
+                    <li> • Bidirectional communication enabling remote control of LED and buzzer for search and alert
+                        functions.</li>
+                    <li> • High-capacity multi-tag identification, suitable for high-density logistics environments.
+                    </li>
+                    <li> • Battery status reporting for easier system maintenance.</li>
+                    <li> • Frequency hopping (2450/2455/2460MHz) to ensure stable performance in noisy RF environments.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <h1>Applications</h1>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <ul class="indent-list">
+
+                    <li> 1. Logistics and warehouse management </li>
+                    <p>Provides automated inventory, location, and reporting for inbound, outbound, and inventory
+                        management:</p>
+                    <ul>
+                        <li> • Automated inbound/outbound processing</li>
+                        <li> • Real-time location tracking</li>
+                        <li> • Inventory automation with discrepancy reporting</li>
+                        <li> • High-speed mass tag identification</li>
+                    </ul>
+                    <img src="/img/24G/flow_en.png" alt="flow"
+                        style="width: 100% !important; height: auto !important; display: block; max-width: 100%;">
+                    </li>
+
+                    <li> 2. Asset Management (Check-out / Return / Tracking) </li>
+                    <ul>
+                        <li> • One-to-one tag binding</li>
+                        <li> • Automatic loan/return records</li>
+                        <li> • Abnormal movement detection</li>
+                        <li> • Multi-point transceiver positioning</li>
+                    </ul>
+
+                    <li> 3. Personnel Tracking & Safety </li>
+                    <p>Through the positioning technology of receivers and signal strength calculation, it can be used
+                        for:</p>
+                    <ul>
+                        <li> • Indoor real-time personnel positioning</li>
+                        <li> • Restricted-area monitoring</li>
+                        <li> • Two-way search/alert with LED & buzzer</li>
+                    </ul>
+
+                    <img src="/img/24G/manager_en.png" alt="manager"
+                        style="width: 100% !important; height: auto !important; display: block; max-width: 100%;">
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <!-- 
+============================================================================
+footer 開始
+============================================================================
+ -->
+    <div class="footerStyle">
+        <footer class="container">
+            <div class="row">
+                <div class=" text-center footerText">
+                    <div class="col-md-2 col-xs-12">
+                        <a href="tel:02-82218800">
+                            <img src="/img/others/phoneIcon.png" alt="">
+                        </a>
+                        <p>
+                            02-82218800
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <a href="https://www.google.ch/maps/place/235%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E6%9D%BF%E5%8D%97%E8%B7%AF671%E8%99%9F/@25.0080119,121.4814703,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a82933ab8c75:0x372cb8324f7a2117!8m2!3d25.0080119!4d121.483659"
+                            target="_blank">
+                            <img src="/img/others/addressIcon.png" alt="">
+                        </a>
+                        <p>16F., No. 11, Qiaohe Rd., Zhonghe Dist., New Taipei City 235, Taiwan R.O.C.</p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <a href="mailto:service@smartchip.com.tw">
+                            <img src="/img/others/emailIcon.png" alt="">
+                        </a>
+                        <p>service@smartchip.com.tw</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <div class="otherBtn">
+                        <a href="https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg" target="_blank">
+                            <img src="/img/others/youtubeIcon.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+                            target="_blank">
+                            <img src="/img/others/facebookIcon.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 copyRightText">
+                    <p>Copyright © 2015 - 2017 SMARTCHIP</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- 
+============================================================================
+Footer 結束
+============================================================================
+ -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main/main.min.js?rev=@@hash"></script>
+</body>
+
+</html>
