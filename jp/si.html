@@ -68,6 +68,12 @@
 .sx-photos figure{margin:0}
 .sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
 .sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-demo{position:relative;width:100%;aspect-ratio:1952/1140;border-radius:8px;overflow:hidden;background:#070d1a;border:1px solid #1e2b47}
+.sx-demo iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.sx-demo-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start;margin-top:16px}
+.sx-demo-foot ul{margin:0;padding-left:20px;color:var(--sx-muted);font-size:15px;columns:2;column-gap:32px}
+.sx-demo-side{text-align:right}
+@media (max-width:767px){.sx-demo-foot{grid-template-columns:1fr}.sx-demo-foot ul{columns:1}.sx-demo-side{text-align:left}}
 .sx-shot{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--sx-line);background:#070d1a}
 .sx-shot img{width:100%;height:auto;display:block}
 .sx-shot figcaption{background:#fff;padding:10px 14px;font-size:14px;color:var(--sx-muted)}
@@ -296,8 +302,10 @@ header 結束
 </div></section>
 <section class="sx-sec alt"><div class="container">
 <h2>事例：通い箱の UHF RFID 出荷・回収管理</h2>
-<p class="lede">Android の UHF RFID ハンディ端末と 4G／5G・Wi-Fi で、通い箱を梱包から納品、回収まで一箱ずつ追跡する独立システムです。リアルタイム看板で、構内マップと顧客先のすべての箱を確認できます。</p>
-<figure class="sx-shot"><img src="/img/solutions/rfid-crate-dashboard.webp" alt="通い箱フローのリアルタイム看板：構内マップ、顧客先の在箱、状態別の件数、単箱の追跡、超過レポート" loading="lazy" width="2000" height="1103"><figcaption>通い箱フローのリアルタイム看板：構内マップ、顧客先の在箱、状態別の件数、単箱の追跡、超過レポート</figcaption></figure>
+<p class="lede">Android の UHF RFID ハンディ端末と 4G／5G・Wi-Fi で、通い箱を梱包から納品、回収まで一箱ずつ追跡する独立システムです。下は1日の運用をシミュレーションしたリアルタイム看板です。実際に操作してみてください。</p>
+<div class="sx-demo"><iframe src="/demo/crate-sim-ja.html" title="事例：通い箱の UHF RFID 出荷・回収管理" loading="lazy"></iframe></div>
+<div class="sx-demo-foot"><ul><li>エリア・車両・顧客をクリックすると箱の一覧を表示</li><li>BX-0001 を検索して Enter で箱を追跡</li><li>「異常追跡」で発見・承認・完了の担当を確認</li><li>警告日数のスライダーで超過の基準を変更</li><li>端末カードをクリックすると担当者の日報を表示</li></ul>
+<div class="sx-demo-side"><a class="btn btn-danger" href="/demo/crate-sim-ja.html" target="_blank" rel="noopener">全画面で開く</a><p class="note">シミュレーションデータです。PC での閲覧をおすすめします。</p></div></div>
 </div></section>
 <section class="sx-sec"><div class="container">
 <h2>通い箱システムで解決すること</h2>
