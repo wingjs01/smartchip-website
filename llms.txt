@@ -61,6 +61,10 @@
 
 ## Solutions
 
+- [Edge AI: Pandora (NVIDIA Jetson Orin NX Super)](https://www.smartchip.com.tw/edge-ai.html): SMC supplies Pandora and integrates it with RFID/NFC and kiosks
+- [Industrial PCs & self-service kiosks](https://www.smartchip.com.tw/ipc.html): check-in and payment kiosks with cash, coin, receipt printer and RFID/NFC
+- [System integration](https://www.smartchip.com.tw/si.html): RFID, kiosks, edge AI and back end in one system
+
 - [Livestock management (RFID ear tags)](https://www.smartchip.com.tw/animal.html)
 - [Pet identification (biochips + readers)](https://www.smartchip.com.tw/pet.html)
 - [Motorcycle anti-theft RFID key](https://www.smartchip.com.tw/rfid-elock.html)

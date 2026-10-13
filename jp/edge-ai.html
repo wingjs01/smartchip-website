@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <script src="/js/checkurl.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <meta name="author" content="瑞新電子股份有限公司">
+    <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
+    <title>エッジAI：NVIDIA Jetson Orin NX Super 搭載 Pandora | SMC 瑞新電子</title>
+    <meta name="description" content="SMCはNVIDIA Jetson Orin NX Superを搭載した小型の生成AIコンピューター「Pandora」を取り扱い、RFID・NFC・キオスクと組み合わせたエッジAIシステムを提供します。">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="エッジAI：NVIDIA Jetson Orin NX Super 搭載 Pandora | SMC 瑞新電子">
+    <meta property="og:description" content="SMCはNVIDIA Jetson Orin NX Superを搭載した小型の生成AIコンピューター「Pandora」を取り扱い、RFID・NFC・キオスクと組み合わせたエッジAIシステムを提供します。">
+    <meta property="og:image" content="https://www.smartchip.com.tw/img/solutions/pandora-banner.webp">
+    <meta property="og:url" content="https://www.smartchip.com.tw/jp/edge-ai.html">
+    <link rel="canonical" href="https://www.smartchip.com.tw/jp/edge-ai.html">
+    <link rel="alternate" hreflang="en" href="https://www.smartchip.com.tw/edge-ai.html">
+    <link rel="alternate" hreflang="ja" href="https://www.smartchip.com.tw/jp/edge-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.smartchip.com.tw/edge-ai.html">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "エッジAI：NVIDIA Jetson Orin NX Super 搭載 Pandora", "description": "SMCはNVIDIA Jetson Orin NX Superを搭載した小型の生成AIコンピューター「Pandora」を取り扱い、RFID・NFC・キオスクと組み合わせたエッジAIシステムを提供します。", "url": "https://www.smartchip.com.tw/jp/edge-ai.html", "brand": {"@type": "Brand", "name": "Pandora"}, "image": "https://www.smartchip.com.tw/img/solutions/pandora-banner.webp"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://www.smartchip.com.tw/jp/indexsmartchip.html"}, {"@type": "ListItem", "position": 2, "name": "エッジAI：NVIDIA Jetson Orin NX Super 搭載 Pandora", "item": "https://www.smartchip.com.tw/jp/edge-ai.html"}]}</script>
+    <link rel="stylesheet" href="/css/main/reset.min.css?rev=@@hash">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300|Oswald:400|Saira+Semi+Condensed:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="/css/main/allMain.min.css?rev=@@hash">
+    <link rel="stylesheet" href="/css/main/footer.min.css?rev=@@hash">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-84670428-11', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<style>
+/* new solution pages (IPC / Edge AI / SI) */
+.sx{--sx-ink:#1f2328;--sx-muted:#5b636b;--sx-line:#e3e6e8;--sx-soft:#f5f6f7;--sx-red:#d0392b;--sx-green:#76b900;font-size:16px;line-height:1.75;color:var(--sx-ink)}
+.sx-hero{background:#15191d center/cover no-repeat;color:#fff;padding:140px 0 70px}
+.sx-hero .eyebrow{font:600 13px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#ff8a7d}
+.sx-hero h1{font-size:40px;font-weight:700;margin:14px 0 14px;line-height:1.25;max-width:22em}
+.sx-hero p{font-size:18px;max-width:40em;color:#dfe3e6;margin:0}
+.sx-sec{padding:56px 0}
+.sx-sec.alt{background:var(--sx-soft)}
+.sx h2{font-size:28px;font-weight:700;margin:0 0 10px}
+.sx .lede{color:var(--sx-muted);max-width:46em;margin:0 0 28px}
+.sx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.sx-card{background:#fff;border:1px solid var(--sx-line);border-radius:8px;padding:20px 22px}
+.sx-card h3{font-size:18px;font-weight:700;margin:0 0 8px}
+.sx-card p{margin:0;color:var(--sx-muted);font-size:15px}
+.sx-tag{display:inline-block;font:600 12px/1 Arial,sans-serif;letter-spacing:.06em;color:var(--sx-red);margin-bottom:10px;text-transform:uppercase}
+.sx-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sx-photos figure{margin:0}
+.sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
+.sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-product{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
+.sx-product figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px}
+.sx-product img{width:100%;height:auto;display:block}
+.sx-product ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.sx-product li{padding:12px 16px;background:#fff;border:1px solid var(--sx-line);border-left:3px solid var(--sx-red);border-radius:6px}
+@media (max-width:767px){.sx-product{grid-template-columns:1fr}}
+.sx-steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;padding:0;list-style:none}
+.sx-steps li{counter-increment:s;background:#fff;border:1px solid var(--sx-line);border-radius:8px;padding:16px 18px}
+.sx-steps li::before{content:counter(s,decimal-leading-zero);display:block;font:700 13px Arial,sans-serif;color:var(--sx-red);margin-bottom:6px}
+.sx-steps b{display:block;font-size:16px;margin-bottom:4px}
+.sx-steps span{color:var(--sx-muted);font-size:14px}
+.sx-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+.sx-flow div{flex:1 1 160px;background:#fff;border:1px solid var(--sx-line);border-top:3px solid var(--sx-red);border-radius:6px;padding:14px 16px}
+.sx-flow b{display:block}
+.sx-flow span{color:var(--sx-muted);font-size:14px}
+.sx-banner{background:#000;border-radius:8px;overflow:hidden}
+.sx-banner img{width:100%;height:auto;display:block}
+.sx-spec{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--sx-line)}
+.sx-spec th,.sx-spec td{padding:11px 16px;border-bottom:1px solid var(--sx-line);text-align:left;vertical-align:top}
+.sx-spec th{width:32%;background:var(--sx-soft);font-weight:600}
+.sx-cta{background:#15191d;color:#fff;padding:48px 0;text-align:center}
+.sx-cta h2{color:#fff}
+.sx-cta p{color:#cfd5da;margin:0 auto 20px;max-width:40em}
+.sx-cta .addr{font-size:18px;font-weight:600;color:#fff;user-select:all}
+.sx .note{font-size:13px;color:var(--sx-muted);margin-top:10px}
+.sx-edge .sx-tag{color:#5a8f00}
+.sx-edge .sx-steps li::before{color:#5a8f00}
+@media (max-width:767px){.sx-hero{padding:110px 0 48px}.sx-hero h1{font-size:28px}.sx-photos{grid-template-columns:1fr 1fr}.sx-spec th{width:40%}}
+/* carousel: show the Pandora banner uncropped and unaltered */
+.item.item-contain{background-size:contain!important;background-color:#000;background-repeat:no-repeat}
+.item.item-contain{position:relative}.item.item-contain .text{position:absolute;top:0;left:0;right:0;bottom:0;background:none;padding:0;margin:0;transform:none}.item.item-contain .text a{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;border-radius:0}.item.item-contain .text a:focus-visible{opacity:1;background:transparent;outline:3px solid #76b900;color:transparent}
+</style>
+</head>
+
+<body> 
+
+<script>
+/***
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=1274132352708285";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+	
+	*/
+</script>
+
+<style>
+<!--
+    .fbBox {
+        background: url('/img/fbicon.png') no-repeat scroll left center transparent !important;
+        display: block;
+        float: right;
+        height: 170px;
+        padding: 0 5px 0 46px;
+        width: 296px;
+        z-index: 99999;
+        position: fixed;
+        right: -250px;
+        top: 150px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .fbBox:hover {
+        right: 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .fbBox {
+            top: 300px;
+        }
+    }
+	-->
+</style>
+<!--
+<div id="fb-root"></div>
+-->
+<!-- fackbook -->
+<!--
+<div class="fbBox hidden-xs">
+    <div class="fb-page" data-href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+        data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/">Facebook</a>
+        </blockquote>
+    </div>
+</div>
+-->
+    <!-- 
+============================================================================
+header 開始
+============================================================================
+-->
+    <!-- 
+============================================================================
+選單 開始
+============================================================================ 
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">メニューを開く</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html">
+                <img id="forOtherPage" src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 SMC RFID NFC">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">会社概要
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="about.html">会社紹介</a>
+                        </li>
+                        <li>
+                            <a href="icdesign.html">ハードウェア</a>
+                        </li>
+                        <li>
+                            <a href="software.html">ソフトウェア</a>
+                        </li>
+                        <li>
+                           <a href="idm.html">ODM</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="news.html">ニュース</a>
+                </li>
+                <li>
+                    <a href="knowledge.html">技術情報</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">製品情報
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="products.html">製品一覧</a>
+                        </li>
+                        <li>
+                            <a href="video.html">動画</a>
+                        </li>
+                        <li>
+                            <a href="aboutApp.html">アプリソリューション</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="solution.html">ソリューション</a>
+
+                </li>
+                <!-- <li>
+                    <a href="contact.html">Contact Us</a>
+                </li> -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu showLan">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 
+============================================================================
+選單 結束
+============================================================================
+ -->
+<!--
+============================================================================
+當高度觸碰.navbar時轉為fixed
+============================================================================
+ -->
+    <!-- 
+============================================================================
+header 結束
+============================================================================
+ -->
+<div class="sx sx-edge">
+<header class="sx-hero"><div class="container"><div class="eyebrow">Edge AI · Pandora</div><h1>Pandoraで、生成AIをエッジへ</h1><p>PandoraはNVIDIA Jetson Orin NX Superを搭載した小型AIコンピューターです。SMCはPandoraを取り扱い、自社のRFID・NFC・キオスク製品と組み合わせたエッジAIシステムを構築します。</p></div></header>
+<section class="sx-sec"><div class="container"><div class="sx-banner"><img src="/img/solutions/pandora-banner.webp" alt="NVIDIA Jetson Orin NX Super PANDORA – Discover Generative AI at the Edge" width="1920" height="726"></div></div></section>
+<section class="sx-sec alt"><div class="container">
+<h2>Pandoraの概要</h2>
+<p class="lede">主な仕様です。詳細なデータシートや最適な構成はお問い合わせください。</p>
+<div style="overflow-x:auto"><table class="sx-spec"><tbody>
+<tr><th>プラットフォーム</th><td>NVIDIA Jetson Orin NX Super</td></tr>
+<tr><th>AI性能</th><td>最大157 TOPS（16 GBモデル）</td></tr>
+<tr><th>ソフトウェア</th><td>Ubuntu、NVIDIA JetPack SDK。主要なAIフレームワークやモデルに対応</td></tr>
+<tr><th>本体</th><td>小型デスクトップ筐体、約470 g</td></tr>
+<tr><th>前面インターフェース</th><td>USB 3.2、USB 3.2／OTG、電源ボタン</td></tr>
+</tbody></table></div>
+</div></section>
+<section class="sx-sec"><div class="container">
+<h2>Pandoraで動かせるもの</h2>
+<p class="lede">クラウドを介さずローカルでモデルを実行。低遅延で、データも現場から出ません。</p>
+<div class="sx-grid">
+<div class="sx-card"><span class="sx-tag">Vision</span><h3>映像解析</h3><p>人数カウント、行列監視、物体・不良検知などをカメラ映像で実行します。</p></div>
+<div class="sx-card"><span class="sx-tag">Language</span><h3>ローカルLLM・アシスタント</h3><p>キオスク、店舗、受付向けのオンデバイス対話・音声アシスタント。</p></div>
+<div class="sx-card"><span class="sx-tag">Retail</span><h3>スマートリテール</h3><p>セルフサービスキオスクと連携した来店客の動線分析や棚分析。</p></div>
+<div class="sx-card"><span class="sx-tag">Robotics</span><h3>ロボティクス・自動化</h3><p>AMR、ロボットアーム、スマート機器の認識と制御。</p></div>
+</div>
+</div></section>
+<section class="sx-sec alt"><div class="container">
+<h2>SMCからPandoraを導入するメリット</h2>
+<div class="sx-grid">
+<div class="sx-card"><span class="sx-tag">Supply</span><h3>正規取扱い</h3><p>台湾国内でのPandoraの供給とサポート。</p></div>
+<div class="sx-card"><span class="sx-tag">Integration</span><h3>ハードウェア統合</h3><p>RFID／NFCリーダー、カメラ、キオスクとPandoraを組み合わせます。</p></div>
+<div class="sx-card"><span class="sx-tag">Software</span><h3>ソフトウェア・アプリ</h3><p>自社のソフトウェアチームが、モデルを中心にアプリ、UI、バックエンドを開発します。</p></div>
+</div>
+</div></section>
+<section class="sx-cta"><div class="container"><h2>プロジェクトのご相談はこちら</h2><p>必要な台数、設置環境、決済方式やリーダーの要件、エッジで動かしたいAI処理など、お気軽にご相談ください。</p><p class="addr">service@smartchip.com.tw · +886-2-8221-8800</p></div></section>
+</div>
+    <!-- 
+============================================================================
+footer 開始
+============================================================================
+ -->
+    <div class="footerStyle">
+    <footer class="container">
+        <div class="row">
+            <div class=" text-center footerText">
+                <div class="col-md-2 col-xs-12">
+                    <a href="tel:+886282218800">
+                        <img src="/img/others/phoneIcon.png" alt="">
+                    </a>
+                    <p>
+                        +886-2-8221-8800
+                    </p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="https://www.google.ch/maps/place/235%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E6%9D%BF%E5%8D%97%E8%B7%AF671%E8%99%9F/@25.0080119,121.4814703,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a82933ab8c75:0x372cb8324f7a2117!8m2!3d25.0080119!4d121.483659"
+                        target="_blank">
+                        <img src="/img/others/addressIcon.png" alt="">
+                    </a>
+                    <p>〒235 台湾 新北市中和区橋和路11号16階</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="mailto:service@smartchip.com.tw">
+                        <img src="/img/others/emailIcon.png" alt="">
+                    </a>
+                    <p>service@smartchip.com.tw</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <div class="otherBtn">
+                    <a href="https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg" target="_blank">
+                        <img src="/img/others/youtubeIcon.png" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" target="_blank">
+                        <img src="/img/others/facebookIcon.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 copyRightText">
+                <p>Copyright © 1995 - 2026 SMARTCHIP（瑞新電子）</p>
+            </div>
+        </div>
+    </footer>
+</div>
+    <!-- 
+============================================================================
+Footer 結束
+============================================================================
+ -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main/main.min.js?rev=@@hash"></script>
+</body>
+
+</html>
