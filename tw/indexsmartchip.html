@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <script src="js/checkurl.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="img/smc_Logo2.png">
+    <meta property="og:description" content="瑞新電子於無線射頻辨識領域逾 20 年，產品及研發能力橫跨 RFID IC、RFID 模組、RFID reader…等，RFID 晶片更在低頻市場擁有全球 90% 市佔率。近年結合 NFC (HF 13.56Mhz) 和藍芽、2.4G… 等遠距離技術，並加入了 iOS/Android APP 軟體事業體，提供完整的軟硬體整合方案，是 IOT 時代的最佳合作夥伴" />
+    <meta name="description" content="瑞新電子於無線射頻辨識領域逾 20 年，產品及研發能力橫跨 RFID IC、RFID 模組、RFID reader…等，RFID 晶片更在低頻市場擁有全球 90% 市佔率。近年結合 NFC (HF 13.56Mhz) 和藍芽、2.4G… 等遠距離技術，並加入了 iOS/Android APP 軟體事業體，提供完整的軟硬體整合方案，是 IOT 時代的最佳合作夥伴" />
+    <meta name="author" content="瑞新電子股份有限公司">
+    <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
+    <title>瑞新電子股份有限公司 RFID NFC</title>
+     <link rel="stylesheet" href="css/main/reset.min.css?rev=@@hash">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300|Saira+Semi+Condensed:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main/allMain.min.css?rev=@@hash">
+    <link href="css/main/style.min.css?rev=@@hash" rel="stylesheet">
+    <link rel="stylesheet" href="css/main/footer.min.css?rev=@@hash">
+<style>.item.item-contain{background-size:contain!important;background-color:#000;background-repeat:no-repeat}.item.item-contain{position:relative}.item.item-contain .text{position:absolute;top:0;left:0;right:0;bottom:0;background:none;padding:0;margin:0;transform:none}.item.item-contain .text a{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;border-radius:0}.item.item-contain .text a:focus-visible{opacity:1;background:transparent;outline:3px solid #76b900;color:transparent}</style>
+</head>
+
+<body>
+    <!--
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10&appId=1274132352708285";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<style>
+    .fbBox {
+        background: url('img/fbicon.png') no-repeat scroll left center transparent !important;
+        display: block;
+        float: right;
+        height: 170px;
+        padding: 0 5px 0 46px;
+        width: 296px;
+        z-index: 99999;
+        position: fixed;
+        right: -250px;
+        top: 150px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+
+    .fbBox:hover {
+        right: 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .fbBox {
+            top: 300px;
+        }
+    }
+</style>
+-->
+<!--
+<div id="fb-root"></div>
+-->
+<!-- fackbook -->
+<!--
+<div class="fbBox hidden-xs">
+    <div class="fb-page" data-href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/"
+        data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/">Facebook</a>
+        </blockquote>
+    </div>
+</div>
+-->
+    <!-- 
+============================================================================
+header 開始
+============================================================================
+-->
+    <div class="visible-xs">
+        <!-- 
+============================================================================
+選單 開始
+============================================================================ 
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html">
+                <img id="forOtherPage" src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 RFID NFC">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">公司介紹
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="about.html">簡介</a>
+                        </li>
+                        <li>
+                            <a href="icdesign.html">硬體</a>
+                        </li>
+                        <li>
+                            <a href="software.html">軟體</a>
+                        </li>
+                        <li>
+                            <a href="idm.html">設計製造整合</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="news.html">新聞中心</a>
+                </li>
+                <li>
+                    <a href="knowledge.html">科技知識</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">產品中心
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="products.html">產品總覽</a>
+                        </li>
+                        <li>
+                            <a href="video.html">產品影片</a>
+                        </li>
+                        <li>
+                            <a href="aboutApp.html">App 應用</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="solution.html">標準應用方案</a>
+
+                </li>
+                <!-- <li>
+                    <a href="contact.html">業務聯繫</a>
+                </li> -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu showLan">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- 
+============================================================================
+選單 結束
+============================================================================
+ -->
+<!--
+============================================================================
+當高度觸碰.navbar時轉為fixed
+============================================================================
+ -->
+    </div>
+    <!-- 
+============================================================================
+header 結束
+============================================================================
+ -->
+    <!-- 
+============================================================================
+選單 開始
+============================================================================ 
+-->
+    <div class="visible-lg removeOfMobile">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div id="logoImg">
+                        <a href="index.html">
+                            <img src="/img/smc_Logo2.png" alt="瑞新電子股份有限公司 RFID NFC" class="changeImgBig">
+                        </a>
+                    </div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">公司介紹
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="about.html">簡介</a>
+                                </li>
+                                <li>
+                                    <a href="icdesign.html">硬體</a>
+                                </li>
+                                <li>
+                                    <a href="software.html">軟體</a>
+                                </li>
+                                <li>
+                                    <a href="idm.html">設計製造整合</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="news.html">新聞中心</a>
+                        </li>
+                        <li>
+                            <a href="knowledge.html">科技知識</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">產品中心
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="products.html">產品總覽</a>
+                                </li>
+                                <li>
+                                    <a href="video.html">產品影片</a>
+                                </li>
+                                <li>
+                                    <a href="aboutApp.html">App 應用</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="solution.html">標準應用方案</a>
+
+                        </li>
+                        <!-- <li>
+                            <a href="contact.html">業務聯繫</a>
+                        </li> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-globe" aria-hidden="true" style="font-size:1.3em;"></i>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu showLan">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- 
+============================================================================
+header 結束
+============================================================================
+ -->
+
+    <!-- 
+============================================================================
+方案應用 開始
+============================================================================
+ -->
+    <div class="owl-carousel owl-theme">
+        <!-- new solution slides -->
+        <div class="item item-contain" role="img" aria-label="NVIDIA Jetson Orin NX Super PANDORA – Discover Generative AI at the Edge" style="background-image:url(/img/solutions/pandora-banner.webp); background-position:center;">
+            <div class="text">
+                <a class="btn btn-danger" href="edge-ai.html">認識 Pandora</a>
+            </div>
+        </div>
+        <div class="item " style="background-image:url(/img/solutions/kiosk-slide.webp); background-position:center;">
+            <div class="text">
+                <h2>自助機與工業電腦</h2>
+                <p> - 自行設計製造的報到繳費機</p>
+                <a class="btn btn-danger" href="ipc.html">了解更多</a>
+            </div>
+        </div>
+        <div class="item " style="background-image:url(/img/solutions/si-bg.svg); background-position:center;">
+            <div class="text">
+                <h2>無線 IoT 系統整合</h2>
+                <p> - RFID、NFC、BLE 與 2.4 GHz 設備整合為一套系統</p>
+                <a class="btn btn-danger" href="si.html">了解更多</a>
+            </div>
+        </div>
+        <!-- /new solution slides -->
+	
+		<div class="item" style="background-image:url(/img/others/ODM.jpg);  background-position:center;">            
+            <div class="text">
+                <h2>從零件、 模組、成品到軟硬體系統整合-ODM</h2>
+                <p> - 軟硬體系統整合</p>
+                 <a class="btn btn-danger" href="ridm1.html">前往了解</a>
+            </div>
+        </div>  
+		
+		
+        <!-- <div class="item" style="background-image:url(/img/others/S__36085766.jpg);  background-position:center;">
+            <div class="text">
+                <h2>軟硬體整合方案-標準應用方案</h2>
+                <p> - 軟硬體系統整合</p>
+                <a class="btn btn-danger" href="ridm2.html">前往了解</a>
+            </div>
+        </div>
+		 -->
+		
+	
+        <!-- <div class="item" style="background-image:url(/img/others/esl.jpg)">
+            <div class="text">
+                <h2>電子紙智慧綠能電子式標籤</h2>
+                <p> - 藍芽雙載 NFC 智慧標籤</p>
+                <a class="btn btn-danger" href="raboutESL1.html">前往了解</a>
+            </div>
+        </div> -->
+        <div class="item" style="background-image:url(/img/高低頻-reader.jpg); background-position:center;">
+            <div class="text">
+                <h2>藍芽+雙頻雙天線 NFC/RFID</h2>
+                <p> - 智能讀寫設備</p>
+                  <a class="btn btn-danger" href="rhlf_nfc-rfid.html">前往了解</a>
+            </div>
+        </div>
+        <div class="item" style="background-image:url(/img/others/tirza-van-dijk-58298.jpg)">
+            <div class="text">
+                <h2>RFID IC 零組件模組設計</h2>
+                <p> - 軟硬體系統整合</p>
+                <a class="btn btn-danger" href="ridm3.html">前往了解</a>
+            </div>
+        </div>
+        <div class="item" style="background-image:url(/img/others/bikecelock_newlinght.png)">
+            <div class="text">
+                <h2>機車電子防盜鎖系列方案</h2>
+                <p> - 智慧及防竊</p>
+                 <a class="btn btn-danger" href="rrfid-elock1.html">前往了解</a>
+            </div>
+        </div>
+        <div class="item" style="background-image:url(/img/ble_nfc.jpg); background-position:center;">
+            <div class="text">
+                <h2>藍芽 + NFC 應用</h2>
+                <p> - 提供 App SDK 支援</p>
+                <a class="btn btn-danger" href="raboutApp1.html">前往了解</a>
+            </div>
+        </div>
+        <!--<div class="item" style="background-image:url(img/others/underground.jpg)">
+            <div class="text">
+                <h2>地下管網標示管理應用</h2>
+                <p> - 城市的“生命線”</p>
+                <a class="btn btn-danger" href="undermark.html">前往了解</a>
+            </div>
+        </div>-->
+        <div class="item" style="background-image:url(/img/others/tag3.jpg)">
+            <div class="text">
+                <h2>畜牧業管理解決方案</h2>
+                <p> - RFID 耳標</p>
+                <a class="btn btn-danger" href="ranimal1.html">前往了解</a>
+            </div>
+        </div>
+		
+		
+		
+    </div>
+    <!-- 
+============================================================================
+方案應用 結束
+============================================================================
+ -->
+    <!-- 
+軟硬體系統整合開始
+  -->
+    <div class="softwareAndHardwareIcon">
+        <div class="container">
+            <div class="row">
+                <h1>瑞新電子擁有各式產品的設計經驗，其中以非接觸感應式產品最為突出，有非常豐富的設計經驗團隊，研發產品跨足數位、類比、有線、無線及電源控制管理 IC 。我們的 App 設計團隊能夠針對不同的需求做軟硬體的整合，同時擁有生產製造能力。集設計、生產為一體，從零件、 模組、成品到軟硬體系統整合，幫您省去不必要的時間與金錢，並提供您最完善的服務。
+                </h1>
+                <div class="col-md-12">
+                    <div class="col-md-4 col-xs-4">
+                         <a href="ricdesign2.html">
+                            <img src="/img/others/chip_512.png" alt="">
+                        </a>
+                        <div class="softwareAndHardwareIconText">
+                            <h4>硬體</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                        <a href="raboutApp2.html">
+                            <img src="/img/others/apps-icon-m.png" alt="">
+                        </a>
+                        <div class="softwareAndHardwareIconText">
+                            <h4>軟體</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                        <a href="ridm4.html">
+                            <img src="/img/others/setting-512.png" alt="">
+                        </a>
+                        <div class="softwareAndHardwareIconText">
+                            <h4>設計製造整合</h4>
+                        </div>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+    </div>
+    <!-- <div class="tabsOfProducts container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#one" aria-controls="one" role="tab" data-toggle="tab">IC</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#two" aria-controls="two" role="tab" data-toggle="tab">2.4Ghz</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="one" role="tabpanel">
+                            <div class="col-md-3 col-xs-6">
+                                <a href="">
+                                    <img src="/img/LF_Module/smc51487.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <a href="">
+                                    <img src="/img/HF_Tag/MIFARE-Classic-1K.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <a href="">
+                                    <img src="/img/LF_Module/smc51483.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-xs-6">
+                                <a href="">
+                                    <img src="/img/HF_Reader/a1v71.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="two" role="tabpanel">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- 
+軟硬體系統整合結束
+   -->
+    <!-- 
+ 詳細介紹開始    
+  -->
+    <!-- <div class="pointForEsl">
+        <div class="bgColor">
+            <div class="eslOfGif">
+                <a href="#" data-toggle="modal" data-target="#videoModal" data-theVideo="http://www.youtube.com/embed/HnbROj7J8o8">
+                    <img id="playBtn" src="/img/play_btn.png" alt="">
+                </a>
+                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <div>
+                                    <iframe width="100%" height="350" src=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- 
+ 詳細介紹結束   
+ -->
+
+    <!-- <div class="fb-customerchat" page_id="266009596835522" ref="https://chatfuel.com/bot/SMCrfidexpert.taiwan">
+    </div> -->
+    <!-- 
+============================================================================
+footer 開始
+============================================================================
+ -->
+    <div class="footerStyle">
+    <footer class="container">
+        <div class="row">
+            <div class="text-center footerText">
+                <div class="col-md-2 col-xs-12">
+                    <a href="tel:02-82218800">
+                        <img src="/img/others/phoneIcon.png" alt="">
+                    </a>
+                    <p>02-82218800</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="https://www.google.ch/maps/place/235%E6%96%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%92%8C%E5%8D%80%E6%A9%8B%E5%92%8C%E8%B7%AF11%E8%99%9F/@25.0054238,121.4889588,17z/data=!3m1!4b1!4m5!3m4!1s0x3442a82b0c501589:0x58260eeff5463e8a!8m2!3d25.0054238!4d121.4889588"
+                        target="_blank">
+                        <img src="/img/others/addressIcon.png" alt="">
+                    </a>
+                    <p>23557 新北市中和區橋和路11號16樓</p>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="mailto:service@smartchip.com.tw">
+                        <img src="/img/others/emailIcon.png" alt="">
+                    </a>
+                    <p>service@smartchip.com.tw</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <div class="otherBtn">
+                    <a href="https://www.youtube.com/channel/UCvEzxBir4iGo-KIFosO0Bmg" target="_blank">
+                        <img src="/img/others/youtubeIcon.png" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/%E7%91%9E%E6%96%B0%E9%9B%BB%E5%AD%90%E5%85%AC%E5%8F%B8-SMC-266009596835522/" target="_blank">
+                        <img src="/img/others/facebookIcon.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 copyRightText">
+                <p>Copyright © 2015 - 2017 SMARTCHIP</p>
+            </div>
+        </div>
+    </footer>
+</div>
+    <!-- 
+============================================================================
+Footer 結束
+============================================================================
+ -->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-84670428-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script>
+        const keys = [];
+        const keyWord = 'esl';
+        window.addEventListener('keyup', e => {
+            keys.push(e.key.toLowerCase());
+            keys.splice(-keyWord.length - 1, keys.length - keyWord.length);
+            console.log(keys)
+            if (keys.join('').includes(keyWord)) {
+                window.location.href = 'aboutESL.html'
+            }
+        })
+    </script>
+	    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main/main.min.js?rev=@@hash"></script>
+    <script src="js/main/index.min.js?rev=@@hash"></script>
+</body>
+
+</html>
