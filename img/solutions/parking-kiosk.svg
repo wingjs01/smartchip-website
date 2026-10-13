@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1500" role="img" aria-label="Illustration of an SMC parking payment kiosk">
+  <defs>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#f4f6f7"/><stop offset=".55" stop-color="#ffffff"/><stop offset="1" stop-color="#e6eaec"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" x2="1">
+      <stop offset="0" stop-color="#cfd5d9"/><stop offset="1" stop-color="#b7bec3"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243650"/><stop offset="1" stop-color="#16233a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fafc"/><stop offset="1" stop-color="#e3eaf0"/>
+    </linearGradient>
+    <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="slot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2f34"/><stop offset="1" stop-color="#4a5157"/>
+    </linearGradient>
+    <linearGradient id="tray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d868d"/><stop offset=".25" stop-color="#c9cfd3"/><stop offset="1" stop-color="#eef1f3"/>
+    </linearGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+
+  <!-- floor shadow -->
+  <ellipse cx="320" cy="1470" rx="270" ry="22" fill="url(#floor)"/>
+
+  <!-- side depth -->
+  <path d="M556 112 L590 132 L590 1440 L556 1452 Z" fill="url(#side)"/>
+  <!-- plinth -->
+  <rect x="80" y="1400" width="480" height="56" rx="6" fill="#2b3036"/>
+  <path d="M560 1400 L594 1388 L594 1440 L560 1456 Z" fill="#1f2328"/>
+
+  <!-- main body -->
+  <rect x="80" y="100" width="480" height="1310" rx="26" fill="url(#body)" stroke="#cdd3d7" stroke-width="2"/>
+
+  <!-- illuminated header -->
+  <rect x="96" y="116" width="448" height="128" rx="16" fill="url(#head)"/>
+  <rect x="96" y="116" width="448" height="128" rx="16" fill="none" stroke="#3f5876" stroke-width="2"/>
+  <circle cx="176" cy="180" r="44" fill="#2f8fe0"/>
+  <text x="176" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="58" fill="#fff">P</text>
+  <text x="238" y="176" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#ffffff" letter-spacing="1">PAY STATION</text>
+  <text x="240" y="214" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#9fc6ea" letter-spacing="4">PARKING · 24H</text>
+
+  <!-- screen -->
+  <rect x="116" y="272" width="408" height="318" rx="12" fill="#1c2126"/>
+  <rect x="132" y="288" width="376" height="286" rx="4" fill="url(#screen)"/>
+  <rect x="132" y="288" width="376" height="38" fill="#2f8fe0"/>
+  <text x="148" y="314" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#fff">Parking payment</text>
+  <text x="148" y="356" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#38424b">Enter the last 4 digits of your plate</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2a33">
+    <rect x="148" y="368" width="168" height="40" rx="6" fill="#fff" stroke="#9fb3c4"/>
+    <text x="164" y="396" letter-spacing="10">_ _ _ _</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle" fill="#25303a">
+    <g fill="#fff" stroke="#b9c6d1">
+      <rect x="148" y="420" width="50" height="32" rx="5"/><rect x="206" y="420" width="50" height="32" rx="5"/><rect x="264" y="420" width="50" height="32" rx="5"/>
+      <rect x="148" y="458" width="50" height="32" rx="5"/><rect x="206" y="458" width="50" height="32" rx="5"/><rect x="264" y="458" width="50" height="32" rx="5"/>
+      <rect x="148" y="496" width="50" height="32" rx="5"/><rect x="206" y="496" width="50" height="32" rx="5"/><rect x="264" y="496" width="50" height="32" rx="5"/>
+      <rect x="206" y="534" width="50" height="32" rx="5"/>
+    </g>
+    <text x="173" y="443">1</text><text x="231" y="443">2</text><text x="289" y="443">3</text>
+    <text x="173" y="481">4</text><text x="231" y="481">5</text><text x="289" y="481">6</text>
+    <text x="173" y="519">7</text><text x="231" y="519">8</text><text x="289" y="519">9</text>
+    <text x="231" y="557">0</text>
+  </g>
+  <rect x="336" y="420" width="156" height="50" rx="6" fill="#2f8fe0"/>
+  <text x="414" y="452" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#fff">Confirm</text>
+  <rect x="336" y="480" width="156" height="40" rx="6" fill="#fff" stroke="#b9c6d1"/>
+  <text x="414" y="506" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#38424b">Clear</text>
+  <rect x="132" y="288" width="376" height="286" rx="4" fill="url(#glare)"/>
+
+  <!-- divider -->
+  <rect x="96" y="616" width="448" height="6" rx="3" fill="#dfe4e7"/>
+
+  <!-- payment module panel -->
+  <rect x="104" y="640" width="432" height="270" rx="14" fill="#eef1f3" stroke="#d4dade"/>
+  <!-- coin slot -->
+  <rect x="128" y="664" width="92" height="120" rx="8" fill="#dfe4e7" stroke="#c3cacf"/>
+  <rect x="164" y="684" width="20" height="62" rx="4" fill="url(#slot)"/>
+  <text x="174" y="770" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4c5761">COIN</text>
+  <!-- bill acceptor -->
+  <rect x="238" y="664" width="128" height="120" rx="8" fill="#dfe4e7" stroke="#c3cacf"/>
+  <rect x="254" y="690" width="96" height="16" rx="4" fill="url(#slot)"/>
+  <rect x="254" y="714" width="96" height="5" rx="2" fill="#39c46b"/>
+  <text x="302" y="770" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4c5761">NOTES</text>
+  <!-- contactless card reader -->
+  <rect x="384" y="664" width="128" height="120" rx="8" fill="#ffffff" stroke="#c3cacf"/>
+  <g fill="none" stroke="#2f8fe0" stroke-width="5" stroke-linecap="round">
+    <path d="M436 702 a18 18 0 0 1 0 30"/><path d="M448 694 a30 30 0 0 1 0 46"/><path d="M460 686 a42 42 0 0 1 0 62"/>
+  </g>
+  <circle cx="426" cy="717" r="6" fill="#2f8fe0"/>
+  <text x="448" y="770" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4c5761">CARD / NFC</text>
+  <!-- receipt slot -->
+  <rect x="128" y="804" width="384" height="82" rx="8" fill="#dfe4e7" stroke="#c3cacf"/>
+  <rect x="340" y="826" width="150" height="12" rx="4" fill="url(#slot)"/>
+  <text x="148" y="838" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#2b3640">RECEIPT</text>
+  <text x="148" y="864" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5b6670">Receipt and e-invoice</text>
+
+  <!-- instruction panel -->
+  <rect x="104" y="934" width="432" height="218" rx="12" fill="#1d2b44"/>
+  <text x="128" y="972" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#fff">How to pay</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#dfe9f3">
+    <circle cx="140" cy="1002" r="12" fill="#2f8fe0"/><text x="140" y="1008" text-anchor="middle" fill="#fff" font-weight="700">1</text><text x="164" y="1008">Enter your plate number</text>
+    <circle cx="140" cy="1040" r="12" fill="#2f8fe0"/><text x="140" y="1046" text-anchor="middle" fill="#fff" font-weight="700">2</text><text x="164" y="1046">Confirm the parking fee</text>
+    <circle cx="140" cy="1078" r="12" fill="#2f8fe0"/><text x="140" y="1084" text-anchor="middle" fill="#fff" font-weight="700">3</text><text x="164" y="1084">Pay by cash or card</text>
+    <circle cx="140" cy="1116" r="12" fill="#2f8fe0"/><text x="140" y="1122" text-anchor="middle" fill="#fff" font-weight="700">4</text><text x="164" y="1122">Take your change and receipt</text>
+  </g>
+
+  <!-- change tray -->
+  <rect x="150" y="1184" width="340" height="150" rx="14" fill="#d9dee2" stroke="#c3cacf"/>
+  <rect x="172" y="1204" width="296" height="104" rx="10" fill="url(#tray)"/>
+  <text x="320" y="1356" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#4c5761" letter-spacing="2">CHANGE</text>
+
+  <!-- service lock + vents -->
+  <circle cx="530" cy="1240" r="7" fill="#9aa3a9"/>
+  <g stroke="#cfd5d9" stroke-width="4" stroke-linecap="round">
+    <path d="M120 1374 H200"/><path d="M440 1374 H520"/>
+  </g>
+</svg>
