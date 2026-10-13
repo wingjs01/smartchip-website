@@ -68,6 +68,11 @@
 .sx-photos figure{margin:0}
 .sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
 .sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sx-gallery figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px;overflow:hidden}
+.sx-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.sx-gallery figcaption{padding:10px 14px;font-size:14px;color:var(--sx-muted)}
+@media (max-width:767px){.sx-gallery{grid-template-columns:1fr}}
 .sx-product{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
 .sx-product figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px}
 .sx-product img{width:100%;height:auto;display:block}
@@ -287,6 +292,26 @@ header 結束
 <li>Bill acceptor and change dispenser</li>
 <li>Coin and note return tray</li>
 <li>Industrial PC inside, remote monitoring ready</li>
+</ul></div>
+</div></section>
+<section class="sx-sec alt"><div class="container">
+<h2>Inside the kiosk</h2>
+<p class="lede">Mechanical design is done in-house. Every module sits on its own rail or bracket and is reached from the front, so field service takes minutes.</p>
+<div class="sx-gallery">
+<figure><img src="/img/solutions/kiosk-render-front.webp" alt="Modular interior behind the lower front door" loading="lazy" width="1600" height="1200"><figcaption>Modular interior behind the lower front door</figcaption></figure>
+<figure><img src="/img/solutions/kiosk-render-drawer.webp" alt="Payment modules on a slide-out drawer for quick service" loading="lazy" width="1600" height="1200"><figcaption>Payment modules on a slide-out drawer for quick service</figcaption></figure>
+<figure><img src="/img/solutions/kiosk-render-upper.webp" alt="Upper door with industrial PC, receipt printer and cooling fans" loading="lazy" width="1600" height="1200"><figcaption>Upper door with industrial PC, receipt printer and cooling fans</figcaption></figure>
+</div>
+</div></section>
+<section class="sx-sec"><div class="container">
+<h2>Parking payment kiosk</h2>
+<p class="lede">The same platform also runs as a parking pay station, here in service at a public car park in Taipei.</p>
+<div class="sx-product"><figure><img src="/img/solutions/parking-kiosk.webp" alt="SMC parking payment kiosk at a public car park in Taipei" width="1200" height="1600"></figure><ul>
+<li>Search by licence plate number on the touchscreen</li>
+<li>Cash payment with coin and note change</li>
+<li>Stored-value cards such as EasyCard and iCash</li>
+<li>Receipt and e-invoice printing</li>
+<li>Four-step guided payment flow printed on the front panel</li>
 </ul></div>
 </div></section>
 <section class="sx-sec alt"><div class="container">
