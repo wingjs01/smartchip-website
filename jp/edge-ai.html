@@ -111,6 +111,49 @@
 .sx-edge .sx-tag{color:#5a8f00}
 .sx-edge .sx-steps li::before{color:#5a8f00}
 @media (max-width:767px){.sx-hero{padding:110px 0 48px}.sx-hero h1{font-size:28px}.sx-photos{grid-template-columns:1fr 1fr}.sx-spec th{width:40%}}
+.sx-mt{max-width:1080px;margin:0 auto}
+.sx-mt-bezel{background:#111418;border-radius:14px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.sx-mt-tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.sx-mt-tabs button{flex:1 1 0;min-width:120px;border:0;border-radius:8px;padding:10px 12px;font-size:15px;font-weight:600;background:#222a33;color:#aeb9c6;cursor:pointer}
+.sx-mt-tabs button[aria-selected="true"]{background:#2f7de1;color:#fff}
+.sx-mt-tabs button:focus-visible{outline:2px solid #8fc1ff;outline-offset:2px}
+.sx-mt-screen{position:relative;aspect-ratio:1952/1140;border-radius:6px;overflow:hidden;background:#070d1a}
+.sx-mt-screen>[role=tabpanel]{position:absolute;inset:0}
+.sx-mt-screen>[role=tabpanel][hidden]{display:none}
+.sx-mt-screen iframe{width:100%;height:100%;border:0;display:block}
+.sx-mt-stand{width:38%;height:16px;margin:0 auto;background:linear-gradient(#cfd5db,#e9edf1);border-radius:0 0 10px 10px}
+.sx-pos{display:grid;grid-template-columns:3fr 2fr;height:100%;background:#f4f6f9;color:#1f2328;font-size:clamp(11px,1.5vw,16px)}
+.sx-pos-l{padding:4%;background:#fff}
+.sx-pos h3{margin:0 0 4%;font-size:1.4em}
+.sx-pos table{width:100%;border-collapse:collapse}
+.sx-pos td{padding:.6em .3em;border-bottom:1px solid #e3e6e8}
+.sx-pos td.n{text-align:right;white-space:nowrap}
+.sx-pos-total{display:flex;justify-content:space-between;margin-top:6%;font-size:1.3em}
+.sx-pos-total b{color:#2f7de1}
+.sx-pos-r{padding:4%;display:flex;flex-direction:column;gap:6%}
+.sx-pos ol{list-style:none;margin:0;padding:0}
+.sx-pos li{padding:.55em 0 .55em 1.9em;position:relative}
+.sx-pos li::before{content:"";position:absolute;left:0;top:.6em;width:1.1em;height:1.1em;border-radius:50%;background:#2e9e5b}
+.sx-pos li.now::before{background:#2f7de1;animation:sxpulse 1.2s infinite}
+.sx-receipt{margin:0 auto;width:55%;background:#fff;border:1px solid #d5dbe1;padding:6% 8%;animation:sxprint 3s ease-out infinite}
+.sx-receipt i{display:block;height:.45em;margin:.5em 0;background:#d5dbe1;border-radius:2px}
+.sx-receipt i:nth-child(2n){width:70%}
+@keyframes sxpulse{50%{opacity:.35}}
+@keyframes sxprint{0%{transform:translateY(-40%);opacity:0}30%,100%{transform:none;opacity:1}}
+.sx-cam{display:grid;grid-template-columns:3fr 1fr;height:100%;background:#0d131b;color:#dfe7ef;font-size:clamp(10px,1.3vw,15px)}
+.sx-cam-v{position:relative;overflow:hidden}
+.sx-cam-v svg{width:100%;height:100%;display:block}
+.sx-cam-tag{position:absolute;left:3%;top:4%;background:rgba(0,0,0,.55);padding:.3em .7em;border-radius:4px;font-size:.9em}
+.sx-cam-s{padding:8% 9%;display:flex;flex-direction:column;gap:5%}
+.sx-cam-s div{background:#18212c;border-radius:6px;padding:.6em .8em}
+.sx-cam-s span{display:block;font-size:.85em;color:#93a4b6}
+.sx-cam-s b{font-size:1.5em;color:#fff}
+.sx-cam-s p{font-size:.8em;color:#93a4b6;margin:0}
+.sx-cam .walk{animation:sxwalk 9s linear infinite}
+.sx-cam .w1{animation-duration:12s;animation-delay:-4s}.sx-cam .w2{animation-duration:15s;animation-delay:-9s}.sx-cam .w3{animation-duration:10s;animation-delay:-2s}
+@keyframes sxwalk{0%{transform:translateX(-40px)}50%{transform:translateX(40px)}100%{transform:translateX(-40px)}}
+@media (prefers-reduced-motion:reduce){.sx-cam .walk,.sx-receipt,.sx-pos li.now::before{animation:none}}
+@media (max-width:767px){.sx-mt-screen{aspect-ratio:auto;height:560px}.sx-pos,.sx-cam{grid-template-columns:1fr}.sx-cam-s{flex-direction:row;flex-wrap:wrap}}
 .sx-thumbs{display:flex;gap:8px;justify-content:center;margin-top:10px}
 .sx-thumbs button{width:72px;height:96px;padding:0;border:2px solid var(--sx-line);border-radius:6px;background:#fff;overflow:hidden;cursor:pointer}
 .sx-thumbs button[aria-pressed="true"]{border-color:var(--sx-red)}
@@ -318,6 +361,20 @@ header 結束
 </ul></div>
 </div></section>
 <section class="sx-sec"><div class="container">
+<h2>1台のキオスクで3つのAIアプリを同時に</h2>
+<p class="lede">Edge AI セルフサービスキオスクの中にある Pandora は1台だけ。それでもスマート物流、スマートリテール、顔検出・人流分析の3システムが常駐しています。タッチ画面上部のタブで即座に切り替えられ、アプリの再起動は不要。映像や取引データは本体内で処理します。下のタブで体験できます。</p>
+<div class="sx-mt"><div class="sx-mt-bezel"><div class="sx-mt-tabs" role="tablist" aria-label="Edge AI kiosk"><button type="button" role="tab" id="mt-t0" aria-controls="mt-p0" aria-selected="true" tabindex="0">スマート物流</button><button type="button" role="tab" id="mt-t1" aria-controls="mt-p1" aria-selected="false" tabindex="-1">スマートリテール</button><button type="button" role="tab" id="mt-t2" aria-controls="mt-p2" aria-selected="false" tabindex="-1">顔検出・人流分析</button></div><div class="sx-mt-screen"><div role="tabpanel" id="mt-p0" aria-labelledby="mt-t0"><iframe src="/demo/crate-sim-ja.html" title="スマート物流" loading="lazy"></iframe></div><div role="tabpanel" id="mt-p1" aria-labelledby="mt-t1" hidden><div class="sx-pos"><div class="sx-pos-l"><h3>セルフレジ</h3><table><tr><td>RFIDリーダーモジュール SMC5241</td><td class="n">1</td><td class="n">NT$680</td></tr><tr><td>NFCタグ ×10</td><td class="n">1</td><td class="n">NT$150</td></tr><tr><td>BLEモジュール SMC52BM50</td><td class="n">2</td><td class="n">NT$840</td></tr></table><div class="sx-pos-total"><span>合計</span><b>NT$1,670</b></div></div><div class="sx-pos-r"><ol><li class="done">商品スキャン完了</li><li class="done">紙幣投入 NT$2,000</li><li class="done">おつり NT$330</li><li class="now">レシート印刷</li></ol><div class="sx-receipt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></div></div><div role="tabpanel" id="mt-p2" aria-labelledby="mt-t2" hidden><div class="sx-cam"><div class="sx-cam-v"><div class="sx-cam-tag">REC · カメラ1 · 入口</div><svg viewBox="0 0 960 560" role="img" aria-label="カメラ1 · 入口" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="mtfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3644"/><stop offset="1" stop-color="#4a5868"/></linearGradient></defs><rect width="960" height="560" fill="#1c2430"/><path d="M0 560 L330 230 L630 230 L960 560 Z" fill="url(#mtfloor)"/><path d="M330 230 L330 40 M630 230 L630 40" stroke="#3a4757" stroke-width="3"/><line x1="40" y1="470" x2="920" y2="470" stroke="#5fb4ff" stroke-width="3" stroke-dasharray="14 10"/><g class="walk w0"><g transform="translate(150 330)"><circle cx="23" cy="14" r="13" fill="#8fa3b8"/><rect x="6" y="30" width="35" height="120" rx="14" fill="#8fa3b8"/><rect x="-6" y="-6" width="58" height="162" fill="none" stroke="#3ddc84" stroke-width="2.5"/><rect x="-6" y="-26" width="58" height="20" fill="#3ddc84"/><text x="-2" y="-11" font-size="13" fill="#062">人 0.97</text></g></g><g class="walk w1"><g transform="translate(330 300)"><circle cx="20" cy="12" r="11" fill="#8fa3b8"/><rect x="5" y="26" width="30" height="102" rx="12" fill="#8fa3b8"/><rect x="-6" y="-6" width="51" height="140" fill="none" stroke="#3ddc84" stroke-width="2.5"/><rect x="-6" y="-26" width="49" height="20" fill="#3ddc84"/><text x="-2" y="-11" font-size="13" fill="#062">人 0.95</text></g></g><g class="walk w2"><g transform="translate(560 285)"><circle cx="17" cy="10" r="10" fill="#8fa3b8"/><rect x="4" y="22" width="26" height="90" rx="10" fill="#8fa3b8"/><rect x="-6" y="-6" width="46" height="124" fill="none" stroke="#3ddc84" stroke-width="2.5"/><rect x="-6" y="-26" width="46" height="20" fill="#3ddc84"/><text x="-2" y="-11" font-size="13" fill="#062">人 0.92</text></g></g><g class="walk w3"><g transform="translate(700 345)"><circle cx="24" cy="15" r="14" fill="#8fa3b8"/><rect x="6" y="32" width="37" height="126" rx="15" fill="#8fa3b8"/><rect x="-6" y="-6" width="60" height="170" fill="none" stroke="#3ddc84" stroke-width="2.5"/><rect x="-6" y="-26" width="61" height="20" fill="#3ddc84"/><text x="-2" y="-11" font-size="13" fill="#062">人 0.96</text></g></g></svg></div><div class="sx-cam-s"><div><span>本日の入場</span><b>1,284</b></div><div><span>現在の人数</span><b>23</b></div><div><span>平均滞在</span><b>6.2 分</b></div><div><span>ピーク</span><b>12:00–13:00</b></div><p>人物はシルエット表示。映像は本体内で解析し、クラウドには送信しません。</p></div></div></div></div></div><div class="sx-mt-stand" aria-hidden="true"></div></div>
+</div></section>
+<section class="sx-sec alt"><div class="container">
+<h2>1台で3つを動かす仕組み</h2>
+<div class="sx-grid">
+<div class="sx-card"><span class="sx-tag">マルチタスク</span><h3>3つのアプリが1台のPandoraに常駐</h3><p>物流ダッシュボード、レジシステム、映像解析が同じ Pandora 上で動作。タブで切り替えるだけで再起動は不要です。</p></div>
+<div class="sx-card"><span class="sx-tag">周辺機器</span><h3>ハードウェアを共用</h3><p>タッチパネル、バーコードスキャナー、紙幣識別機、レシートプリンター、カメラを3つのアプリで共用します。</p></div>
+<div class="sx-card"><span class="sx-tag">ローカル処理</span><h3>データは現場に</h3><p>画像認識も取引も本体内で完結。クラウドを経由しないため、遅延と情報漏えいのリスクを抑えます。</p></div>
+<div class="sx-card"><span class="sx-tag">省スペース</span><h3>設置スペースとコストを削減</h3><p>これまで3台必要だった機能を、1台のセルフサービスキオスクにまとめました。</p></div>
+</div>
+</div></section>
+<section class="sx-sec"><div class="container">
 <h2>SMCからPandoraを導入するメリット</h2>
 <div class="sx-grid">
 <div class="sx-card"><span class="sx-tag">Supply</span><h3>正規取扱い</h3><p>台湾国内でのPandoraの供給とサポート。</p></div>
@@ -327,6 +384,7 @@ header 結束
 </div></section>
 <section class="sx-cta"><div class="container"><h2>プロジェクトのご相談はこちら</h2><p>必要な台数、設置環境、決済方式やリーダーの要件、エッジで動かしたいAI処理など、お気軽にご相談ください。</p><p class="addr">service@smartchip.com.tw · +886-2-8221-8800</p></div></section>
 </div>
+<script>document.querySelectorAll('.sx-mt').forEach(function(mt){var tabs=[].slice.call(mt.querySelectorAll('[role=tab]'));function sel(i,focus){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i?'true':'false');t.tabIndex=j===i?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=j!==i});if(focus)tabs[i].focus()}tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(i)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();sel((i+1)%tabs.length,1)}else if(e.key==='ArrowLeft'){e.preventDefault();sel((i+tabs.length-1)%tabs.length,1)}})})})</script>
     <!-- 
 ============================================================================
 footer 開始
