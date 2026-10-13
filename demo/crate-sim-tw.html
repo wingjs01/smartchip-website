@@ -237,7 +237,7 @@ header .gs + .right{margin-left:18px}
   <header>
     <div class="logo"></div>
     <h1>貨箱 RFID 出貨回收系統</h1>
-    <span class="sub">示範 · UHF 手持機 × 3 · 送貨車 × 2 · 貨箱 × 500</span>
+    <span class="sub">示範 · UHF 手持機 × 3 · 送貨車 × 2 · 貨箱 × 30,000</span>
     <div class="gs">
       <div class="box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="#8a9ab8" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="#8a9ab8" stroke-width="1.6" stroke-linecap="round"/></svg>
         <input id="gq" type="search" autocomplete="off" placeholder="搜尋箱號、EPC、條碼、客戶、出貨單、料號" aria-label="搜尋貨箱"><button type="button" id="gx" aria-label="清除搜尋" hidden>✕</button></div>
@@ -256,7 +256,7 @@ header .gs + .right{margin-left:18px}
   <div id="fade">循環重播</div>
 
   <section class="card" id="kpi" style="top:76px;height:86px">
-    <div class="k"><div class="l">總箱數</div><div class="v">500</div></div>
+    <div class="k"><div class="l">總箱數</div><div class="v">30,000</div></div>
     <div class="k"><div class="l">廠內</div><div class="v" id="kIn" style="color:var(--s-stock)">0</div></div>
     <div class="k"><div class="l">運送中</div><div class="v" id="kTr" style="color:var(--s-transit)">0</div></div>
     <div class="k"><div class="l">客戶端</div><div class="v" id="kCu" style="color:var(--s-cust)">0</div></div>
@@ -335,7 +335,8 @@ header .gs + .right{margin-left:18px}
 
 <script>
 const $=id=>document.getElementById(id);
-const W=1920,H=1140,DT=1/30,LOOP=180,SPM=20,RETURN_RATE=.4;
+const W=1920,H=1140,DT=1/30,LOOP=180,SPM=20,RETURN_RATE=.4,N=30000,SC=60,K=50,ROWMAX=300;let FF=false;
+const fmt=n=>Number(n).toLocaleString('en-US');
 const stageEl=$('stage');
 function fit(){const aw=Math.max(innerWidth-32,100),ah=innerHeight,s=Math.min(aw/W,ah/H);stageEl.style.transform=`translate(${16+(aw-W*s)/2}px,${Math.max(0,(ah-H*s)/2)}px) scale(${s})`}
 addEventListener('resize',fit);fit();
@@ -370,31 +371,31 @@ function mk(i,loc,st){return{i,id:'BX-'+pad4(i+1),epc:'3034 1F8A 2C40 0000 0001 
 const randPart=()=>({p:PARTS[rnd()*PARTS.length|0],q:(1+(rnd()*8|0))*50});
 const dayNow=()=>simMin/1440,nowStr=()=>dstr(simMin),age=c=>dayNow()-c.since;
 
-function init(){
+function init(){LC=null;
   seed=20261009;simMin=8*60;realT=0;logs=[];bubbles=[];pulses=[];orderSeq=1012;custSeq=0;moveT=5;trips=0;
   heroRec=Array(7).fill(null);heroWho=Array(7).fill('');heroDev=Array(7).fill('');heroClaim=false;heroDone=false;
   DEVS.forEach(d=>{d.lastTxt='待命';d.at=-9;d.acts=[];d.open=null});
   DEVS[0].shift=330;DEVS[1].shift=330;DEVS[2].shift=420;
   const sd=(d,a)=>DEVS[d].acts.push(...a.map(([t0,t1,type,loc,places,n,ref,scan])=>({t0,t1,type,loc,places,n,ref,scan})));
-  sd(0,[[340,365,'裝車驗證','碼頭 A 道',['碼頭 A 道'],18,'SO-1008',1],[365,400,'配送','→ 客戶 C',[],18,'SO-1008',0],[400,410,'點交簽收','客戶 C',['客戶 C'],18,'SO-1008',1],[410,425,'空箱回收','客戶 C',['客戶 C'],15,'未還 47',1],[425,458,'回程','客戶 C → 廠內',[],15,'',0],[458,470,'卸車','碼頭 A 道',['碼頭 A 道'],15,'',1]]);
-  sd(1,[[355,380,'裝車驗證','碼頭 B 道',['碼頭 B 道'],21,'SO-1009',1],[380,418,'配送','→ 客戶 E',[],21,'SO-1009',0],[418,430,'點交簽收','客戶 E',['客戶 E'],21,'SO-1009',1],[430,442,'空箱回收','客戶 E',['客戶 E'],12,'未還 29',1],[442,470,'回程','客戶 E → 廠內',[],12,'',0],[470,480,'卸車','碼頭 B 道',['碼頭 B 道'],12,'',1]]);
-  sd(2,[[420,480,'早班盤點','備料倉庫、產線、2F、3F',['備料倉庫','產線','2F 暫存','3F 暫存'],320,'',1]]);
-  crates=[];const custN=[52,38,44,26,20];
-  for(let i=0;i<500;i++){let loc='WH';if(i>=230)loc='LINE';if(i>=270)loc='F2';if(i>=295)loc='F3';
+  sd(0,[[340,365,'裝車驗證','碼頭 A 道',['碼頭 A 道'],1080,'SO-1008',1],[365,400,'配送','→ 客戶 C',[],1080,'SO-1008',0],[400,410,'點交簽收','客戶 C',['客戶 C'],1080,'SO-1008',1],[410,425,'空箱回收','客戶 C',['客戶 C'],900,'未還 2820',1],[425,458,'回程','客戶 C → 廠內',[],900,'',0],[458,470,'卸車','碼頭 A 道',['碼頭 A 道'],900,'',1]]);
+  sd(1,[[355,380,'裝車驗證','碼頭 B 道',['碼頭 B 道'],1260,'SO-1009',1],[380,418,'配送','→ 客戶 E',[],1260,'SO-1009',0],[418,430,'點交簽收','客戶 E',['客戶 E'],1260,'SO-1009',1],[430,442,'空箱回收','客戶 E',['客戶 E'],720,'未還 1740',1],[442,470,'回程','客戶 E → 廠內',[],720,'',0],[470,480,'卸車','碼頭 B 道',['碼頭 B 道'],720,'',1]]);
+  sd(2,[[420,480,'早班盤點','備料倉庫、產線、2F、3F',['備料倉庫','產線','2F 暫存','3F 暫存'],19200,'',1]]);
+  crates=[];const custN=[52,38,44,26,20].map(v=>v*SC);
+  for(let i=0;i<N;i++){let loc='WH';if(i>=230*SC)loc='LINE';if(i>=270*SC)loc='F2';if(i>=295*SC)loc='F3';
     const c=mk(i,loc,'STOCK');
-    if(i>=320){let k=i-320,ci=0;while(k>=custN[ci]){k-=custN[ci];ci++}
+    if(i>=320*SC){let k=i-320*SC,ci=0;while(k>=custN[ci]){k-=custN[ci];ci++}
       c.loc='C'+ci;c.st='CUST';c.cust=ci;c.since=dayNow()-(Math.pow(rnd(),1.7)*44+.8);c.owner=CUST[ci].s;
       c.order='SO-'+pad4(900+(rnd()*110|0));c.cont=randPart();const t=dstr(c.since*1440);c.recv={t,name:CUST[ci].s};c.last=t;c.lastMin=c.since*1440;c.lastBy=DEVS[ci%2].id}
     else{c.lastMin=7*60+(rnd()*55|0);c.last=dstr(c.lastMin);c.cust=rnd()*5|0;c.cont=randPart()}
     crates.push(c)}
   hero=crates[0];hero.cust=0;sel=null;
   EXS=[];{const c=crates[411],ex={id:'EX-001',type:'裝車缺件',crate:c,order:'SO-1008',cust:'客戶 C',loc:'碼頭 A 道',at:363,status:'已結案',method:'特准',approver:'周課長',closed:472,steps:[
-    {t:363,who:'王小明',role:'司機員 · MC66-01',act:'裝車驗證 讀取 17/18，缺 BX-0412',kind:'find'},
+    {t:363,who:'王小明',role:'司機員 · MC66-01',act:'裝車驗證 讀取 1079/1080，缺 BX-0412',kind:'find'},
     {t:365,who:'周課長',role:SUP[0].r,act:'現場 PIN 特准出車（原因：標籤待查）',kind:'special'},
     {t:472,who:'張小芳',role:'盤點員 · MC66-03',act:'查明標籤鬆脫，更換 Tag，退回備料倉庫',kind:'close'}]};EXS.push(ex)}
-  TR=[0,1].map(i=>({i,name:i?'車 B':'車 A',plate:i?'TRK-02':'TRK-01',dev:i,by:BAY[i],x:600,y:BAY[i],ang:0,state:'idle',t:5+i*9,path:[],items:[],back:[],cur:null,trips:[i?{no:1,order:'SO-1009',cust:4,n:21,back:12,left:29,depart:380,arrive:418,leave:442,ret:470,done:true}:{no:1,order:'SO-1008',cust:2,n:18,back:15,left:47,depart:365,arrive:400,leave:425,ret:458,done:true,miss:'BX-0412'}]}));
+  TR=[0,1].map(i=>({i,name:i?'車 B':'車 A',plate:i?'TRK-02':'TRK-01',dev:i,by:BAY[i],x:600,y:BAY[i],ang:0,state:'idle',t:5+i*9,path:[],items:[],back:[],cur:null,trips:[i?{no:1,order:'SO-1009',cust:4,n:1260,back:720,left:1740,depart:380,arrive:418,leave:442,ret:470,done:true}:{no:1,order:'SO-1008',cust:2,n:1080,back:900,left:2820,depart:365,arrive:400,leave:425,ret:458,done:true,miss:'BX-0412'}]}));
   keeper={x:240,y:240,tx:240,ty:240};
-  log(2,'早班盤點完成 · 廠內 320 箱',C.stock);
+  log(2,'早班盤點完成 · 廠內 19,200 箱',C.stock);
 }
 
 const SUP=[{n:'周課長',r:'物流課長 · 現場 PIN'},{n:'吳副理',r:'廠務副理 · Web 遠端核准'}];
@@ -422,6 +423,7 @@ function heroMark(i,d){if(heroDone)return;if(i===6)heroDone=true;heroRec[i]=nowS
   log(d,`BX-0001 ${CPS[i][0]}`,C.hero,true)}
 function goKeeper(k){const[x,y]=zc(k);keeper.tx=x;keeper.ty=Z[k].y+Z[k].h-14}
 const inLoc=k=>crates.filter(c=>c.loc===k);
+let LC=null;const inLocC=k=>{if(!LC){LC={};for(const c of crates)(LC[c.loc]||(LC[c.loc]=[])).push(c)}return LC[k]||[]};
 const CY=i=>CB[i].y+CB[i].h/2;
 function bubble(T,lines,col){bubbles.push({T,lines,col,t:3})}
 function moveAlong(o,sp,dt){let step=sp*dt;while(step>0&&o.path.length){const[tx,ty,rev]=o.path[0],dx=tx-o.x,dy=ty-o.y,dist=Math.hypot(dx,dy);
@@ -432,7 +434,7 @@ function local(T,ox,oy){const c=Math.cos(T.ang),s=Math.sin(T.ang);return[T.x+ox*
 function stepTruck(T,dt){
   const D=DEVS[T.dev],k='T'+T.i,has=()=>T.items.includes(hero);
   switch(T.state){
-  case'idle':if((T.t-=dt)<=0){const pool=inLoc('WH').filter(c=>!(heroDone&&c===hero)),n=Math.min(pool.length,16+(rnd()*9|0));if(n<5){T.t=2;break}
+  case'idle':if((T.t-=dt)<=0){const pool=inLoc('WH').filter(c=>!(heroDone&&c===hero)),n=Math.min(pool.length,(16+(rnd()*9|0))*SC);if(n<5*SC){T.t=2;break}
     T.cust=(custSeq++*3+T.i)%5;T.heroVisit=false;
     if(!heroClaim&&hero.st==='CUST'&&age(hero)>.8){T.cust=+hero.loc[1];heroClaim=true;T.heroVisit=true}
     const wh=[...pool.filter(c=>c.cust===T.cust),...pool.filter(c=>c.cust!==T.cust)];
@@ -481,21 +483,21 @@ function stepTruck(T,dt){
   }
 }
 function stepMoves(dt){if((moveT-=dt)>0)return;moveT=5+rnd()*4;const fl=['LINE','F2','F3'],nm={WH:'備料倉庫',LINE:'產線',F2:'2F',F3:'3F'};
-  const f=fl[rnd()*3|0],back=rnd()<.5||inLoc('WH').length<60,src=back?f:'WH',dst=back?'WH':f,l=inLoc(src).filter(c=>c!==hero),n=Math.min(l.length,4+(rnd()*7|0));if(!n)return;
+  const f=fl[rnd()*3|0],back=rnd()<.5||inLoc('WH').length<60*SC,src=back?f:'WH',dst=back?'WH':f,l=inLoc(src).filter(c=>c!==hero),n=Math.min(l.length,(4+(rnd()*7|0))*SC);if(!n)return;
   const pick=back?l.slice(0,n):l.slice(-n);pick.forEach(c=>{c.loc=dst;c.owner=DEVS[2].who;scan(c,2)});goKeeper(dst);pulse(...zc(dst),C.stock);
   log(2,`廠內移動 ${n} 箱 · ${nm[src]} → ${nm[dst]}`,C.stock);actAdd(2,'廠內移動',`${nm[src]} → ${nm[dst]}`,[nm[src],nm[dst]],n,20,'')}
 
-function step(dt){realT+=dt;simMin+=dt*SPM;TR.forEach(T=>stepTruck(T,dt));stepMoves(dt);
+function step(dt){LC=null;realT+=dt;simMin+=dt*SPM;TR.forEach(T=>stepTruck(T,dt));stepMoves(dt);
   for(const b of bubbles)b.t-=dt;while(bubbles.length&&bubbles[0].t<=0)bubbles.shift();
   for(const p of pulses)p.t+=dt*.9;while(pulses.length&&pulses[0].t>=1)pulses.shift();
   const f=Math.min(1,dt*3);keeper.x+=(keeper.tx-keeper.x)*f;keeper.y+=(keeper.ty-keeper.y)*f;
-  layout(dt)}
+  }
 
 function colOf(c){if(c.st==='CUST'){const a=age(c);return a>=TH?C.bad:a>=TH*.7?C.warn:C.cust}return ST[c.st][1]}
-function layout(dt,snap){const groups={};for(const c of crates)(groups[c.loc]||(groups[c.loc]=[])).push(c);
-  for(const k in groups){const L=groups[k];
-    if(k[0]==='T'){const T=TR[+k[1]];L.forEach((c,j)=>{const[tx,ty]=local(T,-62+(j%12)*9+4,-24+((j/12|0)%6)*9+4);place(c,tx,ty,k,dt,true,snap)})}
-    else{const z=Z[k],cs=z.cust?10:12,cols=Math.floor((z.w-16)/cs);L.forEach((c,j)=>place(c,z.x+8+(j%cols)*cs+cs/2,z.y+34+Math.floor(j/cols)*cs+cs/2,k,dt,false,snap))}}}
+function layout(dt,snap){inLocC('WH');const groups=LC;
+  for(const k in groups){let L=groups[k];if(k[0]==='C')L.sort((a,b)=>a.since-b.since);
+    if(k[0]==='T'){const T=TR[+k[1]];L.forEach((c,j)=>{const q=j/K|0;c.lead=j%K===0;const[tx,ty]=local(T,-62+(q%12)*9+4,-24+((q/12|0)%6)*9+4);place(c,tx,ty,k,dt,true,snap)})}
+    else{const z=Z[k],cs=z.cust?10:12,cols=Math.floor((z.w-16)/cs);L.forEach((c,j)=>{const q=j/K|0;c.lead=j%K===0;place(c,z.x+8+(q%cols)*cs+cs/2,z.y+34+Math.floor(q/cols)*cs+cs/2,k,dt,false,snap)})}}}
 function place(c,tx,ty,k,dt,truck,snap){if(c.pl!==k){c.pl=k;c.on=false}
   if(snap||(c.x===0&&c.y===0)||(truck&&c.on)){c.x=tx;c.y=ty;c.on=true;return}
   const f=Math.min(1,dt*5);c.x+=(tx-c.x)*f;c.y+=(ty-c.y)*f;if(Math.hypot(tx-c.x,ty-c.y)<1.5)c.on=true}
@@ -514,7 +516,7 @@ function draw(){
   g.lineWidth=1;for(let x=40;x<780;x+=20){g.strokeStyle='#0d182b';g.beginPath();g.moveTo(x,54);g.lineTo(x,726);g.stroke()}for(let y=60;y<728;y+=20){g.beginPath();g.moveTo(22,y);g.lineTo(778,y);g.stroke()}
   for(const k in Z){const z=Z[k];if(z.cust)continue;const col=k==='RET'?C.ret:k[0]==='S'?C.pack:C.stock;
     g.fillStyle=hexA(col,.06);g.fillRect(z.x,z.y,z.w,z.h);g.setLineDash([6,5]);g.strokeStyle=hexA(col,.5);g.strokeRect(z.x,z.y,z.w,z.h);g.setLineDash([]);
-    text(z.n,z.x+8,z.y+21,col,'700 14px '+FONT);text(inLoc(k).length+' 箱',z.x+z.w-8,z.y+21,C.muted,'600 13px '+MONO,'right')}
+    text(z.n,z.x+8,z.y+21,col,'700 14px '+FONT);text(fmt(inLocC(k).length)+' 箱',z.x+z.w-8,z.y+21,C.muted,'600 13px '+MONO,'right')}
   g.setLineDash([4,4]);g.strokeStyle='#3b4c6e';g.strokeRect(460,412,280,290);g.setLineDash([]);text('出貨碼頭',468,433,C.exc,'700 14px '+FONT);
   BAY.forEach((y,i)=>{g.fillStyle=C.exc;g.fillRect(522,y-34,4,68);text(i?'B 道':'A 道',470,y+5,C.dim,'12px '+FONT)});
   const open=TR.some(T=>(T.state==='out'||T.state==='back')&&T.x>700&&Math.abs(T.y-T.by)<20);
@@ -522,9 +524,9 @@ function draw(){
   text('大門',780,700,C.muted,'12px '+FONT,'center');
   g.fillStyle='#14223b';g.fillRect(ROADX-14,40,28,CH-80);BAY.forEach(y=>g.fillRect(780,y-14,ROADX-780,28));
   g.setLineDash([10,10]);g.strokeStyle='#3a4d73';g.beginPath();g.moveTo(ROADX,40);g.lineTo(ROADX,CH-40);g.stroke();g.setLineDash([]);
-  CB.forEach((b,i)=>{const L=inLoc('C'+i),od=L.filter(c=>age(c)>=TH).length;g.fillStyle='#14223b';g.fillRect(ROADX+14,b.y+b.h/2-6,b.x-ROADX-14,12);
+  CB.forEach((b,i)=>{const L=inLocC('C'+i),od=L.filter(c=>age(c)>=TH).length;g.fillStyle='#14223b';g.fillRect(ROADX+14,b.y+b.h/2-6,b.x-ROADX-14,12);
     rr(b.x,b.y,b.w,b.h,7,'#131a3a',C.cust,1.2);text(CUST[i].n,b.x+8,b.y+21,'#c7d2fe','700 14px '+FONT);
-    text(`${L.length} 箱`+(od?` · 逾期 ${od}`:''),b.x+b.w-8,b.y+21,od?C.bad:C.muted,'600 12px '+FONT,'right')});
+    text(`${fmt(L.length)} 箱`+(od?` · 逾期 ${fmt(od)}`:''),b.x+b.w-8,b.y+21,od?C.bad:C.muted,'600 12px '+FONT,'right')});
   // devices
   DEVS.forEach((d,i)=>{const x=20+i*256,y=748,w=244,h=92,act=realT-d.at<1.6;rr(x,y,w,h,8,'#0f1d36',act?C.accent:'#1b2b4a',act?1.5:1);
     text(d.id,x+12,y+24,C.accent,'600 15px '+MONO);text(`${d.role} ${d.who}`,x+92,y+24,C.text,'600 14px '+FONT);
@@ -533,14 +535,14 @@ function draw(){
   // legend
   const LG=[['廠內在庫',C.stock],['已裝箱',C.pack],['運送中',C.tr],['客戶端',C.cust],['接近告警',C.warn],['逾期',C.bad],['回收',C.ret],['異常',C.exc]];
   let lx=24;LG.forEach(([n,c])=>{g.fillStyle=c;g.fillRect(lx,872,10,10);text(n,lx+15,882,C.muted,'13px '+FONT);g.font='13px '+FONT;lx+=g.measureText(n).width+34});
-  text('每格 = 1 個貨箱，共 500 箱 · ◎ 追蹤貨箱 BX-0001',24,910,C.dim,'13px '+FONT);
+  text('每格 = 50 個貨箱，共 30,000 箱 · ◎ 追蹤貨箱 BX-0001',24,910,C.dim,'13px '+FONT);
   text(`告警天數 ${TH} 天：客戶端貨箱放超過 ${Math.round(TH*.7)} 天轉黃，超過 ${TH} 天轉紅`,24,934,C.dim,'13px '+FONT);
   // pulses
   for(const p of pulses){g.beginPath();g.arc(p.x,p.y,10+p.t*70,0,7);g.strokeStyle=hexA(p.c,.7*(1-p.t));g.lineWidth=2;g.stroke();g.lineWidth=1}
   TR.forEach(drawTruck);
   const dimO=gHits.size>0;
-  for(const c of crates){if(c===hero||gHits.has(c))continue;const s=c.loc[0]==='T'?7:c.loc[0]==='C'?8:9;g.globalAlpha=dimO?.22:1;g.fillStyle=colOf(c);g.fillRect(c.x-s/2,c.y-s/2,s,s)}g.globalAlpha=1;
-  if(dimO){const HC='#e879f9',zc2={};for(const c of gHits){const s=c.loc[0]==='T'?9:11;g.fillStyle=HC;g.fillRect(c.x-s/2,c.y-s/2,s,s);g.strokeStyle='#fff';g.lineWidth=1.2;g.strokeRect(c.x-s/2,c.y-s/2,s,s);zc2[c.loc]=(zc2[c.loc]||0)+1}g.lineWidth=1;
+  for(const c of crates){if(c===hero||!c.lead)continue;const s=c.loc[0]==='T'?7:c.loc[0]==='C'?8:9;g.globalAlpha=dimO?.22:1;g.fillStyle=colOf(c);g.fillRect(c.x-s/2,c.y-s/2,s,s)}g.globalAlpha=1;
+  if(dimO){const HC='#e879f9',zc2={},seen=new Set();for(const c of gHits){zc2[c.loc]=(zc2[c.loc]||0)+1;const ck=(c.x|0)+','+(c.y|0);if(seen.has(ck))continue;seen.add(ck);const s=c.loc[0]==='T'?9:11;g.fillStyle=HC;g.fillRect(c.x-s/2,c.y-s/2,s,s);g.strokeStyle='#fff';g.lineWidth=1.2;g.strokeRect(c.x-s/2,c.y-s/2,s,s)}g.lineWidth=1;
     for(const k in zc2){let x,y;if(k[0]==='T'){const T=TR[+k[1]];x=T.x+40;y=T.y-46}else{const z=Z[k];x=z.x+z.w-40;y=z.y-9}const t='◆ '+zc2[k];g.font='700 12px '+MONO;const w=g.measureText(t).width+14;rr(x-w/2,y-9,w,18,9,HC);text(t,x,y+4,'#2a0530','700 12px '+MONO,'center')}
     if(fol){const p=1+Math.sin(performance.now()/150)*.5;g.beginPath();g.arc(fol.x,fol.y,12+p*3,0,7);g.strokeStyle=HC;g.lineWidth=2.5;g.stroke();g.beginPath();g.arc(fol.x,fol.y,22+p*4,0,7);g.strokeStyle='rgba(232,121,249,.4)';g.lineWidth=1.5;g.stroke();g.lineWidth=1}}
   TR.forEach(T=>{if(T.x<ROADX-40)text(`${T.name} ${T.plate} · ${DEVS[T.dev].who}`,T.x-8,T.y-38,C.muted,'600 12px '+FONT,'center');else text(T.name,T.x,T.y-36,'#e2e8f0','700 12px '+FONT,'center')});
@@ -579,14 +581,14 @@ function panels(){
   let fin=0,tr=0,cu=0,od=0;const cnt={STOCK:0,PACK:0,TRANSIT:0,CUST:0,RET:0,EXC:0};
   for(const c of crates){if(c.loc[0]==='T')tr++;else if(c.loc[0]==='C'){cu++;if(age(c)>=TH)od++}else fin++;cnt[c.st==='RETIN'?'RET':c.st]++}
   {const o=EXS.filter(x=>x.status==='處理中').length;$('kEx').innerHTML=`${o}<small>/ ${EXS.length}</small>`;$('bExc').innerHTML=`⚠ 異常追蹤 <b>${o}</b>`}
-  $('kIn').textContent=fin;$('kTr').textContent=tr;$('kCu').textContent=cu;$('kOd').textContent=od;$('kTrip').innerHTML=trips+'<small>車次</small>';
-  FL.forEach((s,i)=>{$('c'+i).innerHTML=cnt[s[0]]+'<small>箱</small>';$('b'+i).style.width=Math.min(100,cnt[s[0]]/500*200)+'%'});
+  $('kIn').textContent=fmt(fin);$('kTr').textContent=fmt(tr);$('kCu').textContent=fmt(cu);$('kOd').textContent=fmt(od);$('kTrip').innerHTML=trips+'<small>車次</small>';
+  FL.forEach((s,i)=>{$('c'+i).innerHTML=fmt(cnt[s[0]])+'<small>箱</small>';$('b'+i).style.width=Math.min(100,cnt[s[0]]/N*200)+'%'});
   const cur=heroRec.findIndex(v=>!v);
   $('heroBody').innerHTML=CPS.map((cp,i)=>{const t=heroRec[i],st=t?'<span class="ok">✓ 完成</span>':i===cur?'<span class="go">● 下一步</span>':'待處理';
     return`<tr class="${t?'':i===cur?'cur':'pend'}"><td class="cp"><i style="background:${cp[1]}"></i>${cp[0]}</td><td class="tm">${t||'—'}</td><td>${t?heroWho[i]:'—'}</td><td class="mono" style="font-size:13px">${t?heroDev[i]:'—'}</td><td>${st}</td></tr>`}).join('');
   $('heroLoc').innerHTML='目前位置：<b>'+locText(hero)+(hero.st==='CUST'?`（${Math.floor(age(hero))} 天）`:'')+'</b>';
-  const rows=CUST.map((cu,i)=>{const L=inLoc('C'+i),ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,n=L.length-o-w,mx=ag.length?Math.floor(Math.max(...ag)):0;
-    return`<tr><td>${cu.n}</td><td class="n">${L.length}</td><td class="n" style="color:${mx>=TH?C.bad:'inherit'}">${mx} 天</td><td class="n" style="color:${o?C.bad:C.dim}">${o}</td><td style="width:300px"><div class="sb" style="width:${Math.max(4,L.length*4)}px"><i style="flex:${n};background:${C.cust}"></i><i style="flex:${w};background:${C.warn}"></i><i style="flex:${o};background:${C.bad}"></i></div></td></tr>`}).join('');
+  const rows=CUST.map((cu,i)=>{const L=inLocC('C'+i),ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,n=L.length-o-w,mx=ag.length?Math.floor(Math.max(...ag)):0;
+    return`<tr><td>${cu.n}</td><td class="n">${fmt(L.length)}</td><td class="n" style="color:${mx>=TH?C.bad:'inherit'}">${mx} 天</td><td class="n" style="color:${o?C.bad:C.dim}">${fmt(o)}</td><td style="width:300px"><div class="sb" style="width:${Math.max(4,L.length*4/SC)}px"><i style="flex:${n};background:${C.cust}"></i><i style="flex:${w};background:${C.warn}"></i><i style="flex:${o};background:${C.bad}"></i></div></td></tr>`}).join('');
   $('ctab').innerHTML=`<thead><tr><th>客戶</th><th style="text-align:right">在外</th><th style="text-align:right">最久</th><th style="text-align:right">逾期</th><th>分布（藍：正常、黃：接近告警、紅：逾期）</th></tr></thead><tbody>${rows}</tbody>`;
   if(gQ){gCompute();$('gcnt').textContent=gHits.size?`◆ ${gHits.size} 箱`:'找不到'}
   updFollow();
@@ -617,10 +619,10 @@ const COLS={
  c:[['箱號',c=>c.i,c=>td(c.id,'m')],['在外天數',c=>age(c),c=>td(stChip(c))],['簽收時間',c=>c.since,c=>td(c.recv?c.recv.t:'—','mono')],['簽收人',c=>c.recv?c.recv.name:'',c=>td(c.recv?c.recv.name:'—')],['出貨單',c=>c.order||'',c=>td(c.order||'—','mono')],['內容物',c=>c.cont?c.cont.p:'',c=>td(contTxt(c))],['上次掃描',c=>c.lastMin,c=>td(c.last,'mono')]],
  t:[['箱號',c=>c.i,c=>td(c.id,'m')],['狀態',c=>c.st,c=>td(stChip(c))],['出貨單',c=>c.order||'',c=>td(c.order||'—','mono')],['客戶',c=>c.cust??9,c=>td(custName(c))],['內容物',c=>c.cont?c.cont.p:'',c=>td(c.st==='RET'?'空箱':contTxt(c))],['負責人',c=>c.owner,c=>td(esc(c.owner))],['上次掃描',c=>c.lastMin,c=>td(c.last,'mono')],['簽還',c=>c.ret?c.ret.t:'',c=>td(c.ret?c.ret.t+' '+c.ret.name:'—')]]};
 function renderZone(force){
-  ZTABS.forEach(([k])=>{const e=$('zn_'+k);if(e)e.textContent=k==='X'?EXS.filter(x=>x.status==='處理中').length+'/'+EXS.length:k[0]==='D'?Math.round(dStats(+k[1]).util*100)+'%':inLoc(k).length;const h=$('zh_'+k);if(h){let n=0;for(const c of gHits)if(c.loc===k)n++;h.textContent=n||''}});
+  ZTABS.forEach(([k])=>{const e=$('zn_'+k);if(e)e.textContent=k==='X'?EXS.filter(x=>x.status==='處理中').length+'/'+EXS.length:k[0]==='D'?Math.round(dStats(+k[1]).util*100)+'%':inLocC(k).length;const h=$('zh_'+k);if(h){let n=0;for(const c of gHits)if(c.loc===k)n++;h.textContent=n||''}});
   if(!zKey)return;const now=performance.now();if(!force&&now-zLast<400)return;zLast=now;
   document.querySelectorAll('#ztabs button').forEach(b=>b.classList.toggle('on',b.dataset.k===zKey));
-  const k=zKey,type=zType(k);let L=inLoc(k);
+  const k=zKey,type=zType(k);let L=inLocC(k);
   $('zdisp').hidden=type!=='t';
   const isD=type==='d',isX=type==='x';$('zdev').hidden=!isD;$('zexc').hidden=!isX;['#zsum','#zl .zc','#zl .tw','#zl .zhint'].forEach(q=>document.querySelector(q).hidden=isD||isX);
   if(isX){renderExc();return}
@@ -636,7 +638,7 @@ function renderZone(force){
     $('zt').textContent=`${T.name} ${T.plate}`;$('zsub').textContent=`司機員 ${D.who} · ${D.id}（${D.net}）· 目前：${SN[T.state]}`+(T.order&&T.state!=='idle'?` · 出貨單 ${T.order} → ${CUST[T.cust].n}`:'')}
   else if(type==='c'){const i=+k[1];$('zt').textContent=''+CUST[i].n;$('zsub').textContent=`廠外 · 簽收窗口 ${CUST[i].s} · 告警天數 ${TH} 天`}
   else{$('zt').textContent=Z[k].n;$('zsub').textContent='廠內 · 負責人 盤點員 張小芳（MC66-03）'}
-  $('zcnt').textContent=L.length+' 箱';
+  $('zcnt').textContent=fmt(L.length)+' 箱';
   let sum,fk;
   if(type==='c'){fk=band;const ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,mx=ag.length?Math.floor(Math.max(...ag)):0;
     sum=[['n','正常',C.cust,L.length-o-w],['w','接近告警',C.warn,w],['o','逾期',C.bad,o],[null,'最久',C.dim,mx+' 天']]}
@@ -651,8 +653,8 @@ function renderZone(force){
   const cols=COLS[type],sc=cols[zSort.c],d=zSort.d;
   L.sort((a,b)=>{const x=sc[1](a),y=sc[1](b);return(x<y?-1:x>y?1:a.i-b.i)*d});
   $('zth').innerHTML='<tr>'+cols.map((c,i)=>`<th data-c="${i}" class="${i===zSort.c?'on':''}">${c[0]}<span>${i===zSort.c?(d>0?' ▲':' ▼'):' ↕'}</span></th>`).join('')+'</tr>';
-  $('zshown').textContent=(q||zFilter)?`顯示 ${L.length} / ${inLoc(k).length} 箱`:'';
-  $('ztb').innerHTML=L.length?L.map(c=>`<tr data-i="${c.i}" class="${c===sel?'on':''}${gHits.has(c)?' hit':''}">${cols.map(col=>col[2](c)).join('')}</tr>`).join(''):`<tr><td colspan="8" class="zempty">${q||zFilter?'沒有符合條件的貨箱':'這一區目前沒有貨箱'}</td></tr>`}
+  $('zshown').textContent=(q||zFilter)?`顯示 ${L.length} / ${inLocC(k).length} 箱`:'';
+  $('ztb').innerHTML=L.length?L.slice(0,ROWMAX).map(c=>`<tr data-i="${c.i}" class="${c===sel?'on':''}${gHits.has(c)?' hit':''}">${cols.map(col=>col[2](c)).join('')}</tr>`).join('')+(L.length>ROWMAX?`<tr><td colspan="8" class="zempty">僅顯示前 ${ROWMAX} 箱，共 ${fmt(L.length)} 箱；請用搜尋或篩選縮小範圍</td></tr>`:''):`<tr><td colspan="8" class="zempty">${q||zFilter?'沒有符合條件的貨箱':'這一區目前沒有貨箱'}</td></tr>`}
 function renderDev(i){const D=DEVS[i],st=dStats(i),hmm=m=>dparts(m).hm,dmm=m=>{const p=dparts(m);return p.md+' '+p.hm},hrs=m=>(m/60).toFixed(1);
   $('zdot').style.background=C.accent;$('zt').textContent=`${D.id}　${D.role} ${D.who}`;$('zcnt').textContent=`掃描 ${st.scans} 箱`;
   $('zsub').textContent=`${D.car} · ${D.net} · 本班 ${dmm(D.shift)} 起，已 ${hrs(st.span)} 小時`;
@@ -765,9 +767,9 @@ if(inDeck)addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('
 // ---------- playback ----------
 const mm=t=>pad(Math.floor(t/60))+':'+pad(Math.floor(t%60));
 let marks=[];
-recMarks=Array(7).fill(null);init();layout(0,true);while(realT<LOOP)step(DT);marks=recMarks;recMarks=null;
+recMarks=Array(7).fill(null);init();layout(0,true);FF=true;while(realT<LOOP)step(DT);FF=false;marks=recMarks;recMarks=null;
 $('marks').innerHTML=CPS.map((cp,i)=>marks[i]==null?'':`<button type="button" class="mk${i%2?' lo':''}" data-i="${i}" style="left:${marks[i]/LOOP*100}%" title="跳到 ${cp[0]}"><span>${cp[2]}</span><i style="background:${cp[1]}"></i></button>`).join('');
-function seek(t){const s=sel?sel.i:null;init();layout(0,true);const n=Math.round(Math.max(0,Math.min(LOOP-.05,t))/DT);for(let i=0;i<n;i++)step(DT);layout(0,true);sel=s==null?null:crates[s];if(fol){fol=crates[fol.i];folLoc=fol.loc;folTrail=[[nowStr(),fol.loc]]}acc=0;draw();panels();timeline()}
+function seek(t){const s=sel?sel.i:null;init();layout(0,true);const n=Math.round(Math.max(0,Math.min(LOOP-.05,t))/DT);FF=true;for(let i=0;i<n;i++)step(DT);FF=false;layout(0,true);sel=s==null?null:crates[s];if(fol){fol=crates[fol.i];folLoc=fol.loc;folTrail=[[nowStr(),fol.loc]]}acc=0;draw();panels();timeline()}
 function timeline(){const t=realT,p=Math.min(1,t/LOOP)*100;$('fill').style.width=p+'%';$('head').style.left=p+'%';$('tl').textContent=`${mm(t)} / ${mm(LOOP)}`;
   document.querySelectorAll('.mk').forEach(m=>m.classList.toggle('done',t>=marks[m.dataset.i]))}
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -781,7 +783,7 @@ $('track').addEventListener('click',e=>{const mk=e.target.closest('.mk');if(mk){
   const r=$('track').getBoundingClientRect();seek((e.clientX-r.left)/r.width*LOOP)});
 addEventListener('keydown',e=>{if(e.code==='Space'&&!e.target.closest('button,input')){e.preventDefault();setPlay(!playing)}});
 function frame(ts){const dt=last==null?0:Math.min((ts-last)/1000,.1);last=ts;
-  if(playing){acc+=dt*speed;let n=0;while(acc>=DT&&n<200){step(DT);acc-=DT;n++}if(realT>=LOOP){init();layout(0,true);acc=0;flash()}}
+  if(playing){acc+=dt*speed;let n=0;while(acc>=DT&&n<200){step(DT);acc-=DT;n++}if(realT>=LOOP){init();layout(0,true);acc=0;flash()}layout(dt)}
   draw();timeline();if((pacc+=dt)>.12){pacc=0;panels()}requestAnimationFrame(frame)}
 init();layout(0,true);setPlay(playing);draw();panels();timeline();requestAnimationFrame(frame);
 </script>

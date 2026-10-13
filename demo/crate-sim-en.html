@@ -237,7 +237,7 @@ header .gs + .right{margin-left:18px}
   <header>
     <div class="logo"></div>
     <h1>RFID Crate Shipping & Return System</h1>
-    <span class="sub">Demo · 3 UHF handhelds · 2 trucks · 500 crates</span>
+    <span class="sub">Demo · 3 UHF handhelds · 2 trucks · 30,000 crates</span>
     <div class="gs">
       <div class="box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="#8a9ab8" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="#8a9ab8" stroke-width="1.6" stroke-linecap="round"/></svg>
         <input id="gq" type="search" autocomplete="off" placeholder="Search crate ID, EPC, barcode, customer, order, part no." aria-label="Search crates"><button type="button" id="gx" aria-label="Clear search" hidden>✕</button></div>
@@ -256,7 +256,7 @@ header .gs + .right{margin-left:18px}
   <div id="fade">Replaying</div>
 
   <section class="card" id="kpi" style="top:76px;height:86px">
-    <div class="k"><div class="l">Total crates</div><div class="v">500</div></div>
+    <div class="k"><div class="l">Total crates</div><div class="v">30,000</div></div>
     <div class="k"><div class="l">On site</div><div class="v" id="kIn" style="color:var(--s-stock)">0</div></div>
     <div class="k"><div class="l">In transit</div><div class="v" id="kTr" style="color:var(--s-transit)">0</div></div>
     <div class="k"><div class="l">At customer</div><div class="v" id="kCu" style="color:var(--s-cust)">0</div></div>
@@ -335,7 +335,8 @@ header .gs + .right{margin-left:18px}
 
 <script>
 const $=id=>document.getElementById(id);
-const W=1920,H=1140,DT=1/30,LOOP=180,SPM=20,RETURN_RATE=.4;
+const W=1920,H=1140,DT=1/30,LOOP=180,SPM=20,RETURN_RATE=.4,N=30000,SC=60,K=50,ROWMAX=300;let FF=false;
+const fmt=n=>Number(n).toLocaleString('en-US');
 const stageEl=$('stage');
 function fit(){const aw=Math.max(innerWidth-32,100),ah=innerHeight,s=Math.min(aw/W,ah/H);stageEl.style.transform=`translate(${16+(aw-W*s)/2}px,${Math.max(0,(ah-H*s)/2)}px) scale(${s})`}
 addEventListener('resize',fit);fit();
@@ -370,31 +371,31 @@ function mk(i,loc,st){return{i,id:'BX-'+pad4(i+1),epc:'3034 1F8A 2C40 0000 0001 
 const randPart=()=>({p:PARTS[rnd()*PARTS.length|0],q:(1+(rnd()*8|0))*50});
 const dayNow=()=>simMin/1440,nowStr=()=>dstr(simMin),age=c=>dayNow()-c.since;
 
-function init(){
+function init(){LC=null;
   seed=20261009;simMin=8*60;realT=0;logs=[];bubbles=[];pulses=[];orderSeq=1012;custSeq=0;moveT=5;trips=0;
   heroRec=Array(7).fill(null);heroWho=Array(7).fill('');heroDev=Array(7).fill('');heroClaim=false;heroDone=false;
   DEVS.forEach(d=>{d.lastTxt='Standby';d.at=-9;d.acts=[];d.open=null});
   DEVS[0].shift=330;DEVS[1].shift=330;DEVS[2].shift=420;
   const sd=(d,a)=>DEVS[d].acts.push(...a.map(([t0,t1,type,loc,places,n,ref,scan])=>({t0,t1,type,loc,places,n,ref,scan})));
-  sd(0,[[340,365,'Loading check','Dock A',['Dock A'],18,'SO-1008',1],[365,400,'Delivery','→ Customer C',[],18,'SO-1008',0],[400,410,'Hand-over','Customer C',['Customer C'],18,'SO-1008',1],[410,425,'Empty pickup','Customer C',['Customer C'],15,'Still out 47',1],[425,458,'Return trip','Customer C → On site',[],15,'',0],[458,470,'Unload','Dock A',['Dock A'],15,'',1]]);
-  sd(1,[[355,380,'Loading check','Dock B',['Dock B'],21,'SO-1009',1],[380,418,'Delivery','→ Customer E',[],21,'SO-1009',0],[418,430,'Hand-over','Customer E',['Customer E'],21,'SO-1009',1],[430,442,'Empty pickup','Customer E',['Customer E'],12,'Still out 29',1],[442,470,'Return trip','Customer E → On site',[],12,'',0],[470,480,'Unload','Dock B',['Dock B'],12,'',1]]);
-  sd(2,[[420,480,'Morning count','Warehouse, line, 2F, 3F',['Warehouse','Production line','2F staging','3F staging'],320,'',1]]);
-  crates=[];const custN=[52,38,44,26,20];
-  for(let i=0;i<500;i++){let loc='WH';if(i>=230)loc='LINE';if(i>=270)loc='F2';if(i>=295)loc='F3';
+  sd(0,[[340,365,'Loading check','Dock A',['Dock A'],1080,'SO-1008',1],[365,400,'Delivery','→ Customer C',[],1080,'SO-1008',0],[400,410,'Hand-over','Customer C',['Customer C'],1080,'SO-1008',1],[410,425,'Empty pickup','Customer C',['Customer C'],900,'Still out 2820',1],[425,458,'Return trip','Customer C → On site',[],900,'',0],[458,470,'Unload','Dock A',['Dock A'],900,'',1]]);
+  sd(1,[[355,380,'Loading check','Dock B',['Dock B'],1260,'SO-1009',1],[380,418,'Delivery','→ Customer E',[],1260,'SO-1009',0],[418,430,'Hand-over','Customer E',['Customer E'],1260,'SO-1009',1],[430,442,'Empty pickup','Customer E',['Customer E'],720,'Still out 1740',1],[442,470,'Return trip','Customer E → On site',[],720,'',0],[470,480,'Unload','Dock B',['Dock B'],720,'',1]]);
+  sd(2,[[420,480,'Morning count','Warehouse, line, 2F, 3F',['Warehouse','Production line','2F staging','3F staging'],19200,'',1]]);
+  crates=[];const custN=[52,38,44,26,20].map(v=>v*SC);
+  for(let i=0;i<N;i++){let loc='WH';if(i>=230*SC)loc='LINE';if(i>=270*SC)loc='F2';if(i>=295*SC)loc='F3';
     const c=mk(i,loc,'STOCK');
-    if(i>=320){let k=i-320,ci=0;while(k>=custN[ci]){k-=custN[ci];ci++}
+    if(i>=320*SC){let k=i-320*SC,ci=0;while(k>=custN[ci]){k-=custN[ci];ci++}
       c.loc='C'+ci;c.st='CUST';c.cust=ci;c.since=dayNow()-(Math.pow(rnd(),1.7)*44+.8);c.owner=CUST[ci].s;
       c.order='SO-'+pad4(900+(rnd()*110|0));c.cont=randPart();const t=dstr(c.since*1440);c.recv={t,name:CUST[ci].s};c.last=t;c.lastMin=c.since*1440;c.lastBy=DEVS[ci%2].id}
     else{c.lastMin=7*60+(rnd()*55|0);c.last=dstr(c.lastMin);c.cust=rnd()*5|0;c.cont=randPart()}
     crates.push(c)}
   hero=crates[0];hero.cust=0;sel=null;
   EXS=[];{const c=crates[411],ex={id:'EX-001',type:'Missing at loading',crate:c,order:'SO-1008',cust:'Customer C',loc:'Dock A',at:363,status:'Closed',method:'Approved',approver:'Dana',closed:472,steps:[
-    {t:363,who:'Alex',role:'Driver · MC66-01',act:'Loading check read 17/18，missing BX-0412',kind:'find'},
+    {t:363,who:'Alex',role:'Driver · MC66-01',act:'Loading check read 1079/1080，missing BX-0412',kind:'find'},
     {t:365,who:'Dana',role:SUP[0].r,act:'Approved on site by PIN (reason: tag to be checked)',kind:'special'},
     {t:472,who:'Cathy',role:'Stock clerk · MC66-03',act:'Loose tag found and replaced; crate returned to the warehouse',kind:'close'}]};EXS.push(ex)}
-  TR=[0,1].map(i=>({i,name:i?'Truck B':'Truck A',plate:i?'TRK-02':'TRK-01',dev:i,by:BAY[i],x:600,y:BAY[i],ang:0,state:'idle',t:5+i*9,path:[],items:[],back:[],cur:null,trips:[i?{no:1,order:'SO-1009',cust:4,n:21,back:12,left:29,depart:380,arrive:418,leave:442,ret:470,done:true}:{no:1,order:'SO-1008',cust:2,n:18,back:15,left:47,depart:365,arrive:400,leave:425,ret:458,done:true,miss:'BX-0412'}]}));
+  TR=[0,1].map(i=>({i,name:i?'Truck B':'Truck A',plate:i?'TRK-02':'TRK-01',dev:i,by:BAY[i],x:600,y:BAY[i],ang:0,state:'idle',t:5+i*9,path:[],items:[],back:[],cur:null,trips:[i?{no:1,order:'SO-1009',cust:4,n:1260,back:720,left:1740,depart:380,arrive:418,leave:442,ret:470,done:true}:{no:1,order:'SO-1008',cust:2,n:1080,back:900,left:2820,depart:365,arrive:400,leave:425,ret:458,done:true,miss:'BX-0412'}]}));
   keeper={x:240,y:240,tx:240,ty:240};
-  log(2,'Morning count done · 320 crates on site',C.stock);
+  log(2,'Morning count done · 19,200 crates on site',C.stock);
 }
 
 const SUP=[{n:'Dana',r:'Logistics supervisor · on-site PIN'},{n:'Evan',r:'Plant manager · remote web approval'}];
@@ -422,6 +423,7 @@ function heroMark(i,d){if(heroDone)return;if(i===6)heroDone=true;heroRec[i]=nowS
   log(d,`BX-0001 ${CPS[i][0]}`,C.hero,true)}
 function goKeeper(k){const[x,y]=zc(k);keeper.tx=x;keeper.ty=Z[k].y+Z[k].h-14}
 const inLoc=k=>crates.filter(c=>c.loc===k);
+let LC=null;const inLocC=k=>{if(!LC){LC={};for(const c of crates)(LC[c.loc]||(LC[c.loc]=[])).push(c)}return LC[k]||[]};
 const CY=i=>CB[i].y+CB[i].h/2;
 function bubble(T,lines,col){bubbles.push({T,lines,col,t:3})}
 function moveAlong(o,sp,dt){let step=sp*dt;while(step>0&&o.path.length){const[tx,ty,rev]=o.path[0],dx=tx-o.x,dy=ty-o.y,dist=Math.hypot(dx,dy);
@@ -432,13 +434,13 @@ function local(T,ox,oy){const c=Math.cos(T.ang),s=Math.sin(T.ang);return[T.x+ox*
 function stepTruck(T,dt){
   const D=DEVS[T.dev],k='T'+T.i,has=()=>T.items.includes(hero);
   switch(T.state){
-  case'idle':if((T.t-=dt)<=0){const pool=inLoc('WH').filter(c=>!(heroDone&&c===hero)),n=Math.min(pool.length,16+(rnd()*9|0));if(n<5){T.t=2;break}
+  case'idle':if((T.t-=dt)<=0){const pool=inLoc('WH').filter(c=>!(heroDone&&c===hero)),n=Math.min(pool.length,(16+(rnd()*9|0))*SC);if(n<5*SC){T.t=2;break}
     T.cust=(custSeq++*3+T.i)%5;T.heroVisit=false;
     if(!heroClaim&&hero.st==='CUST'&&age(hero)>.8){T.cust=+hero.loc[1];heroClaim=true;T.heroVisit=true}
     const wh=[...pool.filter(c=>c.cust===T.cust),...pool.filter(c=>c.cust!==T.cust)];
     T.order='SO-'+(orderSeq++);T.n=n;T.items=wh.slice(0,n);goKeeper('S'+T.i);
     T.items.forEach(c=>{c.loc='S'+T.i;c.st='PACK';c.order=T.order;if(c.cust!==T.cust||!c.cont)c.cont=randPart();c.cust=T.cust;c.owner=DEVS[2].who;c.recv=null;c.ret=null;c.since=null;scan(c,2)});
-    pulse(...zc('S'+T.i),C.pack);log(2,`Scanned order ${T.order} (1D barcode) · bound ${n}  crates → ${CUST[T.cust].n}`,C.pack);actAdd(2,'Pack & bind',`Warehouse → Truck ${'AB'[T.i]} staging`,['Warehouse',`Truck ${'AB'[T.i]} staging`],n,52,T.order);
+    pulse(...zc('S'+T.i),C.pack);log(2,`Scanned order ${T.order} (1D barcode) · bound ${n} crates → ${CUST[T.cust].n}`,C.pack);actAdd(2,'Pack & bind',`Warehouse → Truck ${'AB'[T.i]} staging`,['Warehouse',`Truck ${'AB'[T.i]} staging`],n,52,T.order);
     if(has())heroMark(0,2);T.state='packing';T.t=2.6}break;
   case'packing':if((T.t-=dt)<=0){actOpen(T.dev,'Loading check',`Dock ${'AB'[T.i]}`,[`Dock ${'AB'[T.i]}`],T.n,T.order);const cand=T.items.filter(c=>c!==hero);T.miss=rnd()<.3?cand[cand.length-1-(rnd()*3|0)]:null;
     T.items.forEach(c=>{if(c!==T.miss)c.loc=k});T.state='loading';T.t=2.4}break;
@@ -451,10 +453,10 @@ function stepTruck(T,dt){
         bubble(T,[`Loading check ${T.order} · ${ex.id}`,`missing ${m.id} → found by barcode rescan`,`✓ Resolved, no approval needed`],C.exc);log(T.dev,`${ex.id} barcode rescan ${m.id} ✓ resolved and closed`,C.ok);T.t=3}
       else{const sp=SUP[rnd()<.4?1:0];ex.method='Approved';ex.approver=sp.n;
         exStep(ex,{who:sp.n,role:sp.r},sp===SUP[0]?'Approved on site by PIN (reason: tag to be checked)':'Web remote approval in the back office (reason: tag to be checked)','special');
-        bubble(T,[`Loading check ${T.order} · ${ex.id}`,`Expected ${T.n}  crates | read ${read}  crates`,`⚠ missing ${m.id} → ${sp.n} approved departure`],C.exc);
+        bubble(T,[`Loading check ${T.order} · ${ex.id}`,`Expected ${T.n} crates | read ${read} crates`,`⚠ missing ${m.id} → ${sp.n} approved departure`],C.exc);
         log(T.dev,`${ex.id} ${sp.n} approved departure · missing crate held for checking`,C.warn);
         m.st='EXC';scan(m,T.dev);T.hold=m;T.items=T.items.filter(c=>c!==m);T.n=T.items.length;T.t=3.4}}
-    else{bubble(T,[`Loading check ${T.order}`,`Expected ${T.n}  crates | read ${read}  crates`,'✓ all matched'],C.ok);log(T.dev,`Loading check ${T.order} · ${read}/${T.n} ✓ matched`,C.ok);T.t=2.2}
+    else{bubble(T,[`Loading check ${T.order}`,`Expected ${T.n} crates | read ${read} crates`,'✓ all matched'],C.ok);log(T.dev,`Loading check ${T.order} · ${read}/${T.n} ✓ matched`,C.ok);T.t=2.2}
     T.items.forEach(c=>{c.st='TRANSIT';c.owner=D.who;scan(c,T.dev)});if(has())heroMark(1,T.dev);T.state='verify'}break;
   case'verify':if((T.t-=dt)<=0){actOpen(T.dev,'Delivery',`→ ${CUST[T.cust].n}`,[],T.n,T.order,0);T.cur={no:T.trips.length+1,order:T.order,cust:T.cust,n:T.n,depart:simMin,miss:T.hold?T.hold.id:null};T.trips.push(T.cur);T.path=[[ROADX,T.by],[ROADX,CY(T.cust)]];T.state='out';trips++;log(T.dev,`${T.plate} departs → ${CUST[T.cust].n}`,C.tr);if(has())heroMark(2,T.dev)}break;
   case'out':if(moveAlong(T,230,dt)){const cu=CUST[T.cust];T.cur.arrive=simMin;actOpen(T.dev,'Hand-over',cu.n,[cu.n],T.n,T.order);
@@ -469,33 +471,33 @@ function stepTruck(T,dt){
       exStep(ex,dv(T.dev),'Confirmed as our empty crate; collected with photo evidence','normal');T.back.push(w);T.exq.push(ex);
       log(T.dev,`${ex.id} Wrong-customer crate ${w.id} (registered to ${own}) · collected`,C.exc)}}actOpen(T.dev,'Empty pickup',cu.n,[cu.n],n,`Still out ${left}`);
     T.back.forEach(c=>{c.loc=k;c.st='RET';c.ret={t:nowStr(),name:cu.s};c.owner=D.who;scan(c,T.dev)});
-    pulse(...zc('C'+T.cust),C.ret);bubble(T,[`Empty pickup ${cu.n}`,`Returned ${n}  crates | still at customer ${left}  crates`,`Return signed: ${cu.s} + photo`],C.ret);
-    log(T.dev,`${cu.n} returned empties ${n}  crates (still out ${left}  crates) · ${cu.s} Return signed`,C.ret);if(T.back.includes(hero))heroMark(4,T.dev);T.state='collect';T.t=2.6}break;
+    pulse(...zc('C'+T.cust),C.ret);bubble(T,[`Empty pickup ${cu.n}`,`Returned ${n} crates | still at customer ${left} crates`,`Return signed: ${cu.s} + photo`],C.ret);
+    log(T.dev,`${cu.n} returned empties ${n} crates (still out ${left} crates) · ${cu.s} Return signed`,C.ret);if(T.back.includes(hero))heroMark(4,T.dev);T.state='collect';T.t=2.6}break;
   case'collect':if((T.t-=dt)<=0){T.cur.leave=simMin;actOpen(T.dev,'Return trip',`${CUST[T.cust].n} → On site`,[],T.back.length,'',0);T.path=[[ROADX,T.by],[600,T.by,1]];T.state='back'}break;
   case'back':if(moveAlong(T,230,dt)){T.cur.ret=simMin;actOpen(T.dev,'Unload',`Dock ${'AB'[T.i]}`,[`Dock ${'AB'[T.i]}`],T.back.length,'');T.ang=0;T.back.forEach(c=>{c.loc='RET';c.st='RETIN'});pulse(...zc('RET'),C.ret);
-    log(T.dev,`${T.plate} back at site · unloaded ${T.back.length}  crates`,C.ret);if(T.back.includes(hero))heroMark(5,T.dev);goKeeper('RET');T.state='unload';T.t=2.6}break;
+    log(T.dev,`${T.plate} back at site · unloaded ${T.back.length} crates`,C.ret);if(T.back.includes(hero))heroMark(5,T.dev);goKeeper('RET');T.state='unload';T.t=2.6}break;
   case'unload':if((T.t-=dt)<=0){T.back.forEach(c=>{c.loc='WH';c.st='STOCK';c.order=null;c.cust=rnd()*5|0;c.cont=randPart();c.since=null;c.owner=DEVS[2].who;scan(c,2)});
-    pulse(...zc('WH'),C.stock);log(2,`Check-in ${T.back.length}  crates → warehouse (restocked)`,C.stock);actAdd(2,'Check-in','Returns area → warehouse',['Returns area','Warehouse'],T.back.length,40,'');if(T.back.includes(hero))heroMark(6,2);
+    pulse(...zc('WH'),C.stock);log(2,`Check-in ${T.back.length} crates → warehouse (restocked)`,C.stock);actAdd(2,'Check-in','Returns area → warehouse',['Returns area','Warehouse'],T.back.length,40,'');if(T.back.includes(hero))heroMark(6,2);
     if(T.hold){const m=T.hold;if(m.ex)exClose(m.ex,dv(2),'Loose tag found and replaced; crate returned to the warehouse');m.loc='WH';m.st='STOCK';m.order=null;m.owner=DEVS[2].who;scan(m,2);actAdd(2,'Exception','Warehouse',['Warehouse'],1,15,m.id);log(2,`Exception crate ${m.id} checked (loose tag) · back to warehouse`,C.exc);T.hold=null}
     actClose(T.dev);for(const ex of T.exq||[])exClose(ex,dv(2),`Checked in and customer record corrected (${ex.cust} → returned)`);T.exq=[];T.cur.done=true;T.cur=null;T.back=[];T.state='idle';T.t=1.5+rnd()*2}break;
   }
 }
 function stepMoves(dt){if((moveT-=dt)>0)return;moveT=5+rnd()*4;const fl=['LINE','F2','F3'],nm={WH:'Warehouse',LINE:'Production line',F2:'2F',F3:'3F'};
-  const f=fl[rnd()*3|0],back=rnd()<.5||inLoc('WH').length<60,src=back?f:'WH',dst=back?'WH':f,l=inLoc(src).filter(c=>c!==hero),n=Math.min(l.length,4+(rnd()*7|0));if(!n)return;
+  const f=fl[rnd()*3|0],back=rnd()<.5||inLoc('WH').length<60*SC,src=back?f:'WH',dst=back?'WH':f,l=inLoc(src).filter(c=>c!==hero),n=Math.min(l.length,(4+(rnd()*7|0))*SC);if(!n)return;
   const pick=back?l.slice(0,n):l.slice(-n);pick.forEach(c=>{c.loc=dst;c.owner=DEVS[2].who;scan(c,2)});goKeeper(dst);pulse(...zc(dst),C.stock);
-  log(2,`Move on site ${n}  crates · ${nm[src]} → ${nm[dst]}`,C.stock);actAdd(2,'Move on site',`${nm[src]} → ${nm[dst]}`,[nm[src],nm[dst]],n,20,'')}
+  log(2,`Move on site ${n} crates · ${nm[src]} → ${nm[dst]}`,C.stock);actAdd(2,'Move on site',`${nm[src]} → ${nm[dst]}`,[nm[src],nm[dst]],n,20,'')}
 
-function step(dt){realT+=dt;simMin+=dt*SPM;TR.forEach(T=>stepTruck(T,dt));stepMoves(dt);
+function step(dt){LC=null;realT+=dt;simMin+=dt*SPM;TR.forEach(T=>stepTruck(T,dt));stepMoves(dt);
   for(const b of bubbles)b.t-=dt;while(bubbles.length&&bubbles[0].t<=0)bubbles.shift();
   for(const p of pulses)p.t+=dt*.9;while(pulses.length&&pulses[0].t>=1)pulses.shift();
   const f=Math.min(1,dt*3);keeper.x+=(keeper.tx-keeper.x)*f;keeper.y+=(keeper.ty-keeper.y)*f;
-  layout(dt)}
+  }
 
 function colOf(c){if(c.st==='CUST'){const a=age(c);return a>=TH?C.bad:a>=TH*.7?C.warn:C.cust}return ST[c.st][1]}
-function layout(dt,snap){const groups={};for(const c of crates)(groups[c.loc]||(groups[c.loc]=[])).push(c);
-  for(const k in groups){const L=groups[k];
-    if(k[0]==='T'){const T=TR[+k[1]];L.forEach((c,j)=>{const[tx,ty]=local(T,-62+(j%12)*9+4,-24+((j/12|0)%6)*9+4);place(c,tx,ty,k,dt,true,snap)})}
-    else{const z=Z[k],cs=z.cust?10:12,cols=Math.floor((z.w-16)/cs);L.forEach((c,j)=>place(c,z.x+8+(j%cols)*cs+cs/2,z.y+34+Math.floor(j/cols)*cs+cs/2,k,dt,false,snap))}}}
+function layout(dt,snap){inLocC('WH');const groups=LC;
+  for(const k in groups){let L=groups[k];if(k[0]==='C')L.sort((a,b)=>a.since-b.since);
+    if(k[0]==='T'){const T=TR[+k[1]];L.forEach((c,j)=>{const q=j/K|0;c.lead=j%K===0;const[tx,ty]=local(T,-62+(q%12)*9+4,-24+((q/12|0)%6)*9+4);place(c,tx,ty,k,dt,true,snap)})}
+    else{const z=Z[k],cs=z.cust?10:12,cols=Math.floor((z.w-16)/cs);L.forEach((c,j)=>{const q=j/K|0;c.lead=j%K===0;place(c,z.x+8+(q%cols)*cs+cs/2,z.y+34+Math.floor(q/cols)*cs+cs/2,k,dt,false,snap)})}}}
 function place(c,tx,ty,k,dt,truck,snap){if(c.pl!==k){c.pl=k;c.on=false}
   if(snap||(c.x===0&&c.y===0)||(truck&&c.on)){c.x=tx;c.y=ty;c.on=true;return}
   const f=Math.min(1,dt*5);c.x+=(tx-c.x)*f;c.y+=(ty-c.y)*f;if(Math.hypot(tx-c.x,ty-c.y)<1.5)c.on=true}
@@ -514,7 +516,7 @@ function draw(){
   g.lineWidth=1;for(let x=40;x<780;x+=20){g.strokeStyle='#0d182b';g.beginPath();g.moveTo(x,54);g.lineTo(x,726);g.stroke()}for(let y=60;y<728;y+=20){g.beginPath();g.moveTo(22,y);g.lineTo(778,y);g.stroke()}
   for(const k in Z){const z=Z[k];if(z.cust)continue;const col=k==='RET'?C.ret:k[0]==='S'?C.pack:C.stock;
     g.fillStyle=hexA(col,.06);g.fillRect(z.x,z.y,z.w,z.h);g.setLineDash([6,5]);g.strokeStyle=hexA(col,.5);g.strokeRect(z.x,z.y,z.w,z.h);g.setLineDash([]);
-    text(z.n,z.x+8,z.y+21,col,'700 14px '+FONT);text(inLoc(k).length+'',z.x+z.w-8,z.y+21,C.muted,'600 13px '+MONO,'right')}
+    text(z.n,z.x+8,z.y+21,col,'700 14px '+FONT);text(fmt(inLocC(k).length)+' crates',z.x+z.w-8,z.y+21,C.muted,'600 13px '+MONO,'right')}
   g.setLineDash([4,4]);g.strokeStyle='#3b4c6e';g.strokeRect(460,412,280,290);g.setLineDash([]);text('Shipping dock',468,433,C.exc,'700 14px '+FONT);
   BAY.forEach((y,i)=>{g.fillStyle=C.exc;g.fillRect(522,y-34,4,68);text(i?'Lane B':'Lane A',470,y+5,C.dim,'12px '+FONT)});
   const open=TR.some(T=>(T.state==='out'||T.state==='back')&&T.x>700&&Math.abs(T.y-T.by)<20);
@@ -522,9 +524,9 @@ function draw(){
   text('Gate',780,700,C.muted,'12px '+FONT,'center');
   g.fillStyle='#14223b';g.fillRect(ROADX-14,40,28,CH-80);BAY.forEach(y=>g.fillRect(780,y-14,ROADX-780,28));
   g.setLineDash([10,10]);g.strokeStyle='#3a4d73';g.beginPath();g.moveTo(ROADX,40);g.lineTo(ROADX,CH-40);g.stroke();g.setLineDash([]);
-  CB.forEach((b,i)=>{const L=inLoc('C'+i),od=L.filter(c=>age(c)>=TH).length;g.fillStyle='#14223b';g.fillRect(ROADX+14,b.y+b.h/2-6,b.x-ROADX-14,12);
+  CB.forEach((b,i)=>{const L=inLocC('C'+i),od=L.filter(c=>age(c)>=TH).length;g.fillStyle='#14223b';g.fillRect(ROADX+14,b.y+b.h/2-6,b.x-ROADX-14,12);
     rr(b.x,b.y,b.w,b.h,7,'#131a3a',C.cust,1.2);text(CUST[i].n,b.x+8,b.y+21,'#c7d2fe','700 14px '+FONT);
-    text(`${L.length}`+(od?` · ${od} late`:''),b.x+b.w-8,b.y+21,od?C.bad:C.muted,'600 12px '+FONT,'right')});
+    text(`${fmt(L.length)}`+(od?` · ${fmt(od)} late`:''),b.x+b.w-8,b.y+21,od?C.bad:C.muted,'600 12px '+FONT,'right')});
   // devices
   DEVS.forEach((d,i)=>{const x=20+i*256,y=748,w=244,h=92,act=realT-d.at<1.6;rr(x,y,w,h,8,'#0f1d36',act?C.accent:'#1b2b4a',act?1.5:1);
     text(d.id,x+12,y+24,C.accent,'600 15px '+MONO);text(`${d.who}`,x+92,y+24,C.text,'600 14px '+FONT);
@@ -533,14 +535,14 @@ function draw(){
   // legend
   const LG=[['In stock',C.stock],['Packed',C.pack],['In transit',C.tr],['At customer',C.cust],['Near alert',C.warn],['Overdue',C.bad],['Returned',C.ret],['Exception',C.exc]];
   let lx=24;LG.forEach(([n,c])=>{g.fillStyle=c;g.fillRect(lx,872,10,10);text(n,lx+15,882,C.muted,'13px '+FONT);g.font='13px '+FONT;lx+=g.measureText(n).width+34});
-  text('Each square = 1 crate, 500 in total · ◎ traced crate BX-0001',24,910,C.dim,'13px '+FONT);
-  text(`Alert after ${TH}  days: crates at a customer turn yellow after ${Math.round(TH*.7)}  days and red after ${TH}  days`,24,934,C.dim,'13px '+FONT);
+  text('Each square = 50 crates, 30,000 in total · ◎ traced crate BX-0001',24,910,C.dim,'13px '+FONT);
+  text(`Alert after ${TH} days: crates at a customer turn yellow after ${Math.round(TH*.7)} days and red after ${TH} days`,24,934,C.dim,'13px '+FONT);
   // pulses
   for(const p of pulses){g.beginPath();g.arc(p.x,p.y,10+p.t*70,0,7);g.strokeStyle=hexA(p.c,.7*(1-p.t));g.lineWidth=2;g.stroke();g.lineWidth=1}
   TR.forEach(drawTruck);
   const dimO=gHits.size>0;
-  for(const c of crates){if(c===hero||gHits.has(c))continue;const s=c.loc[0]==='T'?7:c.loc[0]==='C'?8:9;g.globalAlpha=dimO?.22:1;g.fillStyle=colOf(c);g.fillRect(c.x-s/2,c.y-s/2,s,s)}g.globalAlpha=1;
-  if(dimO){const HC='#e879f9',zc2={};for(const c of gHits){const s=c.loc[0]==='T'?9:11;g.fillStyle=HC;g.fillRect(c.x-s/2,c.y-s/2,s,s);g.strokeStyle='#fff';g.lineWidth=1.2;g.strokeRect(c.x-s/2,c.y-s/2,s,s);zc2[c.loc]=(zc2[c.loc]||0)+1}g.lineWidth=1;
+  for(const c of crates){if(c===hero||!c.lead)continue;const s=c.loc[0]==='T'?7:c.loc[0]==='C'?8:9;g.globalAlpha=dimO?.22:1;g.fillStyle=colOf(c);g.fillRect(c.x-s/2,c.y-s/2,s,s)}g.globalAlpha=1;
+  if(dimO){const HC='#e879f9',zc2={},seen=new Set();for(const c of gHits){zc2[c.loc]=(zc2[c.loc]||0)+1;const ck=(c.x|0)+','+(c.y|0);if(seen.has(ck))continue;seen.add(ck);const s=c.loc[0]==='T'?9:11;g.fillStyle=HC;g.fillRect(c.x-s/2,c.y-s/2,s,s);g.strokeStyle='#fff';g.lineWidth=1.2;g.strokeRect(c.x-s/2,c.y-s/2,s,s)}g.lineWidth=1;
     for(const k in zc2){let x,y;if(k[0]==='T'){const T=TR[+k[1]];x=T.x+40;y=T.y-46}else{const z=Z[k];x=z.x+z.w-40;y=z.y-9}const t='◆ '+zc2[k];g.font='700 12px '+MONO;const w=g.measureText(t).width+14;rr(x-w/2,y-9,w,18,9,HC);text(t,x,y+4,'#2a0530','700 12px '+MONO,'center')}
     if(fol){const p=1+Math.sin(performance.now()/150)*.5;g.beginPath();g.arc(fol.x,fol.y,12+p*3,0,7);g.strokeStyle=HC;g.lineWidth=2.5;g.stroke();g.beginPath();g.arc(fol.x,fol.y,22+p*4,0,7);g.strokeStyle='rgba(232,121,249,.4)';g.lineWidth=1.5;g.stroke();g.lineWidth=1}}
   TR.forEach(T=>{if(T.x<ROADX-40)text(`${T.name} ${T.plate} · ${DEVS[T.dev].who}`,T.x-8,T.y-38,C.muted,'600 12px '+FONT,'center');else text(T.name,T.x,T.y-36,'#e2e8f0','700 12px '+FONT,'center')});
@@ -567,7 +569,7 @@ function drawSel(){const c=sel,w=320,h=234;g.beginPath();g.arc(c.x,c.y,8,0,7);g.
   g.save();g.shadowColor='rgba(0,0,0,.6)';g.shadowBlur=16;rr(x,y,w,h,8,'#101c33','#e2e8f0',1);g.restore();
   const [sn,sc]=c.st==='CUST'&&age(c)>=TH?['At customer · overdue',C.bad]:ST[c.st];
   text(c.id,x+14,y+26,C.text,'700 16px '+MONO);rr(x+w-118,y+11,104,22,11,sc);text(sn,x+w-66,y+27,'#07101f','700 12px '+FONT,'center');
-  const rows=[['Barcode',c.bc],['Customer',custName(c)],['Location',locText(c)+(c.st==='CUST'?` (${Math.floor(age(c))}  days)`:'')],['Holder',c.owner],['Last scan',`${c.last} · ${c.lastBy}`],
+  const rows=[['Barcode',c.bc],['Customer',custName(c)],['Location',locText(c)+(c.st==='CUST'?` (${Math.floor(age(c))} days)`:'')],['Holder',c.owner],['Last scan',`${c.last} · ${c.lastBy}`],
     ['Contents',c.cont?`${c.order?c.order+' · ':'Stock · '}${c.cont.p} × ${c.cont.q}`:'Empty'],['Signed',c.recv?`${c.recv.t} ${c.recv.name}`:'—'],['Return signed',c.ret?`${c.ret.t} ${c.ret.name}`:'—']];
   rows.forEach((r,j)=>{text(r[0],x+14,y+54+j*22,C.muted,'13px '+FONT);text(fitText(r[1],w-100,'13px '+FONT),x+84,y+54+j*22,C.text,'13px '+FONT)})}
 
@@ -579,16 +581,16 @@ function panels(){
   let fin=0,tr=0,cu=0,od=0;const cnt={STOCK:0,PACK:0,TRANSIT:0,CUST:0,RET:0,EXC:0};
   for(const c of crates){if(c.loc[0]==='T')tr++;else if(c.loc[0]==='C'){cu++;if(age(c)>=TH)od++}else fin++;cnt[c.st==='RETIN'?'RET':c.st]++}
   {const o=EXS.filter(x=>x.status==='Open').length;$('kEx').innerHTML=`${o}<small>/ ${EXS.length}</small>`;$('bExc').innerHTML=`⚠ Exceptions <b>${o}</b>`}
-  $('kIn').textContent=fin;$('kTr').textContent=tr;$('kCu').textContent=cu;$('kOd').textContent=od;$('kTrip').innerHTML=trips+'<small>trips</small>';
-  FL.forEach((s,i)=>{$('c'+i).innerHTML=cnt[s[0]]+'<small> crates</small>';$('b'+i).style.width=Math.min(100,cnt[s[0]]/500*200)+'%'});
+  $('kIn').textContent=fmt(fin);$('kTr').textContent=fmt(tr);$('kCu').textContent=fmt(cu);$('kOd').textContent=fmt(od);$('kTrip').innerHTML=trips+'<small>trips</small>';
+  FL.forEach((s,i)=>{$('c'+i).innerHTML=fmt(cnt[s[0]])+'<small> crates</small>';$('b'+i).style.width=Math.min(100,cnt[s[0]]/N*200)+'%'});
   const cur=heroRec.findIndex(v=>!v);
   $('heroBody').innerHTML=CPS.map((cp,i)=>{const t=heroRec[i],st=t?'<span class="ok">✓ Done</span>':i===cur?'<span class="go">● Next</span>':'Pending';
     return`<tr class="${t?'':i===cur?'cur':'pend'}"><td class="cp"><i style="background:${cp[1]}"></i>${cp[0]}</td><td class="tm">${t||'—'}</td><td>${t?heroWho[i]:'—'}</td><td class="mono" style="font-size:13px">${t?heroDev[i]:'—'}</td><td>${st}</td></tr>`}).join('');
-  $('heroLoc').innerHTML='Now at: <b>'+locText(hero)+(hero.st==='CUST'?` (${Math.floor(age(hero))}  days)`:'')+'</b>';
-  const rows=CUST.map((cu,i)=>{const L=inLoc('C'+i),ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,n=L.length-o-w,mx=ag.length?Math.floor(Math.max(...ag)):0;
-    return`<tr><td>${cu.n}</td><td class="n">${L.length}</td><td class="n" style="color:${mx>=TH?C.bad:'inherit'}">${mx}  days</td><td class="n" style="color:${o?C.bad:C.dim}">${o}</td><td style="width:300px"><div class="sb" style="width:${Math.max(4,L.length*4)}px"><i style="flex:${n};background:${C.cust}"></i><i style="flex:${w};background:${C.warn}"></i><i style="flex:${o};background:${C.bad}"></i></div></td></tr>`}).join('');
+  $('heroLoc').innerHTML='Now at: <b>'+locText(hero)+(hero.st==='CUST'?` (${Math.floor(age(hero))} days)`:'')+'</b>';
+  const rows=CUST.map((cu,i)=>{const L=inLocC('C'+i),ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,n=L.length-o-w,mx=ag.length?Math.floor(Math.max(...ag)):0;
+    return`<tr><td>${cu.n}</td><td class="n">${fmt(L.length)}</td><td class="n" style="color:${mx>=TH?C.bad:'inherit'}">${mx} days</td><td class="n" style="color:${o?C.bad:C.dim}">${fmt(o)}</td><td style="width:300px"><div class="sb" style="width:${Math.max(4,L.length*4/SC)}px"><i style="flex:${n};background:${C.cust}"></i><i style="flex:${w};background:${C.warn}"></i><i style="flex:${o};background:${C.bad}"></i></div></td></tr>`}).join('');
   $('ctab').innerHTML=`<thead><tr><th>Customer</th><th style="text-align:right">Out</th><th style="text-align:right">Oldest</th><th style="text-align:right">Overdue</th><th>Distribution (blue: normal, yellow: near alert, red: overdue)</th></tr></thead><tbody>${rows}</tbody>`;
-  if(gQ){gCompute();$('gcnt').textContent=gHits.size?`◆ ${gHits.size}  crates`:'No match'}
+  if(gQ){gCompute();$('gcnt').textContent=gHits.size?`◆ ${gHits.size} crates`:'No match'}
   updFollow();
   renderZone();
   $('log').innerHTML=logs.map(l=>`<div class="${l.hero?'hero':''}"><span class="t">${l.t}</span><span class="r" style="color:${l.hero?C.hero:l.col}">${l.d}</span><span>${l.txt}</span></div>`).join('');
@@ -607,7 +609,7 @@ const zType=k=>k==='X'?'x':k[0]==='D'?'d':k[0]==='C'?'c':k[0]==='T'?'t':'f';
 function openZone(k){if(zKey!==k){$('zq').value='';zFilter=null;zSort=zType(k)==='c'?{c:1,d:-1}:{c:0,d:1}}zKey=k;zl.hidden=false;renderZone(true);draw()}
 function closeZone(){zKey=null;zl.hidden=true;draw()}
 const band=c=>{const a=age(c);return a>=TH?'o':a>=TH*.7?'w':'n'};
-function stChip(c){if(c.st==='CUST'){const a=age(c),col=a>=TH?C.bad:a>=TH*.7?C.warn:C.cust;return`<span class="sc" style="background:${col}">${Math.floor(a)}  days${a>=TH?' Overdue':''}</span>`}
+function stChip(c){if(c.st==='CUST'){const a=age(c),col=a>=TH?C.bad:a>=TH*.7?C.warn:C.cust;return`<span class="sc" style="background:${col}">${Math.floor(a)} days${a>=TH?' Overdue':''}</span>`}
   const[n,col]=ST[c.st];return`<span class="sc" style="background:${col}">${n}</span>`}
 const contTxt=c=>c.cont?`${c.cont.p} × ${c.cont.q}`:'Empty';
 const esc=t=>String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[m]);
@@ -617,29 +619,29 @@ const COLS={
  c:[['Crate',c=>c.i,c=>td(c.id,'m')],['Days out',c=>age(c),c=>td(stChip(c))],['Signed at',c=>c.since,c=>td(c.recv?c.recv.t:'—','mono')],['Signed by',c=>c.recv?c.recv.name:'',c=>td(c.recv?c.recv.name:'—')],['Order',c=>c.order||'',c=>td(c.order||'—','mono')],['Contents',c=>c.cont?c.cont.p:'',c=>td(contTxt(c))],['Last scan',c=>c.lastMin,c=>td(c.last,'mono')]],
  t:[['Crate',c=>c.i,c=>td(c.id,'m')],['Status',c=>c.st,c=>td(stChip(c))],['Order',c=>c.order||'',c=>td(c.order||'—','mono')],['Customer',c=>c.cust??9,c=>td(custName(c))],['Contents',c=>c.cont?c.cont.p:'',c=>td(c.st==='RET'?'Empty':contTxt(c))],['Holder',c=>c.owner,c=>td(esc(c.owner))],['Last scan',c=>c.lastMin,c=>td(c.last,'mono')],['Return signed',c=>c.ret?c.ret.t:'',c=>td(c.ret?c.ret.t+' '+c.ret.name:'—')]]};
 function renderZone(force){
-  ZTABS.forEach(([k])=>{const e=$('zn_'+k);if(e)e.textContent=k==='X'?EXS.filter(x=>x.status==='Open').length+'/'+EXS.length:k[0]==='D'?Math.round(dStats(+k[1]).util*100)+'%':inLoc(k).length;const h=$('zh_'+k);if(h){let n=0;for(const c of gHits)if(c.loc===k)n++;h.textContent=n||''}});
+  ZTABS.forEach(([k])=>{const e=$('zn_'+k);if(e)e.textContent=k==='X'?EXS.filter(x=>x.status==='Open').length+'/'+EXS.length:k[0]==='D'?Math.round(dStats(+k[1]).util*100)+'%':inLocC(k).length;const h=$('zh_'+k);if(h){let n=0;for(const c of gHits)if(c.loc===k)n++;h.textContent=n||''}});
   if(!zKey)return;const now=performance.now();if(!force&&now-zLast<400)return;zLast=now;
   document.querySelectorAll('#ztabs button').forEach(b=>b.classList.toggle('on',b.dataset.k===zKey));
-  const k=zKey,type=zType(k);let L=inLoc(k);
+  const k=zKey,type=zType(k);let L=inLocC(k);
   $('zdisp').hidden=type!=='t';
   const isD=type==='d',isX=type==='x';$('zdev').hidden=!isD;$('zexc').hidden=!isX;['#zsum','#zl .zc','#zl .tw','#zl .zhint'].forEach(q=>document.querySelector(q).hidden=isD||isX);
   if(isX){renderExc();return}
   if(isD){renderDev(+k[1]);return}
   if(type==='t'){const T=TR[+k[1]],hm=(m,base)=>{if(m==null)return'<span class="pend">—</span>';const p=dparts(m);return base==null?p.md+' '+p.hm:p.hm+(Math.floor(m/1440)>Math.floor(base/1440)?'<sup style="color:var(--warn)">+1</sup>':'')},SL={verify:'Loading check',out:'On the road',deliver:'Hand-over',collect:'Empty pickup',back:'Return trip',unload:'Unloading'};
     const tot=T.trips.reduce((a,t)=>a+t.n,0),rb=T.trips.reduce((a,t)=>a+(t.back||0),0);
-    $('zdsum').textContent=`${T.trips.length}  trips · sent ${tot}  crates · returned ${rb}  crates`;
+    $('zdsum').textContent=`${T.trips.length}  trips · sent ${tot} crates · returned ${rb} crates`;
     const pre=(T.state==='packing'||T.state==='loading')?`<tr class="cur"><td>${T.trips.length+1}</td><td>${T.order}</td><td class="cn">${CUST[T.cust].n}</td><td class="n">${T.n}</td><td class="n"><span class="pend">—</span></td><td class="n"><span class="pend">—</span></td><td><span class="pend">Waiting</span></td><td></td><td></td><td></td><td class="cn"><span style="color:var(--s-pack)">● ${T.state==='packing'?'Pack & bind':'Loading'}</span></td></tr>`:'';
     $('zdtb').innerHTML=pre+[...T.trips].reverse().map(t=>{const live=t===T.cur;const st=t.done?'<span style="color:var(--ok)">✓ Done</span>':`<span style="color:var(--s-transit)">● ${SL[T.state]||'In progress'}</span>`;
       return`<tr class="${live?'cur':''}"><td>${t.no}</td><td>${t.order}</td><td class="cn">${CUST[t.cust].n}</td><td class="n">${t.n}</td><td class="n">${t.back??'<span class="pend">—</span>'}</td><td class="n" style="color:var(--warn)">${t.left??'<span class="pend">—</span>'}</td><td>${hm(t.depart)}</td><td>${hm(t.arrive,t.depart)}</td><td>${hm(t.leave,t.depart)}</td><td>${hm(t.ret,t.depart)}</td><td class="cn">${st}${t.miss?` <span style="color:var(--exc)" title="missing ${t.miss}, supervisor approved">⚠ missing 1</span>`:''}</td></tr>`}).join('')}
   $('zdot').style.background=zCol(k);
   if(type==='t'){const T=TR[+k[1]],D=DEVS[T.dev],SN={idle:'Standby',packing:'Packing',loading:'Loading',verify:'Loading check',out:'On the road',deliver:'Hand-over',collect:'Empty pickup',back:'Return trip',unload:'Unloading'};
     $('zt').textContent=`${T.name} ${T.plate}`;$('zsub').textContent=`Driver ${D.who} · ${D.id} (${D.net}) · now: ${SN[T.state]}`+(T.order&&T.state!=='idle'?` · Order ${T.order} → ${CUST[T.cust].n}`:'')}
-  else if(type==='c'){const i=+k[1];$('zt').textContent=''+CUST[i].n;$('zsub').textContent=`Off site · contact ${CUST[i].s} · Alert after ${TH}  days`}
+  else if(type==='c'){const i=+k[1];$('zt').textContent=''+CUST[i].n;$('zsub').textContent=`Off site · contact ${CUST[i].s} · Alert after ${TH} days`}
   else{$('zt').textContent=Z[k].n;$('zsub').textContent='On site · holder: stock clerk Cathy (MC66-03)'}
-  $('zcnt').textContent=L.length+'  crates';
+  $('zcnt').textContent=fmt(L.length)+' crates';
   let sum,fk;
   if(type==='c'){fk=band;const ag=L.map(age),o=ag.filter(a=>a>=TH).length,w=ag.filter(a=>a>=TH*.7&&a<TH).length,mx=ag.length?Math.floor(Math.max(...ag)):0;
-    sum=[['n','Normal',C.cust,L.length-o-w],['w','Near alert',C.warn,w],['o','Overdue',C.bad,o],[null,'Oldest',C.dim,mx+'  days']]}
+    sum=[['n','Normal',C.cust,L.length-o-w],['w','Near alert',C.warn,w],['o','Overdue',C.bad,o],[null,'Oldest',C.dim,mx+' days']]}
   else{fk=c=>zFilter&&zFilter[0]==='K'?'K'+c.cust:c.st;const cnt={};L.forEach(c=>cnt[c.st]=(cnt[c.st]||0)+1);sum=Object.keys(cnt).map(s=>[s,ST[s][0],ST[s][1],cnt[s]]);
     const cc={};L.forEach(c=>{if(c.cust!=null)cc[c.cust]=(cc[c.cust]||0)+1});Object.keys(cc).sort((a,b)=>a-b).forEach(i=>sum.push(['K'+i,CUST[i].n,C.cust,cc[i]]));
     const orders=[...new Set(L.map(c=>c.order).filter(Boolean))];if(orders.length)sum.push([null,'Order',C.dim,orders.join(', ')])}
@@ -651,20 +653,20 @@ function renderZone(force){
   const cols=COLS[type],sc=cols[zSort.c],d=zSort.d;
   L.sort((a,b)=>{const x=sc[1](a),y=sc[1](b);return(x<y?-1:x>y?1:a.i-b.i)*d});
   $('zth').innerHTML='<tr>'+cols.map((c,i)=>`<th data-c="${i}" class="${i===zSort.c?'on':''}">${c[0]}<span>${i===zSort.c?(d>0?' ▲':' ▼'):' ↕'}</span></th>`).join('')+'</tr>';
-  $('zshown').textContent=(q||zFilter)?`Showing ${L.length} / ${inLoc(k).length}  crates`:'';
-  $('ztb').innerHTML=L.length?L.map(c=>`<tr data-i="${c.i}" class="${c===sel?'on':''}${gHits.has(c)?' hit':''}">${cols.map(col=>col[2](c)).join('')}</tr>`).join(''):`<tr><td colspan="8" class="zempty">${q||zFilter?'No crates match':'No crates here right now'}</td></tr>`}
+  $('zshown').textContent=(q||zFilter)?`Showing ${L.length} / ${inLocC(k).length} crates`:'';
+  $('ztb').innerHTML=L.length?L.slice(0,ROWMAX).map(c=>`<tr data-i="${c.i}" class="${c===sel?'on':''}${gHits.has(c)?' hit':''}">${cols.map(col=>col[2](c)).join('')}</tr>`).join('')+(L.length>ROWMAX?`<tr><td colspan="8" class="zempty">Showing the first ${ROWMAX} of ${fmt(L.length)} crates; use search or filters to narrow down</td></tr>`:''):`<tr><td colspan="8" class="zempty">${q||zFilter?'No crates match':'No crates here right now'}</td></tr>`}
 function renderDev(i){const D=DEVS[i],st=dStats(i),hmm=m=>dparts(m).hm,dmm=m=>{const p=dparts(m);return p.md+' '+p.hm},hrs=m=>(m/60).toFixed(1);
-  $('zdot').style.background=C.accent;$('zt').textContent=`${D.id}　${D.role} ${D.who}`;$('zcnt').textContent=`Scanned ${st.scans}  crates`;
+  $('zdot').style.background=C.accent;$('zt').textContent=`${D.id}　${D.role} ${D.who}`;$('zcnt').textContent=`Scanned ${st.scans} crates`;
   $('zsub').textContent=`${D.car} · ${D.net} · shift from ${dmm(D.shift)} ,  ${hrs(st.span)} h`;
   $('ucmp').innerHTML='<div class="uh">Handheld utilization <span>(active time ÷ shift time; ≥60% busy, 35–60% moderate, &lt;35% light)</span></div>'+DEVS.map((d,j)=>{const s2=dStats(j),u=Math.round(s2.util*100),c=utilCol(s2.util);
-    return`<button type="button" data-k="D${j}" class="${j===i?'on':''}"><span class="nm">${d.id} ${d.who}</span><span class="bar"><i style="width:${u}%;background:${c}"></i></span><b style="color:${c}">${u}%</b><em style="color:${c}">${utilLbl(s2.util)}</em><span class="sc2">${s2.scans}  crates</span></button>`}).join('');
+    return`<button type="button" data-k="D${j}" class="${j===i?'on':''}"><span class="nm">${d.id} ${d.who}</span><span class="bar"><i style="width:${u}%;background:${c}"></i></span><b style="color:${c}">${u}%</b><em style="color:${c}">${utilLbl(s2.util)}</em><span class="sc2">${s2.scans} crates</span></button>`}).join('');
   const nPl=Object.keys(st.places).length;
   $('dkpi').innerHTML=[['Crates scanned',st.scans,' crates'],['Tasks',st.ops,'×'],['Utilization',Math.round(st.util*100),'%',utilCol(st.util)],['Active hours',hrs(st.busy),`/${hrs(st.span)}h`],['Places',nPl,''],['Exception',st.exc,'',st.exc?C.exc:null]]
     .map(([l,v,u,c])=>`<div class="k"><div class="l">${l}</div><div class="v"${c?` style="color:${c}"`:''}>${v}<small>${u}</small></div></div>`).join('');
   // timeline
   const from=D.shift,now=simMin,span=Math.max(1,now-from),pct=m=>((m-from)/span*100).toFixed(2);
   let seg='';for(const a of D.acts){if(a.t0>now)continue;const t0=Math.max(a.t0,from),t1=Math.min(a.t1??now,now);if(t1<=t0)continue;
-    seg+=`<i style="left:${pct(t0)}%;width:${Math.max(.15,(t1-t0)/span*100).toFixed(2)}%;background:${ATC[a.type]||C.dim}" title="${a.type} ${hmm(a.t0)}–${hmm(t1)} ${a.loc} ${a.n}  crates"></i>`}
+    seg+=`<i style="left:${pct(t0)}%;width:${Math.max(.15,(t1-t0)/span*100).toFixed(2)}%;background:${ATC[a.type]||C.dim}" title="${a.type} ${hmm(a.t0)}–${hmm(t1)} ${a.loc} ${a.n} crates"></i>`}
   const stepH=span>2400?720:span>1200?360:span>480?120:60;let ticks='';for(let m=Math.ceil(from/stepH)*stepH;m<=now;m+=stepH)ticks+=`<span style="left:${pct(m)}%">${dparts(m).md.split('/')[1]===dparts(from).md.split('/')[1]?'':dparts(m).md+' '}${hmm(m)}</span>`;
   const types=Object.keys(st.byType);
   $('dtl').innerHTML=`<div class="tr">${seg}</div><div class="tk">${ticks}</div><div class="lgd">${types.map(t=>`<span><i style="background:${ATC[t]}"></i>${t}</span>`).join('')}<span><i style="background:var(--line2)"></i>Idle</span></div>`;
@@ -682,7 +684,7 @@ function renderDev(i){const D=DEVS[i],st=dStats(i),hmm=m=>dparts(m).hm,dmm=m=>{c
   $('dlog').innerHTML='<thead><tr><th>Time</th><th>Task</th><th>Place</th><th class="n">Crates</th><th>Ref / note</th></tr></thead><tbody>'+rows.map(a=>`<tr><td class="mono">${hmm(a.t0)}–${a.t1==null||a.t1>now?'<span style="color:var(--warn)">In progress</span>':hmm(a.t1)}</td><td><i class="dot" style="background:${ATC[a.type]}"></i>${a.type}</td><td>${a.loc}</td><td class="n">${a.scan?a.n:'<span class="pend">—</span>'}</td><td class="mono">${a.ref||''}${a.exc?' <span style="color:var(--exc)">⚠ approved with missing crate</span>':''}</td></tr>`).join('')+'</tbody>'}
 $('ucmp').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(b){stopFollow();openZone(b.dataset.k)}});
 let exF='all';
-function renderExc(){const hm=m=>dparts(m).hm,dm=m=>{const p=dparts(m);return p.md+' '+p.hm},dur=(a,b)=>{const m=Math.round(b-a);return m<60?m+'  min':(m/60).toFixed(1)+' h'};
+function renderExc(){const hm=m=>dparts(m).hm,dm=m=>{const p=dparts(m);return p.md+' '+p.hm},dur=(a,b)=>{const m=Math.round(b-a);return m<60?m+' min':(m/60).toFixed(1)+' h'};
   const all=EXS,open=all.filter(x=>x.status==='Open');
   $('zdot').style.background=C.exc;$('zt').textContent='Exceptions';$('zcnt').textContent=`${open.length}  open /  ${all.length} `;
   $('zsub').textContent='Each exception records who found it, how it was handled, the approver and who closed it';
@@ -730,10 +732,10 @@ function gFields(c){const f=[c.id,c.bc,c.epc,c.cust!=null?CUST[c.cust].n:'',c.or
 function gCompute(){gHits=new Set();if(!gQ)return;const toks=gQ.split(/\s+/).filter(Boolean).map(gNorm);
   for(const c of crates){const f=gFields(c).map(gNorm);if(toks.every(t=>f.some(v=>v.includes(t))))gHits.add(c)}}
 function zLabel(k){return k==='X'?'Exceptions':k[0]==='D'?`${DEVS[+k[1]].id} ${DEVS[+k[1]].who}`:k[0]==='T'?`${TR[+k[1]].name} ${TR[+k[1]].plate}`:k[0]==='C'?''+CUST[+k[1]].n:Z[k].n}
-function gRender(){gCompute();const n=gHits.size;$('gx').hidden=!gQ;$('gcnt').textContent=gQ?(n?`◆ ${n}  crates`:'No match'):'';
+function gRender(){gCompute();const n=gHits.size;$('gx').hidden=!gQ;$('gcnt').textContent=gQ?(n?`◆ ${n} crates`:'No match'):'';
   const res=$('gres');if(!gQ||document.activeElement!==$('gq')){res.hidden=true;return}
   const L=[...gHits].slice(0,40);res.hidden=false;
-  res.innerHTML=L.length?L.map((c,j)=>`<button type="button" data-i="${c.i}" class="${j===gKb?'kb':''}"><b>${c.id}</b><span>${custName(c)!=='—'?custName(c)+' · ':''}${zLabel(c.loc)} · ${c.order||'Empty'}${c.cont?' · '+c.cont.p:''}</span>${stChip(c)}</button>`).join('')+(n>40?`<div class="more"> ${n}  crates highlighted on the map; refine your search</div>`:'')
+  res.innerHTML=L.length?L.map((c,j)=>`<button type="button" data-i="${c.i}" class="${j===gKb?'kb':''}"><b>${c.id}</b><span>${custName(c)!=='—'?custName(c)+' · ':''}${zLabel(c.loc)} · ${c.order||'Empty'}${c.cont?' · '+c.cont.p:''}</span>${stChip(c)}</button>`).join('')+(n>40?`<div class="more"> ${n} crates highlighted on the map; refine your search</div>`:'')
     :`<div class="more">No crates match "${esc(gQ)}"</div>`}
 function follow(c){fol=c;sel=c;folLoc=c.loc;folTrail=[[nowStr(),c.loc]];$('gres').hidden=true;$('gq').blur();openZone(c.loc);updFollow(true)}
 function stopFollow(){fol=null;$('zfol').hidden=true}
@@ -765,9 +767,9 @@ if(inDeck)addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('
 // ---------- playback ----------
 const mm=t=>pad(Math.floor(t/60))+':'+pad(Math.floor(t%60));
 let marks=[];
-recMarks=Array(7).fill(null);init();layout(0,true);while(realT<LOOP)step(DT);marks=recMarks;recMarks=null;
+recMarks=Array(7).fill(null);init();layout(0,true);FF=true;while(realT<LOOP)step(DT);FF=false;marks=recMarks;recMarks=null;
 $('marks').innerHTML=CPS.map((cp,i)=>marks[i]==null?'':`<button type="button" class="mk${i%2?' lo':''}" data-i="${i}" style="left:${marks[i]/LOOP*100}%" title="Jump to ${cp[0]}"><span>${cp[2]}</span><i style="background:${cp[1]}"></i></button>`).join('');
-function seek(t){const s=sel?sel.i:null;init();layout(0,true);const n=Math.round(Math.max(0,Math.min(LOOP-.05,t))/DT);for(let i=0;i<n;i++)step(DT);layout(0,true);sel=s==null?null:crates[s];if(fol){fol=crates[fol.i];folLoc=fol.loc;folTrail=[[nowStr(),fol.loc]]}acc=0;draw();panels();timeline()}
+function seek(t){const s=sel?sel.i:null;init();layout(0,true);const n=Math.round(Math.max(0,Math.min(LOOP-.05,t))/DT);FF=true;for(let i=0;i<n;i++)step(DT);FF=false;layout(0,true);sel=s==null?null:crates[s];if(fol){fol=crates[fol.i];folLoc=fol.loc;folTrail=[[nowStr(),fol.loc]]}acc=0;draw();panels();timeline()}
 function timeline(){const t=realT,p=Math.min(1,t/LOOP)*100;$('fill').style.width=p+'%';$('head').style.left=p+'%';$('tl').textContent=`${mm(t)} / ${mm(LOOP)}`;
   document.querySelectorAll('.mk').forEach(m=>m.classList.toggle('done',t>=marks[m.dataset.i]))}
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -781,7 +783,7 @@ $('track').addEventListener('click',e=>{const mk=e.target.closest('.mk');if(mk){
   const r=$('track').getBoundingClientRect();seek((e.clientX-r.left)/r.width*LOOP)});
 addEventListener('keydown',e=>{if(e.code==='Space'&&!e.target.closest('button,input')){e.preventDefault();setPlay(!playing)}});
 function frame(ts){const dt=last==null?0:Math.min((ts-last)/1000,.1);last=ts;
-  if(playing){acc+=dt*speed;let n=0;while(acc>=DT&&n<200){step(DT);acc-=DT;n++}if(realT>=LOOP){init();layout(0,true);acc=0;flash()}}
+  if(playing){acc+=dt*speed;let n=0;while(acc>=DT&&n<200){step(DT);acc-=DT;n++}if(realT>=LOOP){init();layout(0,true);acc=0;flash()}layout(dt)}
   draw();timeline();if((pacc+=dt)>.12){pacc=0;panels()}requestAnimationFrame(frame)}
 init();layout(0,true);setPlay(playing);draw();panels();timeline();requestAnimationFrame(frame);
 </script>
