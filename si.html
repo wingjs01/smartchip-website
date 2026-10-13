@@ -11,17 +11,17 @@
     <meta name="author" content="瑞新電子股份有限公司">
     <meta name="copyright" content="瑞新電子股份有限公司 - SMC">
     <title>System Integration | SMC Smartchip</title>
-    <meta name="description" content="SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, from design and prototyping to production, deployment and maintenance.">
+    <meta name="description" content="SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, such as UHF RFID tracking for returnable crates, from design to deployment and maintenance.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="System Integration | SMC Smartchip">
-    <meta property="og:description" content="SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, from design and prototyping to production, deployment and maintenance.">
+    <meta property="og:description" content="SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, such as UHF RFID tracking for returnable crates, from design to deployment and maintenance.">
     <meta property="og:image" content="https://www.smartchip.com.tw/img/solutions/kiosk-white.webp">
     <meta property="og:url" content="https://www.smartchip.com.tw/si.html">
     <link rel="canonical" href="https://www.smartchip.com.tw/si.html">
     <link rel="alternate" hreflang="en" href="https://www.smartchip.com.tw/si.html">
     <link rel="alternate" hreflang="ja" href="https://www.smartchip.com.tw/jp/si.html">
     <link rel="alternate" hreflang="x-default" href="https://www.smartchip.com.tw/si.html">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "System Integration", "description": "SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, from design and prototyping to production, deployment and maintenance.", "url": "https://www.smartchip.com.tw/si.html", "provider": {"@type": "Organization", "name": "瑞新電子股份有限公司 (SMC)"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "System Integration", "description": "SMC integrates RFID / NFC, IoT devices, self-service kiosks and edge AI into complete systems, such as UHF RFID tracking for returnable crates, from design to deployment and maintenance.", "url": "https://www.smartchip.com.tw/si.html", "provider": {"@type": "Organization", "name": "瑞新電子股份有限公司 (SMC)"}}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.smartchip.com.tw/indexsmartchip.html"}, {"@type": "ListItem", "position": 2, "name": "System Integration", "item": "https://www.smartchip.com.tw/si.html"}]}</script>
     <link rel="stylesheet" href="css/main/reset.min.css?rev=@@hash">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -68,6 +68,11 @@
 .sx-photos figure{margin:0}
 .sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
 .sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sx-gallery figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px;overflow:hidden}
+.sx-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.sx-gallery figcaption{padding:10px 14px;font-size:14px;color:var(--sx-muted)}
+@media (max-width:767px){.sx-gallery{grid-template-columns:1fr}}
 .sx-product{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
 .sx-product figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px}
 .sx-product img{width:100%;height:auto;display:block}
@@ -284,6 +289,35 @@ header 結束
 </div>
 </div></section>
 <section class="sx-sec alt"><div class="container">
+<h2>Case: UHF RFID tracking for returnable crates</h2>
+<p class="lede">A stand-alone system that follows every crate from packing to customer delivery and back, using Android UHF RFID handhelds. It manages only the crates, so it goes live quickly without ERP integration.</p>
+<div class="sx-grid">
+<div class="sx-card"><span class="sx-tag">Shipping</span><h3>No wrong shipments</h3><p>Crates are bulk-scanned at loading and checked against the delivery order. Missing or extra crates show instantly, and a mismatch needs supervisor approval before the truck leaves.</p></div>
+<div class="sx-card"><span class="sx-tag">Delivery</span><h3>Proof of delivery</h3><p>Crates are scanned again at the customer, who signs on the handheld. Photos are saved with time and GPS.</p></div>
+<div class="sx-card"><span class="sx-tag">Returns</span><h3>Empty crate returns</h3><p>Returned crates are scanned and signed for. Only crates registered to that customer are accepted, then checked back in at the factory.</p></div>
+<div class="sx-card"><span class="sx-tag">Alerts</span><h3>Crates at customers</h3><p>A live count of crates at each customer, with overdue crates flagged after a configurable number of days.</p></div>
+</div>
+</div></section>
+<section class="sx-sec"><div class="container">
+<h2>Crate lifecycle</h2>
+<p class="lede">Each crate records its status, location, holder, last scan time and device, contents, barcode, delivery signature and return signature.</p>
+<div class="sx-flow">
+<div><b>In stock</b><span>In the warehouse, on the line or in a staging area</span></div>
+<div><b>Packed</b><span>Linked to a delivery order and its contents</span></div>
+<div><b>In transit</b><span>Loading check passed; the driver becomes the holder</span></div>
+<div><b>At customer</b><span>Signed for by the customer; days outstanding start counting</span></div>
+<div><b>Returning</b><span>Signed back by the customer and checked in at the factory</span></div>
+</div>
+</div></section>
+<section class="sx-sec alt"><div class="container">
+<h2>How the crate system is built</h2>
+<div class="sx-grid">
+<div class="sx-card"><span class="sx-tag">Handheld app</span><h3>UHF RFID handhelds</h3><p>Bulk crate scanning, 1D barcode backup, signature and photo capture, and an offline queue that syncs when the signal returns.</p></div>
+<div class="sx-card"><span class="sx-tag">Back end</span><h3>API server</h3><p>Order-to-scan matching, crate status tracking, supervisor PIN or remote approval, overdue alerts and user roles.</p></div>
+<div class="sx-card"><span class="sx-tag">Console</span><h3>Database and web console</h3><p>Crate lookup, outstanding-crate reports, exception handling and electronic delivery notes.</p></div>
+</div>
+</div></section>
+<section class="sx-sec"><div class="container">
 <h2>How we work</h2>
 <ol class="sx-steps">
 <li><b>Consult</b><span>Goals, site survey and requirements.</span></li>
