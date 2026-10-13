@@ -5,7 +5,7 @@
   </defs>
   <rect width="1600" height="900" fill="url(#g)"/>
   <rect width="1600" height="900" fill="url(#grid)"/>
-  <g fill="none" stroke="#e05a4f" stroke-width="3" stroke-opacity=".75">
+  <g fill="none" stroke="#4aa3ff" stroke-width="3" stroke-opacity=".75">
     <path d="M820 450H1000M1160 450H1300M1080 380V250M1080 520V660"/>
   </g>
   <g fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="2">
