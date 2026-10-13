@@ -773,7 +773,7 @@ function seek(t){const s=sel?sel.i:null;init();layout(0,true);const n=Math.round
 function timeline(){const t=realT,p=Math.min(1,t/LOOP)*100;$('fill').style.width=p+'%';$('head').style.left=p+'%';$('tl').textContent=`${mm(t)} / ${mm(LOOP)}`;
   document.querySelectorAll('.mk').forEach(m=>m.classList.toggle('done',t>=marks[m.dataset.i]))}
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let playing=!reduce,speed=1,last=null,acc=0,pacc=0;
+let playing=true,speed=1,last=null,acc=0,pacc=0;
 function setPlay(v){playing=v;$('bPlay').textContent=v?'⏸':'▶';$('bPlay').setAttribute('aria-label',v?'Pause':'Play');stageEl.classList.toggle('paused',!v);$('liveTxt').textContent=v?'LIVE':'PAUSED'}
 function flash(){const f=$('fade');f.style.transition='none';f.style.opacity=1;requestAnimationFrame(()=>requestAnimationFrame(()=>{f.style.transition='opacity .9s';f.style.opacity=0}))}
 $('bPlay').onclick=()=>setPlay(!playing);
