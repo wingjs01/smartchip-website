@@ -111,6 +111,11 @@
 .sx-edge .sx-tag{color:#5a8f00}
 .sx-edge .sx-steps li::before{color:#5a8f00}
 @media (max-width:767px){.sx-hero{padding:110px 0 48px}.sx-hero h1{font-size:28px}.sx-photos{grid-template-columns:1fr 1fr}.sx-spec th{width:40%}}
+.sx-thumbs{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.sx-thumbs button{width:72px;height:96px;padding:0;border:2px solid var(--sx-line);border-radius:6px;background:#fff;overflow:hidden;cursor:pointer}
+.sx-thumbs button[aria-pressed="true"]{border-color:var(--sx-red)}
+.sx-thumbs button:focus-visible{outline:2px solid var(--sx-red);outline-offset:2px}
+.sx-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
 /* carousel: show the Pandora banner uncropped and unaltered */
 .item.item-contain{background-size:contain!important;background-color:#000;background-repeat:no-repeat}
 .item.item-contain{position:relative}.item.item-contain .text{position:absolute;top:0;left:0;right:0;bottom:0;background:none;padding:0;margin:0;transform:none}.item.item-contain .text a{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;border-radius:0}.item.item-contain .text a:focus-visible{opacity:1;background:transparent;outline:3px solid #76b900;color:transparent}
@@ -341,7 +346,7 @@ header 結束
 <section class="sx-sec alt"><div class="container">
 <h2>展示用キオスク</h2>
 <p class="lede">Pandora エッジ AI コンピューターを中心に SMC が製作した卓上型セルフサービスキオスクです。</p>
-<div class="sx-product"><figure><img src="/img/solutions/pandora-kiosk-angle.webp?v=2" alt="Project Pandora 展示会で使用した SMC 卓上型キオスク" width="1200" height="1600"></figure><ul>
+<div class="sx-product"><figure><img class="sx-main" src="/img/solutions/pandora-kiosk-angle.webp?v=2" alt="Project Pandora 展示会で使用した SMC 卓上型キオスク" width="1200" height="1600"></figure><ul>
 <li>4:3 タッチパネルディスプレイ</li>
 <li>前面メンテナンス扉内のレシートプリンター</li>
 <li>2D バーコード・QR コードスキャナー</li>

@@ -111,6 +111,11 @@
 .sx-edge .sx-tag{color:#5a8f00}
 .sx-edge .sx-steps li::before{color:#5a8f00}
 @media (max-width:767px){.sx-hero{padding:110px 0 48px}.sx-hero h1{font-size:28px}.sx-photos{grid-template-columns:1fr 1fr}.sx-spec th{width:40%}}
+.sx-thumbs{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.sx-thumbs button{width:72px;height:96px;padding:0;border:2px solid var(--sx-line);border-radius:6px;background:#fff;overflow:hidden;cursor:pointer}
+.sx-thumbs button[aria-pressed="true"]{border-color:var(--sx-red)}
+.sx-thumbs button:focus-visible{outline:2px solid var(--sx-red);outline-offset:2px}
+.sx-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
 /* carousel: show the Pandora banner uncropped and unaltered */
 .item.item-contain{background-size:contain!important;background-color:#000;background-repeat:no-repeat}
 .item.item-contain{position:relative}.item.item-contain .text{position:absolute;top:0;left:0;right:0;bottom:0;background:none;padding:0;margin:0;transform:none}.item.item-contain .text a{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;border-radius:0}.item.item-contain .text a:focus-visible{opacity:1;background:transparent;outline:3px solid #76b900;color:transparent}
@@ -282,7 +287,7 @@ header 結束
 <section class="sx-sec alt"><div class="container">
 <h2>受付精算キオスク</h2>
 <p class="lede">台湾最大の小売システムの荷物受取店舗で稼働中。自社で設計・組立・テストを行い、筐体の色、ロゴ、搭載モジュールはお客様ごとにカスタマイズします。</p>
-<div class="sx-product"><figure><img src="/img/solutions/kiosk-white.webp" alt="SMC 受付精算キオスク" width="1200" height="1600"></figure><ul>
+<div class="sx-product"><figure><img class="sx-main" src="/img/solutions/kiosk-white.webp?v=3" alt="SMC 受付精算キオスク · 正面" width="1200" height="1600"><div class="sx-thumbs"><button type="button" aria-pressed="true" data-src="/img/solutions/kiosk-white.webp?v=3" data-alt="SMC 受付精算キオスク · 正面"><img src="/img/solutions/kiosk-white.webp?v=3" alt="" loading="lazy"></button><button type="button" aria-pressed="false" data-src="/img/solutions/kiosk-white-angle.webp?v=3" data-alt="SMC 受付精算キオスク · 斜め"><img src="/img/solutions/kiosk-white-angle.webp?v=3" alt="" loading="lazy"></button></div></figure><ul>
 <li>縦型タッチパネルとガイド付きUI</li>
 <li>レシートプリンター</li>
 <li>硬貨投入口とお釣り</li>
@@ -316,7 +321,7 @@ header 結束
 <section class="sx-sec"><div class="container">
 <h2>卓上型セルフサービスキオスク</h2>
 <p class="lede">カウンターや受付向けのコンパクトモデル。Pandora エッジ AI のデモ用キオスクとしても使用しています。</p>
-<div class="sx-product"><figure><img src="/img/solutions/pandora-kiosk-front.webp?v=2" alt="SMC 卓上型セルフサービスキオスク" width="1200" height="1600"></figure><ul>
+<div class="sx-product"><figure><img class="sx-main" src="/img/solutions/pandora-kiosk-front.webp?v=2" alt="SMC 卓上型セルフサービスキオスク · 正面" width="1200" height="1600"><div class="sx-thumbs"><button type="button" aria-pressed="true" data-src="/img/solutions/pandora-kiosk-front.webp?v=2" data-alt="SMC 卓上型セルフサービスキオスク · 正面"><img src="/img/solutions/pandora-kiosk-front.webp?v=2" alt="" loading="lazy"></button><button type="button" aria-pressed="false" data-src="/img/solutions/pandora-kiosk-angle.webp?v=2" data-alt="SMC 卓上型セルフサービスキオスク · 斜め"><img src="/img/solutions/pandora-kiosk-angle.webp?v=2" alt="" loading="lazy"></button><button type="button" aria-pressed="false" data-src="/img/solutions/pandora-kiosk-back.webp?v=2" data-alt="SMC 卓上型セルフサービスキオスク · 背面"><img src="/img/solutions/pandora-kiosk-back.webp?v=2" alt="" loading="lazy"></button></div></figure><ul>
 <li>コンパクトな台座に 4:3 タッチパネル</li>
 <li>前面メンテナンス扉内のレシートプリンター</li>
 <li>2D バーコード・QR コードスキャナー</li>
@@ -328,7 +333,7 @@ header 結束
 <section class="sx-sec alt"><div class="container">
 <h2>駐車場精算機</h2>
 <p class="lede">同じプラットフォームは駐車場の精算機としても稼働しています。構成イメージのイラストです。</p>
-<div class="sx-product"><figure><img src="/img/solutions/parking-kiosk.svg" alt="SMC 駐車場精算機のイメージイラスト" width="1200" height="1600"></figure><ul>
+<div class="sx-product"><figure><img class="sx-main" src="/img/solutions/parking-kiosk.svg" alt="SMC 駐車場精算機のイメージイラスト" width="1200" height="1600"></figure><ul>
 <li>タッチパネルでナンバープレート番号を検索</li>
 <li>現金払い、硬貨・紙幣のお釣りに対応</li>
 <li>非接触ICカード・NFC決済</li>
@@ -348,6 +353,7 @@ header 結束
 </div></section>
 <section class="sx-cta"><div class="container"><h2>プロジェクトのご相談はこちら</h2><p>必要な台数、設置環境、決済方式やリーダーの要件、エッジで動かしたいAI処理など、お気軽にご相談ください。</p><p class="addr">service@smartchip.com.tw · +886-2-8221-8800</p></div></section>
 </div>
+<script>document.querySelectorAll('.sx-thumbs').forEach(function(t){t.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var m=t.parentNode.querySelector('.sx-main');m.src=b.dataset.src;m.alt=b.dataset.alt;t.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})})})</script>
     <!-- 
 ============================================================================
 footer 開始
