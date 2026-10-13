@@ -68,6 +68,11 @@
 .sx-photos figure{margin:0}
 .sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
 .sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sx-gallery figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px;overflow:hidden}
+.sx-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.sx-gallery figcaption{padding:10px 14px;font-size:14px;color:var(--sx-muted)}
+@media (max-width:767px){.sx-gallery{grid-template-columns:1fr}}
 .sx-product{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
 .sx-product figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px}
 .sx-product img{width:100%;height:auto;display:block}
@@ -287,6 +292,17 @@ header 結束
 </div>
 </div></section>
 <section class="sx-sec alt"><div class="container">
+<h2>Pandora の活用例</h2>
+<p class="lede">Project Pandora 展示会では、1台の Pandora が SMC の卓上型キオスクの中で3つのライブデモを動かしました。</p>
+<div class="sx-product"><figure><img src="/img/solutions/pandora-kiosk-front.webp" alt="Pandora を搭載した SMC 卓上型キオスク" width="1200" height="1600"></figure><ul>
+<li>スマート物流：RFID 通い箱フローのリアルタイム看板</li>
+<li>スマートリテール：スキャン・現金・レシートのセルフレジ</li>
+<li>ビジョン AI：顔検出と人流分析</li>
+<li>3つすべてを1台の Pandora でローカル実行</li>
+<li>詳しくはシステムインテグレーションのページへ</li>
+</ul></div>
+</div></section>
+<section class="sx-sec"><div class="container">
 <h2>SMCからPandoraを導入するメリット</h2>
 <div class="sx-grid">
 <div class="sx-card"><span class="sx-tag">Supply</span><h3>正規取扱い</h3><p>台湾国内でのPandoraの供給とサポート。</p></div>

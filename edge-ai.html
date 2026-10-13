@@ -68,6 +68,11 @@
 .sx-photos figure{margin:0}
 .sx-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
 .sx-photos figcaption{font-size:14px;color:var(--sx-muted);margin-top:8px}
+.sx-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sx-gallery figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px;overflow:hidden}
+.sx-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.sx-gallery figcaption{padding:10px 14px;font-size:14px;color:var(--sx-muted)}
+@media (max-width:767px){.sx-gallery{grid-template-columns:1fr}}
 .sx-product{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:center}
 .sx-product figure{margin:0;background:#fff;border:1px solid var(--sx-line);border-radius:8px}
 .sx-product img{width:100%;height:auto;display:block}
@@ -287,6 +292,17 @@ header 結束
 </div>
 </div></section>
 <section class="sx-sec alt"><div class="container">
+<h2>Pandora in action</h2>
+<p class="lede">At the Project Pandora exhibition, one Pandora ran three live demos inside an SMC countertop kiosk.</p>
+<div class="sx-product"><figure><img src="/img/solutions/pandora-kiosk-front.webp" alt="SMC countertop kiosk powered by Pandora" width="1200" height="1600"></figure><ul>
+<li>Smart logistics: live RFID crate flow dashboard</li>
+<li>Smart retail: self-checkout with scanning, cash and receipts</li>
+<li>Vision AI: face detection and people-flow analytics</li>
+<li>All three run locally on one Pandora</li>
+<li>See the full showcase on the System Integration page</li>
+</ul></div>
+</div></section>
+<section class="sx-sec"><div class="container">
 <h2>Why buy Pandora from SMC</h2>
 <div class="sx-grid">
 <div class="sx-card"><span class="sx-tag">Supply</span><h3>Authorized supply</h3><p>Local supply and support for Pandora units in Taiwan.</p></div>
